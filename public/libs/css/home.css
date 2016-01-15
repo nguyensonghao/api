@@ -1,0 +1,147 @@
+.header {
+	height: 100px;
+	background-color: #4285f4;
+}
+
+.header .logo {
+	height: 80px;
+	position: absolute;
+	left: 162px;
+}
+
+.navbar-default {
+	background: #3367d6 !important;
+	border-color: #3367d6 !important;
+	border-radius: 0;
+}
+
+a.navbar-brand {
+    font-size: 24px;
+    color: white !important;
+    border-right: 1px solid;
+}
+
+.nav .glyphicon {
+	margin-right: 6px;
+}
+
+.nav a {
+	font-size: 18px !important;
+	color: white !important;
+}
+
+.nav a:hover {
+	background: #6AA1FD !important;
+}
+
+.nav .navbar-header {
+	margin-left: 50px !important;
+	margin-right: 50px !important;
+}
+
+.content-left .panel-heading {
+	font-size: 16px;
+	color: white !important;
+	font-weight: 400;
+	border-radius: 0 !important;
+}
+
+.content-left .table th {
+	border: none;
+}
+
+.content-right {
+	padding: 10px;
+    border: 1px solid #E2E2E2;
+}
+
+.title-sort {
+	font-size: 14px !important;
+	font-weight: 400 !important;
+}
+
+.number {
+	width: 100px !important;
+}
+
+.form-control {
+	border-radius: 2px !important;
+}
+
+hr {
+	margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.btn-toolbar-search {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.btn-toolbar-search .btn{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.active-search {
+	background: #5BC0DE !important
+}
+
+.active-search a {
+	color: black !important;
+}
+
+.panel-primary {
+	border-radius: 0;
+    border-color: #E8E2E2;
+}
+
+.panel-heading {
+	border-radius: 0 !important;
+}
+
+.menu-history ul {
+	margin-left: -25px;
+}
+
+.history .menu-history li {
+    list-style: none;
+    float: left;
+    padding: 10px 20px;
+    background: #F9F9F9;
+    color: #0A0A0A;
+    border: 1px solid #E8E5E5;
+    font-weight: bold;
+}
+
+.history .menu-history li a {
+	color: black;
+}
+
+.menu-history {
+	padding: 0 !important
+}
+
+th {
+	border-bottom: 0 !important;
+	text-align: center;
+}
+
+.active {
+	background: #337ab7 !important;
+	color: white !important;
+}
+
+.active a {
+	color: white !important;
+}
+
+td {
+	max-width: 500px !important;
+	text-align: center;
+}
+
+.popover-content {
+	text-align: center;
+}
