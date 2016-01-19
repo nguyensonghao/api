@@ -1,0 +1,33 @@
+<style type="text/css">
+	.loginScreen {
+		margin-top: 60px;
+	}
+</style>
+
+<div class="loginScreen col-md-4 col-md-offset-4">
+
+<form name="formLogin">
+	<legend>Đăng nhập</legend>
+
+	<div class="form-group">
+		<label for="">Email:</label>
+		<input type="email" class="form-control" ng-model="email" required>
+	</div>
+
+	<div class="form-group">
+		<label for="">Password:</label>
+		<input type="password" class="form-control" ng-model="password" required>
+	</div>
+	
+
+	<button type="button" class="btn btn-primary" ng-click="login(email, password)"
+	ng-disabled="!formLogin.$valid">
+		Đăng nhập
+	</button>
+	<hr>
+	<div class="alert alert-danger" ng-if="resultLogin">
+		Tài khoản hoặc mật khẩu không tồn tại
+	</div>
+</form>
+
+</div>

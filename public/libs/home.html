@@ -1,0 +1,33 @@
+<style type="text/css">
+	.home-screen {
+		margin-top: 70px;
+	}
+
+</style>
+
+<div class="col-md-8 col-md-offset-2 home-screen">	
+	<form ng-if="logined">
+		<legend>Thông tin tài khoản</legend>
+	
+		<div class="email">
+			<p>Email: {{user.email}}</p>			
+		</div>
+
+		<div class="tokenId">
+			<p>Token: {{user.tokenId}}</p>
+		</div>
+
+		<!-- <div class="tokenCookie">
+			<p>TokenCookie {{tokenCookie}}</p>
+		</div> -->
+	</form>
+
+	<div class="not-login" ng-if="!logined">
+		<div class="alert alert-info">
+			Chưa đăng nhập ...
+		</div>
+
+		<a href="#login" class="btn btn-danger">Đăng nhập</a>
+	</div>
+
+</div>

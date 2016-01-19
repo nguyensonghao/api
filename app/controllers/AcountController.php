@@ -11,9 +11,15 @@ class AcountController extends BaseController {
 	}
 
 	public function actionLogin () {
+		// get data form client with method post
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$email    = $request->email;
+	    @$password = $request->password;
+
 		$user = array(
-			'email'    => $_POST['email'],
-			'password' => $_POST['password']
+			'email'    => $email,
+			'password' => $this->decodePassword->encodePassword($password)
 		);
 
 		// check login user
@@ -25,8 +31,32 @@ class AcountController extends BaseController {
 		}
 	}
 
-	public function checkLoginStatus ($tokenId) {
-		
+	public function actionInit () {
+		// get data form client with method post
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$tokenId    = $request->tokenId;
+	    return $this->user->checkStatus($tokenId);
+	}
+
+	public function actionRegister () {
+		// get data form client with method post
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$email    = $request->email;
+	    @$password = $request->password;
+	    $password  = $this->decodePassword->encodePassword($password);
+
+	    return $this->user->registerUser(array('email' => $email, 'password' => $password));
+
+	}	
+
+	public function actionLogout () {
+		// get data form client with method post
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$email    = $request->email;
+	    return Response::json($this->user->logoutUser($email));
 	}
 }
 

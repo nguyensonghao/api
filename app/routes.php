@@ -46,3 +46,13 @@ Route::controller('acount', 'AcountController');
 
 Route::post('api/login', 'AcountController@actionLogin');
 
+Route::post('api/register', 'AcountController@actionRegister');
+
+Route::post('api/init-login', 'AcountController@actionInit');
+
+Route::post('api/logout', 'AcountController@actionLogout');
+
+Route::get('test', function () {
+	return View::make('test');
+});
+

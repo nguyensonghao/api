@@ -2,8 +2,8 @@
 
 class DecodePasswordController extends BaseController {
 
-	public function actionDecode ($password) {
-
+	public function decodeTokenRequest ($tokenId) {
+		return $tokenId;
 	}
 
 	public function responseUsertoClient ($user) {
@@ -12,6 +12,10 @@ class DecodePasswordController extends BaseController {
 			'tokenId' => $user->tokenId,
 			'status'  => true
 		);
+	}
+
+	public function encodePassword ($password) {
+		return md5($password);
 	}
 
 }
