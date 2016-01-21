@@ -7,6 +7,7 @@ class AcountController extends BaseController {
 	public $email;
 	public $util;
 	public $activeUser;
+	public $resetPassword;
 	public $dateExcute;
 
 	public function __construct () {
@@ -15,6 +16,7 @@ class AcountController extends BaseController {
 		$this->util  = new UtilController();
 		$this->activeUser = new ActiveUser();
 		$this->dateExcute = new DateController();
+		$this->resetPassword  = new ResetPassword();
 		$this->decodePassword = new DecodePasswordController();
 
 	}
@@ -110,6 +112,32 @@ class AcountController extends BaseController {
 	    	return Response::json(array('status' => 200));
 	    else 
 	    	return Response::json(array('status' => 304));
+	}
+
+	public function actionResetPassword () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$email = $request->email;
+	    if ($this->user->checkExistEmail($email)) {
+	    	$keyReset = $this->util->generateRandomString(20);
+	    	if ($this->resetPassword->createKeyReset($email, $keyReset)) {
+	    		$this->email->sendMailResetPassword($keyReset, $email);
+	    	} else {
+	    		return Response::json(array('status' => 302));
+	    	}
+	    } else {
+	    	return Response::json(array('status' => 304));
+	    }
+	}
+
+	public function actionResetPasswordSysterm ($keyReset) {
+		$result = $this->resetPassword->activeKeyReset($keyReset);
+		if (!$result) {
+			return Response::json(array('status' => 304));
+		} else {
+			$url = 'http://mazii.net';
+			return Redirect::to($url);
+		}
 	}
 }
 

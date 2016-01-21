@@ -54,6 +54,10 @@ Route::post('api/logout', 'AcountController@actionLogout');
 
 Route::get('api/active/{key}', 'AcountController@actionActiveUser');
 
+Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
+
+Route::post('api/reset-password', 'AcountController@actionResetPassword');
+
 Route::post('api/change-password', 'AcountController@actionChangePassword');
 
 Route::get('test', function () {

@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email');
 			$table->string('tokenId');
 			$table->integer('status');
+			$table->integer('active');
 			$table->timestamps();
 		});
 	}

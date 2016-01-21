@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActiveUserTable extends Migration {
+class CreateKeyResetTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateActiveUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('active_user', function ($table) {
+		Schema::create('key_reset', function ($table) {
 			$table->increments('id');
 			$table->string('email');
 			$table->string('key');
