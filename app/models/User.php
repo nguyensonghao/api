@@ -50,16 +50,26 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 	}
 
-	public function registerUser ($user) {
+	public function registerUser ($user, $keyActive) {
 		$userNew = new User();
 		$userNew->email    = $user['email'];
 		$userNew->password = $user['password'];
 		$userNew->tokenId  = $this->encodePassword($user['email']);
+		$userNew->active   = 0;
+		$userNew->status   = 0;
+		Log::info($keyActive);
 
 		// check email exits
 		$userExits = User::where('email', $user['email'])->first();
 		if ($userExits == null) {
 			if ($userNew->save()) {
+				// create random key active 
+				$activeUser = new ActiveUser();
+				$activeUser->email  = $user['email'];
+				$activeUser->key    = $keyActive;
+				$activeUser->status = 0;
+				$activeUser->save();
+
 				return User::where('email', $user['email'])
 			        ->where('password', $user['password'])
 			        ->first();
@@ -83,6 +93,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected function encodePassword ($password) {
 		return md5($password);
+	}
+
+	public function activeUser ($email) {
+		User::where('email', $email)->update(array('active' => 1));
 	}
 
 }

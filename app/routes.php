@@ -52,7 +52,16 @@ Route::post('api/init-login', 'AcountController@actionInit');
 
 Route::post('api/logout', 'AcountController@actionLogout');
 
+Route::get('api/active/{key}', 'AcountController@actionActiveUser');
+
 Route::get('test', function () {
 	return View::make('test');
 });
+
+// Email
+
+Route::controller('email', 'EmailController');
+
+Route::get('send', 'EmailController@sendMail');
+
 

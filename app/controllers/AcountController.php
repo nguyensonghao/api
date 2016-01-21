@@ -4,10 +4,17 @@ class AcountController extends BaseController {
 
 	public $user;
 	public $decodePassword;
+	public $email;
+	public $util;
+	public $activeUser;
 
 	public function __construct () {
-		$this->user = new User();
+		$this->user  = new User();
+		$this->email = new EmailController();
+		$this->util  = new UtilController();
+		$this->activeUser = new ActiveUser();
 		$this->decodePassword = new DecodePasswordController();
+
 	}
 
 	public function actionLogin () {
@@ -25,7 +32,9 @@ class AcountController extends BaseController {
 		// check login user
 		$login = $this->user->checkLogin($user);
 		if ($login == null) {
-			return Response::json(array('status' => false));
+			return Response::json(array('status' => 304));
+		} else if ($login->active == 0) {
+			return Response::json(array('status' => 302));
 		} else {
 			return  Response::json($this->decodePassword->responseUsertoClient($login));
 		}
@@ -46,8 +55,13 @@ class AcountController extends BaseController {
 	    @$email    = $request->email;
 	    @$password = $request->password;
 	    $password  = $this->decodePassword->encodePassword($password);
+	    $keyActive = $this->util->generateRandomString(20);
 
-	    return $this->user->registerUser(array('email' => $email, 'password' => $password));
+	    $result = $this->user->registerUser(array('email' => $email, 'password' => $password), $keyActive);
+	    if ($result['status'] == null)
+	    	$this->email->sendMail($keyActive, $email);
+
+	    return $result;
 
 	}	
 
@@ -57,6 +71,16 @@ class AcountController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$email    = $request->email;
 	    return Response::json($this->user->logoutUser($email));
+	}
+
+	public function actionActiveUser ($keyActive) {
+		$result = $this->activeUser->active($keyActive);
+		if (!$result) {
+			return Response::json(array('status' => 304));
+		} else {
+			$this->user->activeUser($result->email);
+			return Response::json(array('status' => 200));			
+		}
 	}
 }
 

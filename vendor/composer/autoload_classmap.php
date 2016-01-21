@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AcountController' => $baseDir . '/app/controllers/AcountController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -29,8 +30,8 @@ return array(
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'ConvertResultController' => $baseDir . '/app/controllers/ConvertResultController.php',
-    'CreatePostsTable' => $baseDir . '/app/database/migrations/2016_01_03_135243_create_posts_table.php',
-    'CreateUsersTable' => $baseDir . '/app/database/migrations/2016_01_15_071456_create_users_table.php',
+    'CreateActiveUserTable' => $baseDir . '/app/database/migrations/2016_01_20_151715_create_active_user_table.php',
+    'CreateUsersTable' => $baseDir . '/app/database/migrations/2016_01_15_072017_create_users_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
     'Crypt_Blowfish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Blowfish.php',
@@ -43,6 +44,7 @@ return array(
     'Crypt_TripleDES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/TripleDES.php',
     'Crypt_Twofish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'DecodePasswordController' => $baseDir . '/app/controllers/DecodePasswordController.php',
     'Elasticquent\\ElasticquentCollection' => $vendorDir . '/fairholm/elasticquent/src/ElasticquentCollection.php',
     'Elasticquent\\ElasticquentCollectionTrait' => $vendorDir . '/fairholm/elasticquent/src/ElasticquentCollectionTrait.php',
     'Elasticquent\\ElasticquentInterface' => $vendorDir . '/fairholm/elasticquent/src/ElasticquentInterface.php',
@@ -1372,7 +1374,6 @@ return array(
     'Pimple\\Tests\\Fixtures\\NonInvokable' => $vendorDir . '/pimple/pimple/src/Pimple/Tests/Fixtures/NonInvokable.php',
     'Pimple\\Tests\\Fixtures\\PimpleServiceProvider' => $vendorDir . '/pimple/pimple/src/Pimple/Tests/Fixtures/PimpleServiceProvider.php',
     'Pimple\\Tests\\Fixtures\\Service' => $vendorDir . '/pimple/pimple/src/Pimple/Tests/Fixtures/Service.php',
-    'Post' => $baseDir . '/app/models/Post.php',
     'PostsTableSeeder' => $baseDir . '/app/database/seeds/PostsTableSeeder.php',
     'Predis\\Autoloader' => $vendorDir . '/predis/predis/lib/Predis/Autoloader.php',
     'Predis\\BasicClientInterface' => $vendorDir . '/predis/predis/lib/Predis/BasicClientInterface.php',
