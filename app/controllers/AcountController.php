@@ -99,6 +99,18 @@ class AcountController extends BaseController {
 			return Redirect::to($url);
 		}
 	}
+
+	public function actionChangePassword () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$passwordOld = $request->passwordOld;
+	    @$passwordNew = $request->passwordNew;
+	    @$email       = $request->email;
+	    if ($this->user->changePasswordUser($passwordOld, $passwordNew, $email))
+	    	return Response::json(array('status' => 200));
+	    else 
+	    	return Response::json(array('status' => 304));
+	}
 }
 
 ?>

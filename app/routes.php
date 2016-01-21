@@ -54,6 +54,8 @@ Route::post('api/logout', 'AcountController@actionLogout');
 
 Route::get('api/active/{key}', 'AcountController@actionActiveUser');
 
+Route::post('api/change-password', 'AcountController@actionChangePassword');
+
 Route::get('test', function () {
 	return View::make('test');
 });

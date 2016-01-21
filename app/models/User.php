@@ -89,6 +89,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	}
 
+	public function changePasswordUser ($passwordOld, $passwordNew, $email) {
+		return User::where('email', $email)
+		->where('password', $this->encodePassword($passwordOld))
+		->update(array('password' => $this->encodePassword($passwordNew)));
+	}
+
 	protected function encodePassword ($password) {
 		return md5($password);
 	}
