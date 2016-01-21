@@ -58,14 +58,5 @@ Route::get('test', function () {
 	return View::make('test');
 });
 
-Route::post('api/demo', function () {
-	$postdata  = file_get_contents("php://input");
-    $request   = json_decode($postdata);
-    @$timeClient = (String)$request->time;
-});
-
-Route::get('test2', function () {
-	$str = 'nguyensonghao';
-});
 
 
