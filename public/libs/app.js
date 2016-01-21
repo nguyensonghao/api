@@ -58,8 +58,12 @@ angular.module('app', ['ui.router'])
         tokenId = encodeToken(tokenId);
         var time = Date.now().toString();
         var dataSend = {tokenId : tokenId + time}
+        console.log(tokenId);
+        console.log(time);
+        console.log(tokenId + time);
         $http.post('api/init-login', dataSend)
         .success(function (data) {
+            console.log(data);
             $rootScope.user = data;
             $rootScope.$broadcast('init');
         });

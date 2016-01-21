@@ -48,8 +48,7 @@ class AcountController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$token    = $request->tokenId;
 	    $tokenId   = substr($token, 0, -13);
-	    $time      = (int)substr($token, 32, 10);
-
+	    $time      = substr($token, 32, 10);
 	    // Validate timeout
 	    if (!$this->dateExcute->checkInvalidDate($time)) {
 	    	return Response::json(array('status' => 304));

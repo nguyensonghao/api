@@ -11,6 +11,7 @@ angular.module('app').controller('LoginController',
 
 		$http.post('api/login', dataSend)
 		.success(function (data) {
+			console.log(data);
 			if (!data.status) 
 				$scope.resultLogin = true;
 			else {

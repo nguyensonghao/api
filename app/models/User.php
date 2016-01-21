@@ -28,7 +28,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		        ->where('password', $user['password'])
 		        ->first();
 
-		if (is_array($result))
+		if (count($result) > 0)
 			$this->loginUser($user['email']);
 
 		return $result;
@@ -56,7 +56,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$userNew->tokenId  = $this->encodePassword($user['email']);
 		$userNew->active   = 0;
 		$userNew->status   = 0;
-		Log::info($keyActive);
 
 		// check email exits
 		$userExits = User::where('email', $user['email'])->first();
