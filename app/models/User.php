@@ -42,7 +42,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	// get information user when user logined
 	public function checkStatus ($tokenId) {
 		$result = User::where('tokenId', $tokenId)->first();
-		if ($result == null) 
+		if ($result == null || count($result) == 0) 
 			return array('status' => 304);
 		else {
 			return $result;
@@ -96,7 +96,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function checkExistEmail ($email) {
-		$result = User::where('email', $email)->first();
+		$result = User::where('email', $email)->get();
 		if (count($result) > 0)
 			return true;
 		else 

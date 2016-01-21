@@ -1,5 +1,5 @@
 angular.module('app').controller('LoginController', 
-	['$scope', '$http', '$rootScope', '$state', 'localstoreServ', function ($scope, $http, $rootScope, $state, localstoreServ) {
+	['$scope', '$http', '$rootScope', '$state', 'localstoreServ', '$q', function ($scope, $http, $rootScope, $state, localstoreServ, $q) {
 
 	$scope.resultLogin = false;
 
@@ -29,15 +29,16 @@ angular.module('app').controller('LoginController',
 		localstoreServ.setItem('token', token);
 	}
 
-	$scope.click = function () {
-		var dataSend = {
-			time : Date.now()
-		}
+	$scope.click = function (email) {
+        var urlResetPassword = 'api/reset-password';
+        var dataSend = {
+            email : email
+        }
 
-		$http.post('api/demo', dataSend)
-		.success(function (data) {
-			console.log(data);
-		})
+        $http.post(urlResetPassword, dataSend)
+        .success(function (data) {
+        	console.log(data);
+        })
 	}
 	
 }]);

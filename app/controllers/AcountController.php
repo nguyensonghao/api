@@ -122,6 +122,7 @@ class AcountController extends BaseController {
 	    	$keyReset = $this->util->generateRandomString(20);
 	    	if ($this->resetPassword->createKeyReset($email, $keyReset)) {
 	    		$this->email->sendMailResetPassword($keyReset, $email);
+	    		return Response::json(array('status' => 200));
 	    	} else {
 	    		return Response::json(array('status' => 302));
 	    	}

@@ -52,7 +52,7 @@ class EmailController extends BaseController {
     }
 
     public function sendMailResetPassword ($keyReset, $email) {
-        mail = new PHPMailer();
+        $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPDebug  = 0;
         $mail->Debugoutput = "html";
@@ -71,9 +71,9 @@ class EmailController extends BaseController {
         Bạn vừa gửi một yêu cầu khôi phục mật khẩu trên Mazii.<br>
         Nếu bạn không tạo yêu cầu này, hãy bỏ qua email này. <br>
         Nếu đúng, click vào link dưới đây để tạo mật khẩu mới:
-        http://api.mazii.net/api/reset/" . $keyActive . " <br><br>
+        http://api.mazii.net/api/reset/" . $keyReset . " <br><br>
         Trân trọng !<br>
-        Mazii);
+        Mazii");
         return $mail->Send();
     }
 }
