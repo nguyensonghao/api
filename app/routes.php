@@ -62,6 +62,4 @@ Route::get('test', function () {
 
 Route::controller('email', 'EmailController');
 
-Route::get('send', 'EmailController@sendMailTest');
-
 

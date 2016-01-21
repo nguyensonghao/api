@@ -58,7 +58,7 @@ class AcountController extends BaseController {
 	    $keyActive = $this->util->generateRandomString(20);
 
 	    $result = $this->user->registerUser(array('email' => $email, 'password' => $password), $keyActive);
-	    if ($result['status'] == null)
+	    if ($result['status'] != 304 && $result['status'] != 302)
 	    	$this->email->sendMail($keyActive, $email);
 
 	    return $result;
