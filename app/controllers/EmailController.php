@@ -23,7 +23,7 @@ class EmailController extends BaseController {
         $mail->MsgHTML("Chào bạn " .$email. " <br>
         Bạn đã đăng ký thành công tài khoản trên Mazii. <br>
         Đây là thông tin tài khoản của bạn. <br>
-        Email : " .$email. "
+        Email : " .$email. "<br>
         Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn. <br>
         http://api.mazii.net/api/active/" . $keyActive);
         return $mail->Send();
@@ -47,7 +47,7 @@ class EmailController extends BaseController {
         $mail->Subject = "Kích hoạt tài thành công";
         $mail->MsgHTML("Xin chào " .$email. " <br>
         Tài khoản của bạn đã được xác thực thành công.
-        Cảm ơn vào chào mừng bạn đã đến với Mazii");
+        Cảm ơn và chào mừng bạn đã đến với Mazii");
         return $mail->Send();
     }
 }

@@ -45,7 +45,12 @@ class AcountController extends BaseController {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$tokenId    = $request->tokenId;
-	    return $this->user->checkStatus($tokenId);
+	    $result = $this->user->checkStatus($tokenId);
+	    if ($result->status == 0) {
+	    	return Response::json(array('status' => 302));
+	    } else {
+	    	return Response::json($this->user->checkStatus($tokenId));
+	    }
 	}
 
 	public function actionRegister () {
@@ -80,7 +85,8 @@ class AcountController extends BaseController {
 		} else {
 			$this->user->activeUser($result->email);
 			$this->email->sendMailActiveSuccess($result->email);
-			header('Location: http://mazii.net/#/login');
+			$url = 'http://mazii.net';
+			return Redirect::to($url);
 		}
 	}
 }

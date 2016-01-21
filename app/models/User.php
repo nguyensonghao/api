@@ -28,7 +28,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		        ->where('password', $user['password'])
 		        ->first();
 
-		// Change status user = 0 when user logined
 		if (is_array($result))
 			$this->loginUser($user['email']);
 
@@ -36,8 +35,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	protected function loginUser ($email) {
-		// status = -1 when user logout, status = 0 when user logined
-		return User::where('email', $email)->update(array('status' => 0));
+		// status = 0 when user logout, status = 1 when user logined
+		return User::where('email', $email)->update(array('status' => 1));
 	}
 
 	// get information user when user logined
@@ -83,8 +82,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function logoutUser ($email) {
-		// status = -1 when user logout, status = 0 when user logined
-		if (User::where('email', $email)->update(array('status' => -1)))
+		// status = 0 when user logout, status = 1 when user logined
+		if (User::where('email', $email)->update(array('status' => 0)))
 			return array('status' => 200);
 		else 
 			return array('status' => 304);
