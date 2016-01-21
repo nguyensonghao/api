@@ -56,7 +56,8 @@ angular.module('app', ['ui.router'])
         $rootScope.user = null;
     } else {
         tokenId = encodeToken(tokenId);
-        var dataSend = {tokenId : tokenId}
+        var time = Date.now().toString();
+        var dataSend = {tokenId : tokenId + time}
         $http.post('api/init-login', dataSend)
         .success(function (data) {
             $rootScope.user = data;

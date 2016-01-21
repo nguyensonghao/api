@@ -3,17 +3,14 @@
 class DateController {
 
 	public function checkInvalidDate ($timeClient) {
+		$date = new DateTime();
 	    $timeServer = $date->getTimestamp();
 	    $minus = $timeServer - $timeClient;
 
-	    if ($minus > 60) {
-	    	Log::info('Quá thời gian rồi');
+	    if ($minus > 60) 
 	    	return false;
-	    }
-	    else {
-	    	Log::info('Không quá thời gian');
+	    else 
 	    	return true;
-	    }
 	}
 
 }
