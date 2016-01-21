@@ -7,12 +7,14 @@ class AcountController extends BaseController {
 	public $email;
 	public $util;
 	public $activeUser;
+	public $dateExcute;
 
 	public function __construct () {
 		$this->user  = new User();
 		$this->email = new EmailController();
 		$this->util  = new UtilController();
 		$this->activeUser = new ActiveUser();
+		$this->dateExcute = new DateController();
 		$this->decodePassword = new DecodePasswordController();
 
 	}
@@ -44,13 +46,22 @@ class AcountController extends BaseController {
 		// get data form client with method post
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
-	    @$tokenId    = $request->tokenId;
-	    $result = $this->user->checkStatus($tokenId);
-	    if ($result->status == 0) {
-	    	return Response::json(array('status' => 302));
+	    @$token    = $request->tokenId;
+	    $tokenId   = substr($token, 0, -13);
+	    $time      = (int)substr($token, 32, 10);
+
+	    // Validate timeout
+	    if (!$this->dateExcute->checkInvalidDate($time)) {
+	    	return Response::json(array('status' => 304));
 	    } else {
-	    	return Response::json($this->user->checkStatus($tokenId));
+	    	$result = $this->user->checkStatus($tokenId);
+		    if ($result->status == 0) {
+		    	return Response::json(array('status' => 302));
+		    } else {
+		    	return Response::json($this->user->checkStatus($tokenId));
+		    }	
 	    }
+	    
 	}
 
 	public function actionRegister () {

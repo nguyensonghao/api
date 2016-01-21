@@ -27,4 +27,16 @@ angular.module('app').controller('LoginController',
 	var saveToken = function (token) {
 		localstoreServ.setItem('token', token);
 	}
+
+	$scope.click = function () {
+		var dataSend = {
+			time : Date.now()
+		}
+
+		$http.post('api/demo', dataSend)
+		.success(function (data) {
+			console.log(data);
+		})
+	}
+	
 }]);
