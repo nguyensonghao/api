@@ -4,9 +4,9 @@ require public_path() . "/libs/PHPMailer/class.smtp.php";
 
 class EmailController extends BaseController {
 
-	public function sendMail ($keyActive, $email) {
-		$mail = new PHPMailer();
-		$mail->IsSMTP();
+    public function sendMail ($keyActive, $email) {
+    	$mail = new PHPMailer();
+    	$mail->IsSMTP();
         $mail->SMTPDebug  = 0;
         $mail->Debugoutput = "html";
         $mail->Host       = "box308.bluehost.com";
@@ -24,8 +24,33 @@ class EmailController extends BaseController {
         Cảm ơn bạn đã đăng ký tài khoản để sử dụng tính năng nâng cao của Mazii. <br>
         Hãy nhấn vào link dưới đây để kích hoạt tài khoản 
         http://api.mazii.net/api/active/" . $keyActive);
-        $mail->Send();
-	}
+        return $mail->Send();
+    }
+
+    public function sendMailTest () {
+        $email = 'nguyentienvu94@gmail.com';
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPDebug  = 2;
+        $mail->Debugoutput = "html";
+        $mail->Host       = "box308.bluehost.com";
+        $mail->Port       = 465;
+        $mail->SMTPSecure = "ssl";
+        $mail->SMTPAuth   = true;
+        $mail->CharSet = "UTF-8";
+        $mail->Username   = "support@mazii.net";
+        $mail->Password   = "{i(R+g@p9J%T";
+        $mail->SetFrom("support@mazii.net", "Từ điển Mazii");
+        $mail->AddReplyTo("support@mazii.net","Từ điển Mazii");
+        $mail->AddAddress($email, $email);
+        $mail->Subject = "Kích hoạt tài khoản";
+        $mail->MsgHTML("Tghfjhgjfhgjfghfjhgfj");
+        if(!$mail->Send()) {
+          echo "Có lỗi khi gửi mail: " . $mail->ErrorInfo;
+        } else {
+          echo "Đã gửi thư thành công!";
+        }
+    }
 
 }
 
