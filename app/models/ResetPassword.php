@@ -34,7 +34,7 @@ class ResetPassword extends Eloquent {
 
 	// Chuyển trạng thái của key về 1 là đã click vào link email
 	public function activeKeyReset ($keyReset) {
-		$result = ResetPassword::where('key', $keyReset)->->first();
+		$result = ResetPassword::where('key', $keyReset)->first();
 		if (count($result) > 0 && $result->status == 0) {
 			ResetPassword::where('key', $keyReset)->update(array('status' => 1));
 			return $result;
