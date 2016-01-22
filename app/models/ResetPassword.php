@@ -27,8 +27,22 @@ class ResetPassword extends Eloquent {
 	public function activeKeyReset ($keyReset) {
 		$result = ResetPassword::where('key', $keyReset)->first();
 		if (count($result) > 0 && $result->status == 0) {
-			ActiveUser::where('key', $keyActive)->update(array('status' => 1));
+			ResetPassword::where('key', $keyReset)->update(array('status' => 1));
 			return $result;
+		} else {
+			return false;
+		}
+	}
+
+	public function actionResetPassword ($email, $password) {
+		$result = ResetPassword::where('email', $email)->where('status', 1)->first();
+		if (count($result) > 0) {
+			if (ResetPassword::where('email', $email)->where('status', 1)->update(array('status' => 2)) ||
+			User::where('email', $email)->update(array('password' => md5($password)))) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}

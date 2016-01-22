@@ -56,6 +56,8 @@ Route::post('api/reset-password', 'AcountController@actionResetPassword');
 
 Route::post('api/change-password', 'AcountController@actionChangePassword');
 
+Route::post('api/reset-password-really', 'AcountController@actionResetPasswordReally');
+
 Route::get('api/active/{key}', 'AcountController@actionActiveUser');
 
 Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
