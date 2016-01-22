@@ -21,9 +21,9 @@ class ValidateController {
 	public function validateSpecialChar ($value) {
 		if ($value == null || $value == '')
 			return false;
-		
+
 		$length = strlen($value);
-		for ($i = 0; $length; $i++) {
+		for ($i = 0; $i < $length; $i++) {
 			$char = $value[$i];
 			if (in_array($char, $this->listSpecialChar))
 				return false;
