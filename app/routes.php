@@ -66,5 +66,7 @@ Route::get('test', function () {
 	return View::make('test');
 });
 
+Route::get('demo', 'AcountController@test');
+
 
 
