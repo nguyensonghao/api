@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'apimazii',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'admin_api',
+			'username'  => 'admin_api',
+			'password'  => 'Eup.mobi@2015',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
