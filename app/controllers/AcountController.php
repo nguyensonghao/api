@@ -64,10 +64,10 @@ class AcountController extends BaseController {
 	    	return Response::json(array('status' => 304));
 	    } else {
 	    	$result = $this->user->checkStatus($tokenId);
-		    if ($result->status == 0) {
-		    	return Response::json(array('status' => 302));
-		    } else {
+		    if (is_null($result['status'])) {
 		    	return Response::json($this->user->checkStatus($tokenId));
+		    } else {
+				return Response::json(array('status' => 302));		    	
 		    }	
 	    }
 	    
