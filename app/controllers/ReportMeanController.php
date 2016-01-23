@@ -29,7 +29,7 @@ class ReportMeanController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$wordId   = $request->wordId;
 	    if ($this->validate->validateSpecialChar($wordId)) {
-	    	return Response::json($this->reportMean->getMean($wordId)->get());
+	    	return Response::json($this->reportMean->getMean($wordId));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
