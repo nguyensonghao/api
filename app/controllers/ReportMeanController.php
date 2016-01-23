@@ -50,6 +50,20 @@ class ReportMeanController extends BaseController {
 	    }	
 	}
 
+	public function actionCheckMean () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$wordId   = $request->wordId;
+	    @$email    = $request->email;
+	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateEmail($email)
+	    	&& $this->validate->validateSpecialChar($email)) {
+	    	return Response::json($this->reportMean->checkMean($wordId, $email));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }	
+	}
+
+
 }
 
 ?>
