@@ -66,5 +66,9 @@ Route::get('test', function () {
 	return View::make('test');
 });
 
+// ReportMean
 
+Route::controller('report', 'ReportMeanController');
+
+Route::post('api/add-mean', 'ReportMeanController@actionAddReportMean');
 
