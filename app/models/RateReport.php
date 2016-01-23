@@ -28,7 +28,7 @@ class RateReport extends Eloquent {
 				$rateReport->email  = $email;
 				$rateReport->wordId = $wordId;
 				$rateReport->userId = $user->id;
-				if ($rateReport->save() {
+				if ($rateReport->save()) {
 					// Plus number rate of reportMean
 					$numberRate = $report->rate + 1;
 					ReportMean::where('wordId', $wordId)->where('email', $email)
