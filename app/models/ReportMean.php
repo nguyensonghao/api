@@ -39,7 +39,7 @@ class ReportMean extends Eloquent {
 	public function getMean ($wordId) {
 		$listReport = ReportMean::where('wordId', $wordId)->where('status', 1)->get();
 		if (is_null($listReport)) {
-			return array('status', 304);
+			return array('status' => 304);
 		} else {
 			return array('status' => 200, 'result' => $listReport);
 		}
