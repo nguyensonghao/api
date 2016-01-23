@@ -18,11 +18,12 @@ class RateReport extends Eloquent {
 
 	public function rateMean ($wordId, $email) {
 		$user = User::where('email', $email)->where('status', 1)->where('active', 1)->first();
-		if (is_null($user)) {
+		$report = ReportMean::where('wordId', $wordId)->where('email', $email)->first();
+		if (is_null($user) || is_null($report)) {
 			return array('status' => 304);
 		} else {
 			// If user reported this mean => Not continue to report second
-			$report = ReportMean::where('wordId', $wordId)->where('email', $email)->first();
+			$rate = RateReport::where('wordId', $wordId)->where('email', $email)->first();
 			if (is_null($report)) {
 				$rateReport = new RateReport();
 				$rateReport->email  = $email;
