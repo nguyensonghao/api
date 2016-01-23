@@ -24,7 +24,7 @@ class RateReport extends Eloquent {
 		} else {
 			// If user reported this mean => Not continue to report second
 			$rate = RateReport::where('wordId', $wordId)->where('email', $email)->first();
-			if (is_null($report)) {
+			if (is_null($rate)) {
 				$rateReport = new RateReport();
 				$rateReport->email  = $email;
 				$rateReport->wordId = $wordId;
