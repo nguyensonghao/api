@@ -29,9 +29,9 @@ class ReportMean extends Eloquent {
 			$reportMean->rate   = 0;
 			$reportMean->wordId = $wordId;
 			if ($reportMean->save()) {
-				return array('status' => 304);
-			} else {
 				return array('status' => 200, 'result' => $reportMean);
+			} else {
+				return array('status' => 302);
 			}
 		}
 	}

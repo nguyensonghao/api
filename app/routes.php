@@ -72,3 +72,10 @@ Route::controller('report', 'ReportMeanController');
 
 Route::post('api/add-mean', 'ReportMeanController@actionAddReportMean');
 
+Route::get('demo', function () {
+	$user = null;
+	if (is_null($user)) {
+		echo 'null';
+	}
+});
+

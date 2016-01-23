@@ -25,6 +25,19 @@ angular.module('app').controller('LoginController',
 		})
 	}
 
+	$scope.addMean = function (mean) {
+		var dataSend = {
+			email    : 'nguyensonghao974@gmail.com',
+			wordId : '4343434343',
+			mean : mean
+		}
+
+		$http.post('api/add-mean', dataSend)
+		.success(function (data) {
+			console.log(data);			
+		})
+	}
+
 	var saveToken = function (token) {
 		localstoreServ.setItem('token', token);
 	}
