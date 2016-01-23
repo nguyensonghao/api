@@ -63,6 +63,20 @@ class ReportMeanController extends BaseController {
 	    }	
 	}
 
+	public function actionUpdateMean () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$email    = $request->email;
+	    @$mean     = $request->mean;
+	    @$wordId   = $request->wordId;
+	    if ($this->validate->validateSpecialChar($email) && $this->validate->validateEmail($email)
+	    	&& $this->validate->validateSpecialChar($mean)) {
+	    	return Response::json($this->reportMean->updateReportMean($email, $mean, $wordId));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
+	}
+
 
 }
 

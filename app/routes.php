@@ -78,3 +78,5 @@ Route::post('api/rate-mean', 'ReportMeanController@actionRateMean');
 
 Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 
+Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
+

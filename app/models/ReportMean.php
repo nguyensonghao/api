@@ -55,5 +55,21 @@ class ReportMean extends Eloquent {
 		}
 	}
 
+	public function updateReportMean($email, $mean, $wordId) {
+		$report = ReportMean::where('email', $email)->where('wordId', $wordId)
+		->where('status', 1)->first();
+		if (is_null($report)) {
+			return array('status' => 304);
+		} else {
+			if (ReportMean::where('email', $email)->where('wordId', $wordId)
+			->update(array('mean' => $mean))) {
+				$report->mean = $mean;
+				return array('status' => 200, 'result' => $report);
+			} else {
+				return array('status' => 302);
+			}
+		}
+	}
+
 
 }
