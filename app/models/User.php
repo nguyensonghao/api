@@ -45,7 +45,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		if (is_null($result)) 
 			return array('status' => 304);
 		else {
-			return $result;
+			return array('status' => 200, 'result' => $result);
 		}
 	}
 
