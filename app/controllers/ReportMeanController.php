@@ -24,6 +24,17 @@ class ReportMeanController extends BaseController {
 	    }
 	}
 
+	public function actionGetMean () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$wordId   = $request->wordId;
+	    if ($this->validate->validateSpecialChar($wordId)) {
+	    	return Response::json($this->reportMean->getMean($wordId)->get());
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
+	}
+
 }
 
 ?>
