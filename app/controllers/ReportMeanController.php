@@ -15,11 +15,12 @@ class ReportMeanController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$email    = $request->email;
 	    @$mean     = $request->mean;
+	    @$wordId   = $request->wordId;
 	    if ($this->validate->validateSpecialChar($email) && $this->validate->validateEmail($email)
 	    	&& $this->validate->validateSpecialChar($mean)) {
-	    	return Response::json($this->reportMean->addReportMean($email, $mean));
+	    	return Response::json($this->reportMean->addReportMean($email, $mean, $wordId));
 	    } else {
-	    	return Response::json(array('status' => 404));
+	    	return Response::json(array('status' => 400));
 	    }
 	}
 

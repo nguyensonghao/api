@@ -16,6 +16,7 @@ class CreateReportMeanTable extends Migration {
 			$table->increments('id');
 			$table->string('email');
 			$table->integer('userId');
+			$table->integer('wordId');
 			$table->integer('status');
 			$table->integer('rate');
 			$table->string('mean');

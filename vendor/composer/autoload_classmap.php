@@ -1654,6 +1654,8 @@ return array(
     'Psr\\Log\\LoggerTrait' => $vendorDir . '/psr/log/Psr/Log/LoggerTrait.php',
     'Psr\\Log\\NullLogger' => $vendorDir . '/psr/log/Psr/Log/NullLogger.php',
     'QuerySearchController' => $baseDir . '/app/controllers/QuerySearchController.php',
+    'ReportMean' => $baseDir . '/app/models/ReportMean.php',
+    'ReportMeanController' => $baseDir . '/app/controllers/ReportMeanController.php',
     'ResetPassword' => $baseDir . '/app/models/ResetPassword.php',
     'SearchController' => $baseDir . '/app/controllers/SearchController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
