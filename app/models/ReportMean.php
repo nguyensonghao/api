@@ -49,9 +49,9 @@ class ReportMean extends Eloquent {
 		$report = ReportMean::where('wordId', $wordId)->where('email', $email)
 		->where('status', 1)->first();
 		if (is_null($report)) {
-			return array('status' => 304, 'result' => $report);
+			return array('status' => 304);
 		} else {
-			return array('status' => 200);
+			return array('status' => 200, 'result' => $report);
 		}
 	}
 
