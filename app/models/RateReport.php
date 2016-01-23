@@ -34,7 +34,7 @@ class RateReport extends Eloquent {
 					ReportMean::where('wordId', $wordId)->where('email', $email)
 					->update(array('rate' => $numberRate));
 					return array('status' => 200);
-				}) else {
+				} else {
 					return array('status' => 306);	
 				}
 			} else {
