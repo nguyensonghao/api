@@ -37,15 +37,7 @@ class AcountController extends BaseController {
 				'password' => $this->decodePassword->encodePassword($password)
 			);
 
-			// check login user
-			$login = $this->user->checkLogin($user);
-			if ($login == null) {
-				return Response::json(array('status' => 304));
-			} else if ($login->active == 0) {
-				return Response::json(array('status' => 302));
-			} else {
-				return  Response::json($this->decodePassword->responseUsertoClient($login));
-			}
+			return Response::json($this->user->checkLogin($user));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
@@ -82,7 +74,7 @@ class AcountController extends BaseController {
 	    	$result = $this->user->registerUser(array('email' => $email, 'password' => $password), $keyActive);
 		    if ($result['status'] != 304 && $result['status'] != 302)
 		    	$this->email->sendMailActive($keyActive, $email);
-		    
+
 		    return $result;	
 	    } else {
 	    	return Response::json(array('status' => 400));

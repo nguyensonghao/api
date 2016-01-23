@@ -28,10 +28,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		        ->where('password', $user['password'])
 		        ->first();
 
-		if (count($result) > 0)
-			$this->loginUser($user['email']);
-
-		return $result;
+		if (is_null($result)) {
+			return array('status' => 304);
+		} else if ($result->active == 0){
+			return array('status' => 302);
+		} else {
+			$result->password = null;
+			return array('status' => 200, 'result' => $result);
+		}
 	}
 
 	protected function loginUser ($email) {
