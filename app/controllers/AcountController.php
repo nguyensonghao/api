@@ -82,7 +82,7 @@ class AcountController extends BaseController {
 	    	$result = $this->user->registerUser(array('email' => $email, 'password' => $password), $keyActive);
 		    if ($result['status'] != 304 && $result['status'] != 302)
 		    	$this->email->sendMailActive($keyActive, $email);
-
+		    
 		    return $result;	
 	    } else {
 	    	return Response::json(array('status' => 400));
