@@ -137,6 +137,19 @@ class AcountController extends BaseController {
 	    
 	}
 
+	public function actionChangeUsername () {
+		$postdata  = file_get_contents("php://input");
+	    $request   = json_decode($postdata);
+	    @$username = $request->username;
+	    @$email    = $request->email;
+
+	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($username)) {
+	    	return Response::json($this->user->changeUsername($email, $username));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
+	}
+
 	public function actionResetPassword () {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);

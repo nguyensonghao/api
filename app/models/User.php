@@ -116,4 +116,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		User::where('email', $email)->update(array('active' => 1));
 	}
 
+	public function changeUsername($email, $username) {
+		$user = User::where('email', $email)
+		->where('status', 1)->where('active', 1)->first();
+		if (is_null($user)) {
+			if (User::where('email', $email)->update(array('username' => $username))) {
+				$user->username = $username;
+				return array('status' => 200, 'result' => $user);
+			} else {
+				return array('status' => 302);	
+			}
+		} else {
+			return array('status' => 304);
+		}
+	}
+
 }
