@@ -66,7 +66,7 @@ class AcountController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$email    = $request->email;
 	    @$password = $request->password;
-	    $username  = str_replace( '@', '', strstr($email, '@'));
+	    $username  = substr( $email, 0, strpos($email, '@'));
 
 	    $password  = $this->decodePassword->encodePassword($password);
 	    $keyActive = $this->util->generateRandomString(20);
@@ -80,7 +80,7 @@ class AcountController extends BaseController {
 	    	);
 
 	    	$result = $this->user->registerUser($user, $keyActive);
-	    	
+
 		    if ($result['status'] != 304 && $result['status'] != 302)
 		    	$this->email->sendMailActive($keyActive, $email);
 
