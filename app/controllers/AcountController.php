@@ -66,12 +66,21 @@ class AcountController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$email    = $request->email;
 	    @$password = $request->password;
+	    $username  = str_replace( '@', '', strstr($email, '@'));
+
 	    $password  = $this->decodePassword->encodePassword($password);
 	    $keyActive = $this->util->generateRandomString(20);
 
 	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)
 	    	&& $this->validate->validateSpecialChar($password)) {
-	    	$result = $this->user->registerUser(array('email' => $email, 'password' => $password), $keyActive);
+	    	$user = array(
+	    		'email' => $email, 
+	    		'password' => $password, 
+	    		'username' => $username
+	    	);
+
+	    	$result = $this->user->registerUser($user, $keyActive);
+	    	
 		    if ($result['status'] != 304 && $result['status'] != 302)
 		    	$this->email->sendMailActive($keyActive, $email);
 

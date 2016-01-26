@@ -57,6 +57,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$userNew = new User();
 		$userNew->email    = $user['email'];
 		$userNew->password = $user['password'];
+		$userNew->username = $user['username'];
 		$userNew->tokenId  = $this->encodePassword($user['email']);
 		$userNew->active   = 0;
 		$userNew->status   = 0;
