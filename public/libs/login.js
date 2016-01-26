@@ -53,5 +53,22 @@ angular.module('app').controller('LoginController',
         	console.log(data);
         })
 	}
+
+	$scope.changeUsername = function (username) {
+		var deferred = $q.defer();
+        var urlChangeUsername = 'api/change-username';
+        var dataSend = {
+            email    : 'nguyensonghao974@gmail.com',
+            username : username
+        }
+
+        console.log(dataSend);
+
+        $http.post(urlChangeUsername, dataSend)
+        .success(function (data) {
+            console.log(data);
+        })
+        return deferred.promise;
+	}
 	
 }]);
