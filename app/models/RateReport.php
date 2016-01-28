@@ -61,11 +61,17 @@ class RateReport extends Eloquent {
 					if ($type == 'like') {
 						$numberLike    = $report->like + 1;
 						$numberdisLike = $report->dislike - 1;
+						if ($numberdisLike < 0) 
+							$numberdisLike = 0;
+
 						RateReport::where('wordId', $wordId)->where('userId', $userId)
 						->update(array('type' => 1));
 					} else {
 						$numberLike    = $report->like - 1;
 						$numberdisLike = $report->dislike + 1;
+						if ($numberLike < 0) 
+							$numberLike = 0;
+
 						RateReport::where('wordId', $wordId)->where('userId', $userId)
 						->update(array('type' => 0));
 					}
