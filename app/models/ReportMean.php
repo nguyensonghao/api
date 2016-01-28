@@ -21,18 +21,23 @@ class ReportMean extends Eloquent {
 		if (is_null($user)) {
 			return array('status' => 304);
 		} else {
-			$reportMean = new ReportMean();
-			$reportMean->userId = $user->userId;
-			$reportMean->mean   = $mean;
-			$reportMean->status = 1;
-			$reportMean->wordId = $wordId;
-			$reportMean->like   = 0;
-			$reportMean->dislike = 0;
-			if ($reportMean->save()) {
-				return array('status' => 200, 'result' => $reportMean);
-			} else {
+			$report = ReportMean::where('wordId', $wordId)->where('userId', $user->userId)->first();
+			if (!is_null($report)) {
 				return array('status' => 302);
-			}
+			} else {
+				$reportMean = new ReportMean();
+				$reportMean->userId = $user->userId;
+				$reportMean->mean   = $mean;
+				$reportMean->status = 1;
+				$reportMean->wordId = $wordId;
+				$reportMean->like   = 0;
+				$reportMean->dislike = 0;
+				if ($reportMean->save()) {
+					return array('status' => 200, 'result' => $reportMean);
+				} else {
+					return array('status' => 302);
+				}
+			}			
 		}
 	}
 
