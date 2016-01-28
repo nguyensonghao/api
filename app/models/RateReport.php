@@ -28,8 +28,10 @@ class RateReport extends Eloquent {
 		if (is_null($user) || is_null($report)) {
 			return array('status' => 304);
 		} else {
-			// If user reported this mean => Not continue to report second
+
 			$rate = RateReport::where('wordId', $wordId)->where('userId', $userId)->first();
+
+			// User not rate for report
 			if (is_null($rate)) {
 				$rateReport = new RateReport();
 				$rateReport->wordId = $wordId;
@@ -51,8 +53,27 @@ class RateReport extends Eloquent {
 				} else {
 					return array('status' => 306);	
 				}
+
+			// User rated for report
 			} else {
-				return array('status' => 302);
+				if ($rate->type == $rateType) {
+					return array('status' => 302);	
+				} else {
+					if ($type == 'like') {
+						$numberLike    = $report->like + 1;
+						$numberdisLike = $report->dislike - 1;
+					} else {
+						$numberLike    = $report->like - 1;
+						$numberdisLike = $report->dislike + 1;
+					}
+					if (ReportMean::where('wordId', $wordId)->where('userId', $userId)
+					->update(array('like' => $numberLike, 'dislike' => $numberdisLike))) 
+						return array('status' => 200);
+
+					else return array('status' => 306);	 
+
+				}
+				
 			}
 		}
 	}
