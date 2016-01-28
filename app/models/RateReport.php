@@ -91,7 +91,7 @@ class RateReport extends Eloquent {
 	}
 
 	public function getListRateMean ($userId) {
-		if (is_null($user)) {
+		if (is_null($userId)) {
 			return array('status' => 304);
 		} else {
 			$result = RateReport::select('wordId', 'type')->where('userId', $userId)->get();
