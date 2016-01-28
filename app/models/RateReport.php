@@ -92,5 +92,15 @@ class RateReport extends Eloquent {
 		}
 	}
 
+	public function getListRateMean ($email) {
+		$user = User::where('email', $email)->first();
+		if (is_null($user)) {
+			return array('status' => 304);
+		} else {
+			$result = RateReport::select('wordId', 'type')->where('userId', $user->userId);
+			return array('status' => 200, 'result' => $result);
+		}
+	}
+
 
 }
