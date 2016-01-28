@@ -97,7 +97,7 @@ class RateReport extends Eloquent {
 		if (is_null($user)) {
 			return array('status' => 304);
 		} else {
-			$result = RateReport::select('wordId', 'type')->where('userId', $user->userId);
+			$result = RateReport::select('wordId', 'type')->where('userId', $user->userId)->get();
 			return array('status' => 200, 'result' => $result);
 		}
 	}
