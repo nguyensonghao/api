@@ -30,8 +30,7 @@ class AcountController extends BaseController {
 	    @$email    = $request->email;
 	    @$password = $request->password;
 
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)
-	    	&& $this->validate->validateSpecialChar($password)) {
+	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($password)) {
 	    	$user = array(
 				'email'    => $email,
 				'password' => $this->decodePassword->encodePassword($password)
@@ -71,8 +70,7 @@ class AcountController extends BaseController {
 	    $password  = $this->decodePassword->encodePassword($password);
 	    $keyActive = $this->util->generateRandomString(20);
 
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)
-	    	&& $this->validate->validateSpecialChar($password)) {
+	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($password)) {
 	    	$user = array(
 	    		'email' => $email, 
 	    		'password' => $password, 
@@ -96,7 +94,7 @@ class AcountController extends BaseController {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$email    = $request->email;
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email))
+	    if ($this->validate->validateEmail($email))
 	    	return Response::json($this->user->logoutUser($email));
 	    else 
 	    	return Response::json(array('status' => 400));
@@ -125,8 +123,8 @@ class AcountController extends BaseController {
 	    @$passwordNew = $request->passwordNew;
 	    @$email       = $request->email;
 
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)
-	    	&& $this->validate->validateSpecialChar($passwordNew) && $this->validate->validateSpecialChar($passwordOld)) {
+	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($passwordNew)
+	     && $this->validate->validateSpecialChar($passwordOld)) {
 	    	if ($this->user->changePasswordUser($passwordOld, $passwordNew, $email))
 		    	return Response::json(array('status' => 200));
 		    else 
@@ -155,7 +153,7 @@ class AcountController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$email = $request->email;
 
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)) {
+	    if ($this->validate->validateEmail($email)) {
 	    	if ($this->user->checkExistEmail($email)) {
 		    	$keyReset = $this->util->generateRandomString(20);
 		    	$result = $this->resetPassword->createKeyReset($email, $keyReset);
@@ -196,8 +194,7 @@ class AcountController extends BaseController {
 	    @$email    = $request->email;
 	    @$password = $request->password;
 
-	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($email)
-	    	&& $this->validate->validateSpecialChar($password)) {
+	    if ($this->validate->validateEmail($email) && $this->validate->validateSpecialChar($password)) {
 	    	$result = $this->resetPassword->actionResetPassword($email, $password);
 		    if ($result) {
 		    	$this->email->sendEmailResetPasswordSuccess($email);

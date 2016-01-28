@@ -16,8 +16,8 @@ class ReportMean extends Eloquent {
 	 */
 	protected $table = 'report_mean';
 
-	public function addReportMean ($email, $mean, $wordId) {
-		$user = User::where('email', $email)->where('active', 1)->where('status', 1)->first();
+	public function addReportMean ($userId, $mean, $wordId) {
+		$user = User::where('userId', $userId)->where('active', 1)->where('status', 1)->first();
 		if (is_null($user)) {
 			return array('status' => 304);
 		} else {
@@ -52,8 +52,7 @@ class ReportMean extends Eloquent {
 		}
 	}
 
-	public function checkMean ($wordId, $email) {
-		$userId = User::where('email', $email)->first()->userId;
+	public function checkMean ($wordId, $userId) {
 		$report = ReportMean::where('wordId', $wordId)->where('userId', $userId)
 		->where('status', 1)->first();
 		if (is_null($report)) {
@@ -63,8 +62,7 @@ class ReportMean extends Eloquent {
 		}
 	}
 
-	public function updateReportMean($email, $mean, $wordId) {
-		$userId = User::where('email', $email)->first()->userId;
+	public function updateReportMean($userId, $mean, $wordId) {
 		$report = ReportMean::where('userId', $userId)->where('wordId', $wordId)
 		->where('status', 1)->first();
 		if (is_null($report)) {

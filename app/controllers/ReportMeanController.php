@@ -15,12 +15,11 @@ class ReportMeanController extends BaseController {
 	public function actionAddReportMean () {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
-	    @$email    = $request->email;
+	    @$userId   = $request->userId;
 	    @$mean     = $request->mean;
 	    @$wordId   = $request->wordId;
-	    if ($this->validate->validateSpecialChar($email) && $this->validate->validateEmail($email)
-	    	&& $this->validate->validateSpecialChar($mean)) {
-	    	return Response::json($this->reportMean->addReportMean($email, $mean, $wordId));
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($mean)) {
+	    	return Response::json($this->reportMean->addReportMean($userId, $mean, $wordId));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
@@ -41,24 +40,22 @@ class ReportMeanController extends BaseController {
 		$postdata = file_get_contents("php://input");
 	    $request  = json_decode($postdata);
 	    @$wordId  = $request->wordId;
-	    @$email   = $request->email;
+	    @$userId  = $request->userId;
 	    @$type    = $request->type;
-	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateEmail($email)
-	    	&& $this->validate->validateSpecialChar($email)) {
-	    	return Response::json($this->rateReport->rateMean($wordId, $email, $type));
+	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateSpecialChar($userId)) {
+	    	return Response::json($this->rateReport->rateMean($wordId, $userId, $type));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }	
 	}
 
 	public function actionCheckMean () {
-		$postdata  = file_get_contents("php://input");
-	    $request   = json_decode($postdata);
-	    @$wordId   = $request->wordId;
-	    @$email    = $request->email;
-	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateEmail($email)
-	    	&& $this->validate->validateSpecialChar($email)) {
-	    	return Response::json($this->reportMean->checkMean($wordId, $email));
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$wordId  = $request->wordId;
+	    @$userId  = $request->userId;
+	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateSpecialChar($userId)) {
+	    	return Response::json($this->reportMean->checkMean($wordId, $userId));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }	
@@ -67,23 +64,22 @@ class ReportMeanController extends BaseController {
 	public function actionUpdateMean () {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
-	    @$email    = $request->email;
+	    @$userId   = $request->userId;
 	    @$mean     = $request->mean;
 	    @$wordId   = $request->wordId;
-	    if ($this->validate->validateSpecialChar($email) && $this->validate->validateEmail($email)
-	    	&& $this->validate->validateSpecialChar($mean)) {
-	    	return Response::json($this->reportMean->updateReportMean($email, $mean, $wordId));
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($mean)) {
+	    	return Response::json($this->reportMean->updateReportMean($userId, $mean, $wordId));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
 	}
 
 	public function actionGetRateReport () {
-		$postdata  = file_get_contents("php://input");
-	    $request   = json_decode($postdata);
-	    @$email    = $request->email;
-	    if ($this->validate->validateSpecialChar($email) && $this->validate->validateEmail($email)) {
-	    	return Response::json($this->rateReport->getListRateMean($email));
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$userId  = $request->userId;
+	    if ($this->validate->validateSpecialChar($userId)) {
+	    	return Response::json($this->rateReport->getListRateMean($userId));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
