@@ -13,11 +13,11 @@ class CreateReportMeanTable extends Migration {
 	public function up()
 	{
 		$table->increments('reportId');
-		$table->string('userEmail');
 		$table->integer('userId');
 		$table->integer('wordId');
 		$table->integer('status');
-		$table->integer('rate');
+		$table->integer('like');
+		$table->integer('dislike');
 		$table->string('mean');
 		$table->timestamps();
 	}

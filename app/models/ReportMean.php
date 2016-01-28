@@ -23,11 +23,11 @@ class ReportMean extends Eloquent {
 		} else {
 			$reportMean = new ReportMean();
 			$reportMean->userId = $user->id;
-			$reportMean->email  = $email;
 			$reportMean->mean   = $mean;
 			$reportMean->status = 1;
-			$reportMean->rate   = 0;
+			$reportMean->like   = 0;
 			$reportMean->wordId = $wordId;
+			$reportMean->dislike = 0;
 			if ($reportMean->save()) {
 				return array('status' => 200, 'result' => $reportMean);
 			} else {
@@ -37,8 +37,9 @@ class ReportMean extends Eloquent {
 	}
 
 	public function getMean ($wordId) {
-		$listReport = ReportMean::where('wordId', $wordId)->where('status', 1)
+		$listReport = DB::table('report_mean')->where('wordId', $wordId)->where('status', 1)
 		->join('users', 'users.id', '=', 'report_mean.userId')->get();
+
 		if (count($listReport) == 0) {
 			return array('status' => 304);
 		} else {
@@ -57,12 +58,13 @@ class ReportMean extends Eloquent {
 	}
 
 	public function updateReportMean($email, $mean, $wordId) {
-		$report = ReportMean::where('email', $email)->where('wordId', $wordId)
+		$userId = User::where('email', $email)->first()->userId;
+		$report = ReportMean::where('userId', $userId)->where('wordId', $wordId)
 		->where('status', 1)->first();
 		if (is_null($report)) {
 			return array('status' => 304);
 		} else {
-			if (ReportMean::where('email', $email)->where('wordId', $wordId)
+			if (ReportMean::where('userId', $userId)->where('wordId', $wordId)
 			->update(array('mean' => $mean))) {
 				$report->mean = $mean;
 				return array('status' => 200, 'result' => $report);

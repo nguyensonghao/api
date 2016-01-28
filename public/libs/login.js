@@ -70,5 +70,10 @@ angular.module('app').controller('LoginController',
         })
         return deferred.promise;
 	}
+
+	$http.post('demo')
+	.success(function (data) {
+		console.log(data);
+	})
 	
 }]);

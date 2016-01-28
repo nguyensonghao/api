@@ -13,7 +13,7 @@ class CreateActiveUserTable extends Migration {
 	public function up()
 	{
 		Schema::create('active_user', function ($table) {
-			$table->increments('activeId');
+			$table->increments('id');
 			$table->string('email');
 			$table->string('key');
 			$table->integer('status');

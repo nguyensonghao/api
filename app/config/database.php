@@ -55,8 +55,8 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'admin_api',
-			'username'  => 'admin_api',
+			'database'  => 'api_mazii',
+			'username'  => 'api_mazii',
 			'password'  => 'Eup.mobi@2015',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

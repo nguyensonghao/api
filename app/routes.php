@@ -82,7 +82,14 @@ Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 
 Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
-Route::get('demo', function () {
-	print_r(DB::table('report_mean')->join('users', 'users.id', '=', 'report_mean.userId'));
+Route::get('hello', function () {
+	$value = json_encode([1,2,3]);
+	$redis = Redis::connection();
+	$redis->set('foo', 'bar');
+	$redis->set('foo1', $value);
+	$redis->set('foo2', 2);
+	$name = $redis->get('foo');
+	echo $name;
 });
+
 
