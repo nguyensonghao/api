@@ -37,7 +37,7 @@ class ReportMean extends Eloquent {
 	}
 
 	public function getMean ($wordId) {
-		$listReport = DB::table('report_mean')->where('wordId', $wordId)->where('status', 1)
+		$listReport = DB::table('report_mean')->where('wordId', $wordId)->where('report_mean.status', 1)
 		->join('users', 'users.userId', '=', 'report_mean.userId')->get();
 
 		if (count($listReport) == 0) {

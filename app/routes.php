@@ -84,6 +84,8 @@ Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
 Route::get('demo1', function () {
 	echo json_encode(DB::table('report_mean')->join('users', 'users.userId', '=', 'report_mean.userId')->get());
+	DB::table('report_mean')->where('wordId', $wordId)->where('status', 1)
+		->join('users', 'users.userId', '=', 'report_mean.userId')->get();
 });
 
 
