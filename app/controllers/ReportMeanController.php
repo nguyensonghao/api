@@ -38,13 +38,14 @@ class ReportMeanController extends BaseController {
 	}
 
 	public function actionRateMean () {
-		$postdata  = file_get_contents("php://input");
-	    $request   = json_decode($postdata);
-	    @$wordId   = $request->wordId;
-	    @$email    = $request->email;
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$wordId  = $request->wordId;
+	    @$email   = $request->email;
+	    @$type    = $request->type;
 	    if ($this->validate->validateSpecialChar($wordId) && $this->validate->validateEmail($email)
 	    	&& $this->validate->validateSpecialChar($email)) {
-	    	return Response::json($this->rateReport->rateMean($wordId, $email));
+	    	return Response::json($this->rateReport->rateMean($wordId, $email, $type));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }	
