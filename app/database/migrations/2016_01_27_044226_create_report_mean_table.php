@@ -15,7 +15,7 @@ class CreateReportMeanTable extends Migration {
 		Schema::create('report_mean', function ($table) {
 			$table->increments('reportId');
 			$table->integer('userId');
-			$table->integer('wordId');
+			$table->string('wordId');
 			$table->integer('status');
 			$table->integer('like');
 			$table->integer('dislike');

@@ -16,34 +16,34 @@ class RateReport extends Eloquent {
 	 */
 	protected $table = 'rate_report';
 
-	public function rateMean ($wordId, $userId, $type) {
+	public function rateMean ($reportId, $userId, $type) {
 		if ($type == 'like')
 			$rateType = 1;
 		else
 			$rateType = 0;
 
 		$user   = User::where('userId', $userId)->where('status', 1)->where('active', 1)->first();
-		$report = ReportMean::where('wordId', $wordId)->where('userId', $userId)->first();
+		$report = ReportMean::where('reportId', $reportId)->where('userId', $userId)->first();
 		if (is_null($user) || is_null($report)) {
 			return array('status' => 304);
 		} else {
-			$rate = RateReport::where('wordId', $wordId)->where('userId', $userId)->first();
+			$rate = RateReport::where('reportId', $reportId)->where('userId', $userId)->first();
 
 			// User not rate for report
 			if (is_null($rate)) {
 				$rateReport = new RateReport();
-				$rateReport->wordId = $wordId;
-				$rateReport->userId = $userId;
-				$rateReport->type   = $rateType;
+				$rateReport->reportId = $reportId;
+				$rateReport->userId   = $userId;
+				$rateReport->type     = $rateType;
 				if ($rateReport->save()) {
 					// Plus number rate of reportMean
 					if ($type == 'like') {
 						++ $report->like ;
-						ReportMean::where('wordId', $wordId)->where('userId', $userId)
+						ReportMean::where('reportId', $reportId)->where('userId', $userId)
 					    ->update(array('like' => $report->like));
 					} else {
 						++ $report->dislike ;
-						ReportMean::where('wordId', $wordId)->where('userId', $userId)
+						ReportMean::where('reportId', $reportId)->where('userId', $userId)
 					    ->update(array('dislike' => $report->dislike));
 					}
 					
@@ -64,7 +64,7 @@ class RateReport extends Eloquent {
 						if ($report->dislike < 0)
 							$report->dislike = 0;
 
-						RateReport::where('wordId', $wordId)->where('userId', $userId)
+						RateReport::where('reportId', $reportId)->where('userId', $userId)
 						->update(array('type' => 1));
 					} else {
 						-- $report->like;
@@ -73,11 +73,11 @@ class RateReport extends Eloquent {
 						if ($report->like < 0)
 							$report->like = 0;
 
-						RateReport::where('wordId', $wordId)->where('userId', $userId)
+						RateReport::where('reportId', $reportId)->where('userId', $userId)
 						->update(array('type' => 0));
 					}
 
-					if (ReportMean::where('wordId', $wordId)->where('userId', $userId)
+					if (ReportMean::where('reportId', $reportId)->where('userId', $userId)
 					->update(array('like' => $report->like, 'dislike' => $report->dislike))) {
 						return array('status' => 200, 'result' => $report);
 					} else {
@@ -94,7 +94,7 @@ class RateReport extends Eloquent {
 		if (is_null($userId)) {
 			return array('status' => 304);
 		} else {
-			$result = RateReport::select('wordId', 'type')->where('userId', $userId)->get();
+			$result = RateReport::select('reportId', 'type')->where('userId', $userId)->get();
 			return array('status' => 200, 'result' => $result);
 		}
 	}

@@ -15,7 +15,7 @@ class CreateRateReportTable extends Migration {
 		Schema::create('rate_report', function ($table) {
 			$table->increments('rateId');
 			$table->integer('userId');
-			$table->integer('wordId');
+			$table->integer('reportId');
 			$table->integer('type');
 			$table->timestamps();
 		});
