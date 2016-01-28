@@ -12,14 +12,16 @@ class CreateReportMeanTable extends Migration {
 	 */
 	public function up()
 	{
-		$table->increments('reportId');
-		$table->integer('userId');
-		$table->integer('wordId');
-		$table->integer('status');
-		$table->integer('like');
-		$table->integer('dislike');
-		$table->string('mean');
-		$table->timestamps();
+		Schema::create('report_mean', function ($table) {
+			$table->increments('reportId');
+			$table->integer('userId');
+			$table->integer('wordId');
+			$table->integer('status');
+			$table->integer('like');
+			$table->integer('dislike');
+			$table->string('mean');
+			$table->timestamps();
+		});
 	}
 
 	/**
