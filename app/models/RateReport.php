@@ -28,7 +28,6 @@ class RateReport extends Eloquent {
 		if (is_null($user) || is_null($report)) {
 			return array('status' => 304);
 		} else {
-
 			$rate = RateReport::where('wordId', $wordId)->where('userId', $userId)->first();
 
 			// User not rate for report
@@ -41,15 +40,15 @@ class RateReport extends Eloquent {
 					// Plus number rate of reportMean
 					if ($type == 'like') {
 						$numberRate = $report->like + 1;
-						ReportMean::where('wordId', $wordId)->where('userId', $userId)
+						$result = ReportMean::where('wordId', $wordId)->where('userId', $userId)
 					    ->update(array('like' => $numberRate));
 					} else {
 						$numberRate = $report->dislike + 1;
-						ReportMean::where('wordId', $wordId)->where('userId', $userId)
+						$result = ReportMean::where('wordId', $wordId)->where('userId', $userId)
 					    ->update(array('dislike' => $numberRate));
 					}
 					
-					return array('status' => 200);
+					return array('status' => 200, 'result' => $result);
 				} else {
 					return array('status' => 306);	
 				}
@@ -62,15 +61,22 @@ class RateReport extends Eloquent {
 					if ($type == 'like') {
 						$numberLike    = $report->like + 1;
 						$numberdisLike = $report->dislike - 1;
+						RateReport::where('wordId', $wordId)->where('userId', $userId)
+						->update(array('type' => 1));
 					} else {
 						$numberLike    = $report->like - 1;
 						$numberdisLike = $report->dislike + 1;
+						RateReport::where('wordId', $wordId)->where('userId', $userId)
+						->update(array('type' => 0));
 					}
-					if (ReportMean::where('wordId', $wordId)->where('userId', $userId)
-					->update(array('like' => $numberLike, 'dislike' => $numberdisLike))) 
-						return array('status' => 200);
 
-					else return array('status' => 306);	 
+					$result = ReportMean::where('wordId', $wordId)->where('userId', $userId)
+					->update(array('like' => $numberLike, 'dislike' => $numberdisLike));
+
+					if ($result)
+						return array('status' => 200, 'result' => $result);
+					else 
+						return array('status' => 306);	 
 
 				}
 				
