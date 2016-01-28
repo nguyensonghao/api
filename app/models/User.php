@@ -34,6 +34,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			return array('status' => 302);
 		} else {
 			$result->password = null;
+			$this->loginUser($user['email']);
 			return array('status' => 200, 'result' => $result);
 		}
 	}
