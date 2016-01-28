@@ -22,11 +22,11 @@ class ReportMean extends Eloquent {
 			return array('status' => 304);
 		} else {
 			$reportMean = new ReportMean();
-			$reportMean->userId = $user->id;
+			$reportMean->userId = $user->userId;
 			$reportMean->mean   = $mean;
 			$reportMean->status = 1;
-			$reportMean->like   = 0;
 			$reportMean->wordId = $wordId;
+			$reportMean->like   = 0;
 			$reportMean->dislike = 0;
 			if ($reportMean->save()) {
 				return array('status' => 200, 'result' => $reportMean);
