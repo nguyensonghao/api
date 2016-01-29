@@ -39,11 +39,11 @@ class RateReport extends Eloquent {
 					// Plus number rate of reportMean
 					if ($type == 'like') {
 						++ $report->like ;
-						ReportMean::where('reportId', $reportId)->where('userId', $userId)
+						ReportMean::where('reportId', $reportId)
 					    ->update(array('like' => $report->like));
 					} else {
 						++ $report->dislike ;
-						ReportMean::where('reportId', $reportId)->where('userId', $userId)
+						ReportMean::where('reportId', $reportId)
 					    ->update(array('dislike' => $report->dislike));
 					}
 					
@@ -64,8 +64,7 @@ class RateReport extends Eloquent {
 						if ($report->dislike < 0)
 							$report->dislike = 0;
 
-						RateReport::where('reportId', $reportId)->where('userId', $userId)
-						->update(array('type' => 1));
+						RateReport::where('reportId', $reportId)->update(array('type' => 1));
 					} else {
 						-- $report->like;
 						++ $report->dislike;
@@ -73,11 +72,11 @@ class RateReport extends Eloquent {
 						if ($report->like < 0)
 							$report->like = 0;
 
-						RateReport::where('reportId', $reportId)->where('userId', $userId)
+						RateReport::where('reportId', $reportId)
 						->update(array('type' => 0));
 					}
 
-					if (ReportMean::where('reportId', $reportId)->where('userId', $userId)
+					if (ReportMean::where('reportId', $reportId)
 					->update(array('like' => $report->like, 'dislike' => $report->dislike))) {
 						return array('status' => 200, 'result' => $report);
 					} else {
