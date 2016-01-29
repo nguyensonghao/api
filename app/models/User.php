@@ -74,9 +74,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				$activeUser->status = 0;
 				$activeUser->save();
 
-				return User::where('email', $user['email'])
+				$user = User::where('email', $user['email'])
 			        ->where('password', $user['password'])
 			        ->first();
+
+			    return array('status' => 200);
 			} else {
 				return array('status' => 302);
 			}
