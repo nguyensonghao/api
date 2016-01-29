@@ -85,13 +85,13 @@ Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
 Route::get('demo2', function () {
-	Mail::send('email', array('firstname'=> 'Nguyensonghao'), function($message) {
+	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
 	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
 	});
-	Mail::send('email', array('firstname'=> 'Nguyensonghao'), function($message) {
+	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
 	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
 	});
-	Mail::send('email', array('firstname'=> 'Nguyensonghao'), function($message) {
+	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
 	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
 	});
 	echo 'test';
