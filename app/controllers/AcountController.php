@@ -101,7 +101,7 @@ class AcountController extends BaseController {
 	}
 
 	public function actionActiveUser ($key) {
-		if ($this->validate->validateSpecialChar($key)) {
+		if (!$this->validate->validateSpecialChar($key)) {
 			return Response::json(array('status' => 400));
 		} else {
 			$result = $this->activeUser->active($key);
