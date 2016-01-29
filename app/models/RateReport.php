@@ -23,7 +23,7 @@ class RateReport extends Eloquent {
 			$rateType = 0;
 
 		$user   = User::where('userId', $userId)->where('status', 1)->where('active', 1)->first();
-		$report = ReportMean::where('reportId', $reportId)->where('userId', $userId)->first();
+		$report = ReportMean::where('reportId', $reportId)->first();
 		if (is_null($user) || is_null($report)) {
 			return array('status' => 304);
 		} else {
