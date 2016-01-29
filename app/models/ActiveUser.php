@@ -24,7 +24,7 @@ class ActiveUser extends Eloquent {
 			if ($result->status == 0) {
 				return false;
 			} else {
-				ActiveUser::where('key', $keyActive)->update(array('status' => 1));	
+				return ActiveUser::where('key', $keyActive)->update(array('status' => 1));	
 			}
 		}
 	}
