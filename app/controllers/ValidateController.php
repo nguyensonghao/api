@@ -12,7 +12,7 @@ class ValidateController {
 		if ($email == null || $email == '')
 			return false;
 
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false)
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 			return true;
 		else
 			return false;

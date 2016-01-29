@@ -100,11 +100,11 @@ class AcountController extends BaseController {
 	    	return Response::json(array('status' => 400));
 	}
 
-	public function actionActiveUser ($keyActive) {
-		$result = $this->activeUser->active($keyActive);
-		if ($this->validate->validateSpecialChar($keyActive)) {
+	public function actionActiveUser ($key) {
+		if ($this->validate->validateSpecialChar($key)) {
 			return Response::json(array('status' => 400));
 		} else {
+			$result = $this->activeUser->active($key);
 			if (!$result) {
 				echo 'Tài khoản đã được kích hoạt hoặc tài khoản không tồn tại';
 			} else {
