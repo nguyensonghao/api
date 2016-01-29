@@ -24,6 +24,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Predis' => array($vendorDir . '/predis/predis/lib'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
+    'Pheanstalk' => array($vendorDir . '/pda/pheanstalk/classes'),
     'PHPParser' => array($vendorDir . '/nikic/php-parser/lib'),
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),

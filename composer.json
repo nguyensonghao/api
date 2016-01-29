@@ -7,7 +7,7 @@
 		"laravel/framework": "4.2.*",
         "fairholm/elasticquent": "1.0.*",
 		"fzaninotto/Faker": "1.4.*",
-		"elasticsearch/elasticsearch": "~2.0"
+		"pda/pheanstalk": "2.1.*"
 	},
 	"autoload": {
 		"classmap": [
