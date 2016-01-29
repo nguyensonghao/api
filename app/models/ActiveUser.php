@@ -18,11 +18,14 @@ class ActiveUser extends Eloquent {
 
 	public function active ($keyActive) {
 		$result = ActiveUser::where('key', $keyActive)->first();
-		if (count($result) > 0 && $result->status == 0) {
-			ActiveUser::where('key', $keyActive)->update(array('status' => 1));
-			return $result;
-		} else {
+		if (is_null($result)) {
 			return false;
+		} else {
+			if ($result->status == 0) {
+				return false;
+			} else {
+				ActiveUser::where('key', $keyActive)->update(array('status' => 1));	
+			}
 		}
 	}
 
