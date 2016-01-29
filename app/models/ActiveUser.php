@@ -17,14 +17,14 @@ class ActiveUser extends Eloquent {
 	protected $table = 'active_user';
 
 	public function active ($keyActive) {
-		$result = ActiveUser::where('key', $keyActive)->first();
+		$result = ActiveUser::where('key', $keyActive)->where('status', 0)->first();
 		if (is_null($result)) {
 			return false;
 		} else {
-			if ($result->status == 0) {
-				return false;
+			if (ActiveUser::where('key', $keyActive)->update(array('status' => 1))) {
+				return $result;
 			} else {
-				return ActiveUser::where('key', $keyActive)->update(array('status' => 1));	
+				return false;
 			}
 		}
 	}
