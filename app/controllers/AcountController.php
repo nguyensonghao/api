@@ -54,7 +54,7 @@ class AcountController extends BaseController {
 	    if (!$this->dateExcute->checkInvalidDate($time)) {
 	    	return Response::json(array('status' => 304));
 	    } else {
-	    	return Response::json($result = $this->user->checkStatus($tokenId));
+	    	return Response::json($this->user->checkStatus($tokenId));
 	    }
 	    
 	}
