@@ -86,6 +86,7 @@ Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
 Route::get('demo2', function () {
 	$email = 'nguyensonghao974@gmail.com';
+	$keyActive = 'dfdfdfd';
 	$contentEmail = "Chào bạn " .$email. "
     Bạn đã đăng ký thành công tài khoản trên Mazii.
     Đây là thông tin tài khoản của bạn.
