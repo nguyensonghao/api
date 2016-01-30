@@ -16,12 +16,12 @@ class DecodePasswordController extends BaseController {
 		$decode = '';
 		for ($i = 0; $i < $size; $i = $i + 2) {
 			$number = substr($tokenId, $i, $i + 2);
-			$c = $this->convertStringformNumber($number);
+			$c  = $this->convertStringformNumber($number);
 			$decode .= $c;
 		}
 
-		$token   = substr($decode, 0, -13);
-	    $time    = substr($decode, 32, 10);
+		$token  = substr($decode, 0, -13);
+	    $time   = substr($decode, 32, 10);
 		return array('token' => $token, 'time' => $time);
 	}
 

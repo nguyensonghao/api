@@ -55,12 +55,9 @@ angular.module('app', ['ui.router'])
     if (tokenId == null) {
         $rootScope.user = null;
     } else {
-        tokenId = encodeToken(tokenId);
         var time = Date.now().toString();
-        var dataSend = {tokenId : tokenId + time}
-        console.log(tokenId);
-        console.log(time);
-        console.log(tokenId + time);
+        var randomString = localstoreServ.randomString(50);
+        var dataSend = localstoreServ.encodeToken(tokenId + time, randomString);
         $http.post('api/init-login', dataSend)
         .success(function (data) {
             console.log(data);
