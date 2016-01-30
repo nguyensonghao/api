@@ -88,18 +88,18 @@ Route::get('demo2', function () {
 	$email = 'nguyensonghao974@gmail.com';
 	$keyActive = 'dfdfdfd';
 	$contentEmail = "Chào bạn " .$email. "
-    Bạn đã đăng ký thành công tài khoản trên Mazii.
-    Đây là thông tin tài khoản của bạn.
-    Email : " .$email. "
-    Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn.
-    http://api.mazii.net/api/active/" . $keyActive;
+Bạn đã đăng ký thành công tài khoản trên Mazii.
+Đây là thông tin tài khoản của bạn.
+Email : " .$email. "
+Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn.
+http://api.mazii.net/api/active/" . $keyActive;
 
     $data = array (
         'email'   => $email,
         'content' => $contentEmail
     );
 
-    return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+    return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
         $message->to($data['email'], $data['email'])->subject('Kích hoạt tài khoản')
         ->setBody($data['content']);
     });
