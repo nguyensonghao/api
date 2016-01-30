@@ -10,17 +10,18 @@ class DecodePasswordController extends BaseController {
 	}
 
 	public function decodeTokenRequest ($tokenId) {		
-		$key = (int)substr($tokenId, -1);
-		$reallyToken = substr($tokenId, $key, $key + 45);	
-		$size = strlen($reallyToken);
+		$size = strlen($tokenId);
 		$decode = '';
-		for ($i = 0; $i < $size; $i = $i + 2) {
+		for ($i = 0; $i < $size - 1; $i = $i + 2) {
 			$number = substr($tokenId, $i, 2);
 			$c  = $this->convertStringformNumber($number);
 			$decode .= $c;
 		}
-		$token  = substr($decode, 0, -13);
-	    $time   = substr($decode, 32, 10);
+		$key = (int)substr($tokenId, -1);
+		$string = substr($decode, $key, 45);
+		$time  = substr($string, 32, 10);
+	    $token   = substr($string, 0, 32);
+	    
 		return array('token' => $token, 'time' => $time);
 	}
 
@@ -28,7 +29,7 @@ class DecodePasswordController extends BaseController {
 		$size = count($this->listObjectEncryption);
 		for ($i = 0; $i < $size; $i++) {
 			if ($this->listObjectEncryption[$i]->number == $number) {
-				return $number;
+				return $this->listObjectEncryption[$i]->text;
 			}
 		}
 

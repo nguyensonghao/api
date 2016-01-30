@@ -47,10 +47,6 @@ angular.module('app', ['ui.router'])
     //     return result;
     // }
 
-    var encodeToken = function (tokenId) {
-        return tokenId;
-    }
-
     var tokenId = localstoreServ.getItem('token');
     if (tokenId == null) {
         $rootScope.user = null;
