@@ -47,9 +47,10 @@ class AcountController extends BaseController {
 		// get data form client with method post
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
-	    @$token    = $request->tokenId;
-	    $tokenId   = substr($token, 0, -13);
-	    $time      = substr($token, 32, 10);
+	    @$tokenRequest = $request->tokenId;
+	    $decodeToken = $this->decodePassword->decodeTokenRequest($tokenId);
+	    $tokenId = $decodeToken['token'];
+	    $time    = $decodeToken['time'];
 	    // Validate timeout
 	    if (!$this->dateExcute->checkInvalidDate($time)) {
 	    	return Response::json(array('status' => 304));
