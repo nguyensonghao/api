@@ -48,7 +48,7 @@ class AcountController extends BaseController {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$tokenRequest = $request->tokenId;
-	    $decodeToken = $this->decodePassword->decodeTokenRequest($tokenId);
+	    $decodeToken = $this->decodePassword->decodeTokenRequest($tokenRequest);
 	    $tokenId = $decodeToken['token'];
 	    $time    = $decodeToken['time'];
 	    // Validate timeout
