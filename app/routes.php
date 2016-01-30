@@ -87,9 +87,9 @@ Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 Route::get('demo2', function () {
 	$email = 'nguyensonghao974@gmail.com';
 	$keyActive = '11313232323232';
-	$contentEmail = "Chào bạn " .$email. " <br>
-        Bạn đã đăng ký thành công tài khoản trên Mazii. <br>
-        Đây là thông tin tài khoản của bạn. <br>
+	$contentEmail = "Chào bạn " .$email. "
+    Bạn đã đăng ký thành công tài khoản trên Mazii. <br>
+    Đây là thông tin tài khoản của bạn. <br>
         Email : " .$email. "<br>
         Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn. <br>
         http://api.mazii.net/api/active/" . $keyActive;
@@ -99,7 +99,7 @@ Route::get('demo2', function () {
     	'content' => $contentEmail
     );
 
-    if (Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+    if (Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
             $message->to($data['email'], $data['email'])->subject('Kích hoạt tài khoản')
             ->setBody($data['content']);
     })) {
