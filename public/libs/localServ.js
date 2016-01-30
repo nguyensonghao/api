@@ -37,7 +37,6 @@ angular.module('app')
         service.encodeToken = function (tokenId, randomString) {
             var key = '';
             var randomNumber = service.randomNumber(10);
-            console.log(randomNumber);
             var stringOne = randomString.substr(0, randomNumber);
             var stringTwo = randomString.substr(-(randomString.length-randomNumber));
             var encodeString = stringOne + tokenId + stringTwo;
