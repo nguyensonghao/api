@@ -52,7 +52,7 @@ angular.module('app', ['ui.router'])
         $rootScope.user = null;
     } else {
         var time = Date.now().toString();
-        console.log(tokenId);
+        console.log(time);
         var randomString = localstoreServ.randomString(50);
         var token = localstoreServ.encodeToken(tokenId + time, randomString);
         var dataSend = {tokenId : token};

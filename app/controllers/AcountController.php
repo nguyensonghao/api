@@ -51,6 +51,7 @@ class AcountController extends BaseController {
 	    $decodeToken = $this->decodePassword->decodeTokenRequest($tokenRequest);
 	    $tokenId = $decodeToken['token'];
 	    $time    = $decodeToken['time'];
+	    Log::info($time);
 	    // Validate timeout
 	    if (!$this->dateExcute->checkInvalidDate($time)) {
 	    	return Response::json(array('status' => 304));

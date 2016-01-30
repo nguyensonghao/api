@@ -19,7 +19,7 @@ class DecodePasswordController extends BaseController {
 		}
 		$key    = (int)substr($tokenId, -1);
 		$string = substr($decode, $key, 45);
-		$time   = substr($string, 32, 10);
+		$time   = (int)substr($string, 32, 10);
 	    $token  = substr($string, 0, 32);
 
 		return array('token' => $token, 'time' => $time);
