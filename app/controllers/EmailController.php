@@ -5,16 +5,21 @@ require public_path() . "/libs/PHPMailer/class.smtp.php";
 class EmailController extends BaseController {
 
     public function sendMailActive ($keyActive, $email) {
-        $contentEmail = "Chào bạn " .$email. " <br>
-        Bạn đã đăng ký thành công tài khoản trên Mazii. <br>
-        Đây là thông tin tài khoản của bạn. <br>
-        Email : " .$email. "<br>
-        Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn. <br>
+        $contentEmail = "Chào bạn " .$email. "
+        Bạn đã đăng ký thành công tài khoản trên Mazii.
+        Đây là thông tin tài khoản của bạn.
+        Email : " .$email. "
+        Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn.
         http://api.mazii.net/api/active/" . $keyActive;
 
-        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) {
-            $message->to($email, $email)->subject('Kích hoạt tài khoản')
-            ->setBody($contentEmail);
+        $data = array (
+            'email'  => $email,
+            'content' => $contentEmail
+        );
+
+        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+            $message->to($data['email'], $data['email'])->subject('Kích hoạt tài khoản')
+            ->setBody($data['content']);
         });
     }
 
