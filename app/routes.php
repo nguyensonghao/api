@@ -85,16 +85,23 @@ Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
 Route::get('demo2', function () {
-	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
-	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
-	});
-	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
-	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
-	});
-	Mail::queue('email', array('firstname'=> 'Nguyensonghao'), function($message) {
-	    $message->to('nguyensonghao974@gmail.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
-	});
-	echo 'test';
+	$email = 'nguyensonghao974@gmail.com';
+	$keyActive = '11313232323232';
+	$contentEmail = "Chào bạn " .$email. " <br>
+        Bạn đã đăng ký thành công tài khoản trên Mazii. <br>
+        Đây là thông tin tài khoản của bạn. <br>
+        Email : " .$email. "<br>
+        Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn. <br>
+        http://api.mazii.net/api/active/" . $keyActive;
+
+    if (Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) {
+            $message->to($email, $email)->subject('Kích hoạt tài khoản')
+            ->setBody($contentEmail);
+    })) {
+    	echo 'send mail success';
+    } else {
+    	echo 'send mail fails';
+    }
 });
 
 
