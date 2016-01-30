@@ -13,7 +13,7 @@ class EmailController extends BaseController {
         http://api.mazii.net/api/active/" . $keyActive;
 
         $data = array (
-            'email'  => $email,
+            'email'   => $email,
             'content' => $contentEmail
         );
 
