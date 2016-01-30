@@ -48,7 +48,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function checkStatus ($tokenId) {
 		$result = User::where('tokenId', $tokenId)->first();
 		if (is_null($result)) 
-			return array('status' => 304);
+			return array('status' => 302);
 		else {
 			return array('status' => 200, 'result' => $result);
 		}
