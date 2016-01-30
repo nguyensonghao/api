@@ -94,7 +94,7 @@ Route::get('demo2', function () {
         Xin hãy click vào link dưới đây để xác nhận tài khoản email của bạn. <br>
         http://api.mazii.net/api/active/" . $keyActive;
 
-    if (Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) {
+    if (Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) {
             $message->to($email, $email)->subject('Kích hoạt tài khoản')
             ->setBody($contentEmail);
     })) {
