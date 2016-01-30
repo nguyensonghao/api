@@ -15,24 +15,19 @@ class DecodePasswordController extends BaseController {
 		$size = strlen($reallyToken);
 		$decode = '';
 		for ($i = 0; $i < $size; $i = $i + 2) {
-			$number = substr($tokenId, $i, $i + 2);
+			$number = substr($tokenId, $i, 2);
 			$c  = $this->convertStringformNumber($number);
 			$decode .= $c;
 		}
-
 		$token  = substr($decode, 0, -13);
 	    $time   = substr($decode, 32, 10);
 		return array('token' => $token, 'time' => $time);
 	}
 
-	public function getTokenId ($tokenId, $key) {
-
-	}
-
 	public function convertStringformNumber ($number) {
 		$size = count($this->listObjectEncryption);
 		for ($i = 0; $i < $size; $i++) {
-			if ($this->listObjectEncryption[$i]['number'] == $number) {
+			if ($this->listObjectEncryption[$i]->number == $number) {
 				return $number;
 			}
 		}

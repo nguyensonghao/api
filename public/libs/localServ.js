@@ -47,7 +47,7 @@ angular.module('app')
                 key += number;
             }
 
-            key += randomString;
+            key += randomNumber;
             return key;
         }
 

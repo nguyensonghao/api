@@ -56,11 +56,12 @@ angular.module('app', ['ui.router'])
         $rootScope.user = null;
     } else {
         var time = Date.now().toString();
+        console.log(time);
         var randomString = localstoreServ.randomString(50);
-        var dataSend = localstoreServ.encodeToken(tokenId + time, randomString);
+        var token = localstoreServ.encodeToken(tokenId + time, randomString);
+        var dataSend = {tokenId : token};
         $http.post('api/init-login', dataSend)
         .success(function (data) {
-            console.log(data);
             $rootScope.user = data;
             $rootScope.$broadcast('init');
         });
