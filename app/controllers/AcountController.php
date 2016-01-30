@@ -183,7 +183,7 @@ class AcountController extends BaseController {
 			if (!$result) {
 				return Response::json(array('status' => 304));
 			} else {
-				$url = 'http://mazii.net';
+				$url = 'http://mazii.net/#/reset-password';
 				return Redirect::to($url);
 			}	
 		}

@@ -35,7 +35,7 @@ class ResetPassword extends Eloquent {
 	// Chuyển trạng thái của key về 1 là đã click vào link email
 	public function activeKeyReset ($keyReset) {
 		$result = ResetPassword::where('key', $keyReset)->first();
-		if (count($result) > 0 && $result->status == 0) {
+		if (!is_null($result) && ($result->status == 0 || $result->status == 1)) {
 			ResetPassword::where('key', $keyReset)->update(array('status' => 1));
 			return $result;
 		} else {
@@ -46,7 +46,7 @@ class ResetPassword extends Eloquent {
 	// Chỉ cho những tài khoản cái status = 1 có thể cấp lại mật khẩu
 	public function actionResetPassword ($email, $password) {
 		$result = ResetPassword::where('email', $email)->where('status', 1)->first();
-		if (count($result) > 0) {
+		if (!is_null($result)) {
 			if (ResetPassword::where('email', $email)->where('status', 1)->update(array('status' => 2)) ||
 			User::where('email', $email)->update(array('password' => md5($password)))) {
 				return true;
