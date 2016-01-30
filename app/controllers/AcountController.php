@@ -176,7 +176,7 @@ class AcountController extends BaseController {
 	}
 
 	public function actionResetPasswordSysterm ($keyReset) {
-		if ($this->validate->validateSpecialChar($keyReset)) {
+		if (!$this->validate->validateSpecialChar($keyReset)) {
 			return Response::json(array('status' => 400));
 		} else {
 			$result = $this->resetPassword->activeKeyReset($keyReset);
