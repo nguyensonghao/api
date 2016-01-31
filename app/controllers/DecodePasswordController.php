@@ -17,7 +17,7 @@ class DecodePasswordController extends BaseController {
 
 		// Decode tokenID
 		for ($i = 0; $i < $size; $i = $i + 2) {
-			$number = substr($tokenId, $i, 2);
+			$number = substr($tokenReally, $i, 2);
 			$c  = $this->convertStringformNumber($number);
 			$decode .= $c;
 		}
