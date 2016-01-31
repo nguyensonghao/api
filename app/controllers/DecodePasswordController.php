@@ -10,18 +10,20 @@ class DecodePasswordController extends BaseController {
 	}
 
 	public function decodeTokenRequest ($tokenId) {		
-		$size = strlen($tokenId);
 		$decode = '';
-		for ($i = 0; $i < $size - 1; $i = $i + 2) {
+		$key    = (int)substr($tokenId, -1);
+		$tokenReally = substr($tokenId, $key * 2, 90);
+		$size   = strlen($tokenReally);
+
+		// Decode tokenID
+		for ($i = 0; $i < $size; $i = $i + 2) {
 			$number = substr($tokenId, $i, 2);
 			$c  = $this->convertStringformNumber($number);
 			$decode .= $c;
 		}
-		$key    = (int)substr($tokenId, -1);
-		$string = substr($decode, $key, 45);
-		$time   = (int)substr($string, 32, 11);
-	    $token  = substr($string, 0, 32);
-	    Log::info('key : ' . $string);
+
+		$time   = (int)substr($decode, 32, 11);
+	    $token  = substr($decode, 0, 32);
 
 		return array('token' => $token, 'time' => $time);
 	}
