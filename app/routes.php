@@ -60,10 +60,6 @@ Route::get('api/active/{key}', 'AcountController@actionActiveUser');
 
 Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
 
-Route::get('test', function () {
-	return View::make('test');
-});
-
 // ReportMean
 
 Route::controller('report', 'ReportMeanController');
@@ -80,6 +76,19 @@ Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 
 Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
+// MyNote
 
+Route::controller('note', 'MyNoteController');
 
+Route::post('api/add-category', 'MyNoteController@addCategory');
+
+Route::post('api/add-note', 'MyNoteController@addNote');
+
+Route::post('api/update-category', 'MyNoteController@updateCategory');
+
+Route::post('api/update-note', 'MyNoteController@updateNote');
+
+Route::post('api/delete', 'MyNoteController@deleteCategory');
+
+Route::post('api/update-note', 'MyNoteController@deleteNote');
 
