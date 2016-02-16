@@ -30,7 +30,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		if (is_null($result)) {
 			return array('status' => 304);
-		} else if ($result->active == 0){
+		} else if ($result->active == 0) {
 			return array('status' => 302);
 		} else {
 			$result->password = null;
@@ -59,7 +59,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$userNew->email    = $user['email'];
 		$userNew->password = $user['password'];
 		$userNew->username = $user['username'];
-		$userNew->tokenId  = $this->encodePassword($user['email']);
+		$tokenId = $this->generateRandomString(30);
+		$userNew->tokenId  = $this->encodePassword($tokenId);
 		$userNew->active   = 0;
 		$userNew->status   = 0;
 
@@ -90,10 +91,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function logoutUser ($email) {
 		// status = 0 when user logout, status = 1 when user logined
-		if (User::where('email', $email)->update(array('status' => 0)))
+		$tokenId = $this->generateRandomString(30);
+		$tokenId = $this->encodePassword($tokenId);
+		if (User::where('email', $email)->update(array('status' => 0, 'tokenId' => $tokenId))) {			
 			return array('status' => 200);
-		else 
+		} else {
 			return array('status' => 304);
+		}
 
 	}
 
@@ -109,10 +113,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			return true;
 		else 
 			return false;
-	}
-
-	protected function encodePassword ($password) {
-		return md5($password);
 	}
 
 	public function activeUser ($email) {
@@ -132,6 +132,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		} else {
 			return array('status' => 304);
 		}
+	}
+
+	protected function generateRandomString($length) {
+	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < $length; $i++) {
+	        $randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+	    return $randomString;
+	}
+
+	protected function encodePassword ($password) {
+		return md5($password);
 	}
 
 }
