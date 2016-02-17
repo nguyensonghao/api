@@ -16,7 +16,7 @@ class Note extends Eloquent {
 	 */
 	protected $table = 'note';
 
-	public function addNote ($noteName, $noteMean, $categoryId, $date, $type) {
+	public function addNote ($noteName, $noteMean, $categoryId, $date, $type, $idx) {
 		$note = new Note();
 		if (!$this->checkExistCategory($categoryId))
 			return array('status' => 304);
@@ -27,6 +27,7 @@ class Note extends Eloquent {
 		$note->type     = $type;
 		$note->noteMean = $noteMean;
 		$note->cateId   = $categoryId;
+		$note->idx      = $idx;
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
 			->where('date', $date)->first()->noteId;
@@ -43,9 +44,8 @@ class Note extends Eloquent {
 	public function deleteNote ($noteId) {
 		if (Note::where('noteId', $noteId)->delete()) {
 			return array('status' => 200);
-		} else {
+		} else
 			return array('status' => 304);
-		}
 	}
 
 	protected function checkExistCategory ($categoryId) {

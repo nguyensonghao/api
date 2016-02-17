@@ -19,9 +19,7 @@ class MyNoteController extends BaseController {
 	    $myCategory = $this->category->getCategory($userId);
 	    if ($myCategory != null) {
 	    	$myNote = $this->note->getNote($myCategory);
-	    } else {
-	    	$myNote = [];
-	    }
+	    } else $myNote = [];
 
 	    return Response::json(array('category' => $myCategory, 'note' => $myNote));
 	}
@@ -47,10 +45,11 @@ class MyNoteController extends BaseController {
 	    @$noteMean = $request->noteMean;
 	    @$date     = $request->date;
 	    @$type     = $request->type;
+	    @$idx      = $request->idx;
 	    @$categoryId = $request->categoryId;
 	    if ($this->validate->validateSpecialChar($noteName) && $this->validate->validateSpecialChar($noteMean)
 	    	&& $this->validate->validateSpecialChar($categoryId)) {
-			return Response::json($this->note->addNote($noteName, $noteMean, $categoryId, $date, $type));
+			return Response::json($this->note->addNote($noteName, $noteMean, $categoryId, $date, $type, $idx));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
@@ -65,11 +64,26 @@ class MyNoteController extends BaseController {
 	}
 
 	public function deleteCategory () {
-
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$userId  = $request->userId;
+	    @$categoryId = $request->categoryId;
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($categoryId)) {
+			return Response::json($this->category->deleteCategory($userId, $categoryId));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
 	}
 
 	public function deleteNote () {
-
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$noteId  = $request->noteId;
+	    if ($this->validate->validateSpecialChar($noteId)) {
+			return Response::json($this->note->deleteNote($note));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
 	}
 
 }

@@ -38,7 +38,7 @@ class Category extends Eloquent {
 			return array('status' => 304);
 	}
 
-	public function deleteCategory ($categoryId, $userId) {
+	public function deleteCategory ($userId, $categoryId) {
 		if (Category::where('categoryId', $categoryId)->where('userId', $userId)->delete())
 			return array('status' => 200);
 		else
