@@ -84,7 +84,7 @@ Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
 Route::controller('note', 'MyNoteController');
 
-Route::post('api/get-mynote', 'MyNoteController@getMyNote');
+Route::get('api/get-mynote', 'MyNoteController@getMyNote');
 
 Route::post('api/add-category', 'MyNoteController@addCategory');
 
