@@ -17,7 +17,7 @@ class MyNoteController extends BaseController {
 	    $request   = json_decode($postdata);
 	    @$userId   = $request->userId;
 	    $myCategory = $this->category->getCategory($userId);
-	    if ($myCategory == null) {
+	    if ($myCategory != null) {
 	    	$this->note->getNote($myCategory);
 	    } else {
 	    	$myNote = [];
