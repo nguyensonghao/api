@@ -30,7 +30,7 @@ class CreateNoteTable extends Migration {
 	 */
 	public function down()
 	{
-		
+		//
 	}
 
 }
