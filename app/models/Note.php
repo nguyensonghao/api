@@ -42,9 +42,9 @@ class Note extends Eloquent {
 	}
 
 	public function deleteNote ($noteId) {
-		if (Note::where('noteId', $noteId)->delete()) {
+		if (Note::where('noteId', $noteId)->delete())
 			return array('status' => 200);
-		} else
+		else
 			return array('status' => 304);
 	}
 

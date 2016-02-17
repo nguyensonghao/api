@@ -96,6 +96,6 @@ Route::post('api/update-note', 'MyNoteController@updateNote');
 
 Route::post('api/delete-category', 'MyNoteController@deleteCategory');
 
-Route::post('api/delete-note', 'MyNoteController@deleteNote');
+Route::get('api/delete-note', 'MyNoteController@deleteNote');
 
 
