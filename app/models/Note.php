@@ -53,4 +53,19 @@ class Note extends Eloquent {
 		else return true;
 	}
 
+	public function getNote ($myCategory) {
+		$size = count($myCategory);
+		$listNote = [];
+		for ($i = 0; $i < $size; $i++) {
+			$categoryId = $myCategory[$i]->categoryId;
+			$note = Note::where('cateId', $categoryId)->get();
+			$sizeNote = count($note);
+			for ($j = 0; $j < $sizeNote; $j++) {
+				$listNote.push($note[$j]);
+			}
+		}
+
+		return $listNote;
+	}
+
 }

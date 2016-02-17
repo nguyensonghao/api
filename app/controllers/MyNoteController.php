@@ -16,8 +16,13 @@ class MyNoteController extends BaseController {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$userId   = $request->userId;
-	    $myNote    = $this->category->getMyNote($userId);
-	    return Response::json($myNote);
+	    $myCategory = $this->category->getCategory($userId);
+	    if ($myCategory == null) {
+	    	$this->note->getNote($myCategory);
+	    } else {
+	    	$myNote = [];
+	    }
+	    return Response::json(array('category' => $myCategory, 'note' => $myNote));
 	}
 
 	public function addCategory () {
