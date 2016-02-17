@@ -39,10 +39,12 @@ class Category extends Eloquent {
 	}
 
 	public function deleteCategory ($userId, $categoryId) {
-		if (Category::where('categoryId', $categoryId)->where('userId', $userId)->delete())
+		if (Category::where('categoryId', $categoryId)->where('userId', $userId)->delete()) {
+			Note::where('cateId', $categoryId)->delete();
 			return array('status' => 200);
-		else
+		} else {
 			return array('status' => 304);
+		}
 	}
 
 	protected function checkExitsUser ($userId) {
