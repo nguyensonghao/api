@@ -79,12 +79,11 @@ class MyNoteController extends BaseController {
 		$postdata = file_get_contents("php://input");
 	    $request  = json_decode($postdata);
 	    @$noteId  = $request->noteId;
-	  //   if ($this->validate->validateSpecialChar($noteId)) {
-			// return Response::json($this->note->deleteNote($note));
-	  //   } else {
-	  //   	return Response::json(array('status' => 400));
-	  //   }
-	    return Response::json($this->note->deleteNote($note));
+	    if ($this->validate->validateSpecialChar($noteId)) {
+			return Response::json($this->note->deleteNote($noteId));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
 	}
 
 }
