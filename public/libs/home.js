@@ -13,12 +13,11 @@ angular.module('app').controller('HomeController',
 	else 
 		$scope.logined = true;
 
-
     var dataSend = {
-        userId : 30,
+        noteId : 4,
     }
 
-    $http.post('api/get-mynote', dataSend)
+    $http.get('api/delete-note', dataSend)
     .success(function (data) {
         console.log(data);
     })
