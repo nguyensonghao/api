@@ -57,7 +57,7 @@ class Note extends Eloquent {
 
 	public function getNote ($myCategory) {
 		$size = count($myCategory);
-		$listNote = [];
+		$listNote = array();
 		for ($i = 0; $i < $size; $i++) {
 			$categoryId = $myCategory[$i]->categoryId;
 			$note = Note::select('note.noteId, note.noteName, note.noteMean, note.date, category.categoryName, note.type')
