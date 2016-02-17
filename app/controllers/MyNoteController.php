@@ -18,10 +18,11 @@ class MyNoteController extends BaseController {
 	    @$userId   = $request->userId;
 	    $myCategory = $this->category->getCategory($userId);
 	    if ($myCategory != null) {
-	    	$this->note->getNote($myCategory);
+	    	$myNote = $this->note->getNote($myCategory);
 	    } else {
 	    	$myNote = [];
 	    }
+
 	    return Response::json(array('category' => $myCategory, 'note' => $myNote));
 	}
 
