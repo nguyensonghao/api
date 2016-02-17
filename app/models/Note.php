@@ -28,7 +28,9 @@ class Note extends Eloquent {
 		$note->noteMean = $noteMean;
 		$note->cateId   = $categoryId;
 		if ($note->save()) {
-			return array('status' => 200);
+			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
+			->where('date', $date)->first()->noteId;
+			return array('status' => 200, 'noteId', $id);
 		} else {
 			return array('status' => 304);
 		}
