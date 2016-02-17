@@ -15,10 +15,10 @@ angular.module('app').controller('HomeController',
 
 
     var dataSend = {
-        userId : 1
+        userId : 30
     }
 
-    $http.post('api/get-mynote', dataSend)
+    $http.get('api/get-mynote', dataSend)
     .success(function (data) {
         console.log(data);
     })
