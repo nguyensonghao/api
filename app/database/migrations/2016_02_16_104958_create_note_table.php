@@ -17,6 +17,8 @@ class CreateNoteTable extends Migration {
 	        $table->string('noteName');
 	        $table->string('noteMean');
 	        $table->integer('categoryId');
+	        $table->string('date');
+			$table->string('type');
 	        $table->timestamps();
 	    });
 	}
@@ -28,10 +30,7 @@ class CreateNoteTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::create('note', function ($table) {
-			$table->string('date');
-			$table->string('type');
-	    });
+		
 	}
 
 }

@@ -12,10 +12,11 @@ class CreateCategoryTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('catagory', function ($table) {
+		Schema::create('category', function ($table) {
 			$table->increments('categoryId');
 	        $table->string('categoryName');
 	        $table->integer('userId');
+	        $table->string('date');
 	        $table->timestamps();
 	    });
 	}
@@ -27,7 +28,7 @@ class CreateCategoryTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::rename('catagory', 'category');
+		
 	}
 
 }
