@@ -53,7 +53,7 @@ class Category extends Eloquent {
 	}
 
 	public function getMyNote ($userId) {
-		if ($this->checkExitsUser()) {
+		if ($this->checkExitsUser($userId)) {
 			$myNote = Category::where('userId', $userId)
 			->join('note', 'note.categoryId', '=', 'category.categoryId')->get();
 			if ($myNote == null || !is_array($myNote) || count($myNote) == 0) {
