@@ -60,7 +60,7 @@ class Note extends Eloquent {
 		$listNote = [];
 		for ($i = 0; $i < $size; $i++) {
 			$categoryId = $myCategory[$i]->categoryId;
-			$note = Note::select('note.noteId, note.noteName, note.noteMean, note.date, category.categoryName, note.type')
+			$note = DB::table('note')->select('note.noteId, note.noteName, note.noteMean, note.date, category.categoryName, note.type')
 			->where('cateId', $categoryId)
 			->leftJoin('category', 'category.categoryId', '=', 'note.cateId')->get();
 			$sizeNote = count($note);
