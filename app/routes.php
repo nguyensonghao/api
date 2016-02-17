@@ -16,6 +16,10 @@ Route::get('/', function()
 	echo 'This is admin Mazii';
 });
 
+Route::get('test', function () {
+	return View::make('test');
+});
+
 // Excute import database sqlite to elasticsearch
 Route::controller('import', 'ImportElasticController');
 
@@ -82,9 +86,9 @@ Route::controller('note', 'MyNoteController');
 
 Route::post('api/get-mynote', 'MyNoteController@getMyNote');
 
-Route::get('api/add-category', 'MyNoteController@addCategory');
+Route::post('api/add-category', 'MyNoteController@addCategory');
 
-Route::get('api/add-note', 'MyNoteController@addNote');
+Route::post('api/add-note', 'MyNoteController@addNote');
 
 Route::post('api/update-category', 'MyNoteController@updateCategory');
 

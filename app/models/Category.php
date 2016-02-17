@@ -14,7 +14,7 @@ class Category extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'category';
+	protected $table = 'catagory';
 
 	public function addCategory ($userId, $categoryName) {
 		if (!$this->checkExitsUser($userId))

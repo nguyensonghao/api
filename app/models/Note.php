@@ -18,7 +18,7 @@ class Note extends Eloquent {
 
 	public function addNote ($noteName, $noteMean, $categoryId) {
 		$note = new Note();
-		if ($this->checkExistCategory($categoryId))
+		if (!$this->checkExistCategory($categoryId))
 			return array('status' => 304);
 
 		$note->noteName   = $noteName;
