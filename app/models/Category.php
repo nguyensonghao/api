@@ -16,12 +16,13 @@ class Category extends Eloquent {
 	 */
 	protected $table = 'catagory';
 
-	public function addCategory ($userId, $categoryName) {
+	public function addCategory ($userId, $categoryName, $date) {
 		if (!$this->checkExitsUser($userId))
 			return array('status' => 304);
 			
 		$category = new Category();
 		$category->userId = $userId;
+		$category->date   = $date;
 		$category->categoryName = $categoryName;
 		if ($category->save())
 			return array('status' => 200);

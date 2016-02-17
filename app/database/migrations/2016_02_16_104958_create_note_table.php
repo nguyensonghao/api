@@ -28,7 +28,10 @@ class CreateNoteTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::create('note', function ($table) {
+			$table->string('date');
+			$table->string('type');
+	    });
 	}
 
 }

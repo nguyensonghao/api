@@ -27,7 +27,9 @@ class CreateCategoryTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::create('catagory', function ($table) {
+			$table->string('date');
+	    });
 	}
 
 }

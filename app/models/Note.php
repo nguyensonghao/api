@@ -16,13 +16,16 @@ class Note extends Eloquent {
 	 */
 	protected $table = 'note';
 
-	public function addNote ($noteName, $noteMean, $categoryId) {
+	public function addNote ($noteName, $noteMean, $categoryId, $date, $type) {
 		$note = new Note();
 		if (!$this->checkExistCategory($categoryId))
 			return array('status' => 304);
 
-		$note->noteName   = $noteName;
-		$note->noteMean   = $noteMean;
+		$note->noteName = $noteName;
+		$note->noteMean = $noteMean;
+		$note->date     = $date;
+		$note->type     = $type;
+		$note->noteMean = $noteMean;
 		$note->categoryId = $categoryId;
 		if ($note->save()) {
 			return array('status' => 200);
