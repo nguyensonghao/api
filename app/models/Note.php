@@ -26,7 +26,7 @@ class Note extends Eloquent {
 		$note->date     = $date;
 		$note->type     = $type;
 		$note->noteMean = $noteMean;
-		$note->categoryId = $categoryId;
+		$note->cateId   = $categoryId;
 		if ($note->save()) {
 			return array('status' => 200);
 		} else {
