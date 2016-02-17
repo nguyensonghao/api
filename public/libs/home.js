@@ -16,11 +16,9 @@ angular.module('app').controller('HomeController',
 
     var dataSend = {
         userId : 30,
-        date   : 'fdfd',
-        categoryName : 'fdfdfd'
     }
 
-    $http.post('api/add-category', dataSend)
+    $http.post('api/get-mynote', dataSend)
     .success(function (data) {
         console.log(data);
     })
