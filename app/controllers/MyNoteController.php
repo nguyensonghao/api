@@ -20,7 +20,7 @@ class MyNoteController extends BaseController {
 	    return Response::json($myNote);
 	}
 
-	public function addCategory ($category) {
+	public function addCategory () {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$userId   = $request->userId;
@@ -33,7 +33,7 @@ class MyNoteController extends BaseController {
 	    }
 	}
 
-	public function addNote ($note) {
+	public function addNote () {
 		$postdata  = file_get_contents("php://input");
 	    $request   = json_decode($postdata);
 	    @$noteName = $request->noteName;
@@ -47,19 +47,19 @@ class MyNoteController extends BaseController {
 	    }
 	}
 
-	public function updateCategory ($categoryId, $category) {
+	public function updateCategory () {
 
 	}
 
-	public function updateNote ($noteId, $note) {
+	public function updateNote () {
 
 	}
 
-	public function deleteCategory ($categoryId) {
+	public function deleteCategory () {
 
 	}
 
-	public function deleteNote ($noteId) {
+	public function deleteNote () {
 
 	}
 

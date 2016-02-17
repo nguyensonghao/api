@@ -82,7 +82,7 @@ Route::controller('note', 'MyNoteController');
 
 Route::post('api/get-mynote', 'MyNoteController@getMyNote');
 
-Route::get('api/add-category', 'MyNoteController@addCategory');
+Route::post('api/add-category', 'MyNoteController@addCategory');
 
 Route::post('api/add-note', 'MyNoteController@addNote');
 
