@@ -16,6 +16,7 @@ class CreateNoteTable extends Migration {
 			$table->increments('noteId');
 	        $table->string('noteName');
 	        $table->string('noteMean');
+	        $table->string('idx');
 	        $table->integer('categoryId');
 	        $table->string('date');
 			$table->string('type');

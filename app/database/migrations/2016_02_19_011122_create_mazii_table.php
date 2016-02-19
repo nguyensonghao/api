@@ -12,7 +12,7 @@ class CreateMaziiTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('note', function ($table) {
+		Schema::create('mazii', function ($table) {
 			$table->increments('maziiId');
 	        $table->integer('userId');
 	        $table->integer('status');
