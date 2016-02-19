@@ -98,4 +98,8 @@ Route::post('api/delete-category', 'MyNoteController@deleteCategory');
 
 Route::post('api/delete-note', 'MyNoteController@deleteNote');
 
+// Mazii
 
+Route::controller('mazii', 'MaziiController');
+
+Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
