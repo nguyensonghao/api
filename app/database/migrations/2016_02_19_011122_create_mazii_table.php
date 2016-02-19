@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryTable extends Migration {
+class CreateMaziiTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,12 @@ class CreateCategoryTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('note', function ($table) {
+			$table->increments('maziiId');
+	        $table->integer('userId');
+	        $table->integer('status');
+	        $table->timestamps();
+	    });
 	}
 
 	/**
