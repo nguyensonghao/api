@@ -85,6 +85,17 @@ class ReportMeanController extends BaseController {
 	    }
 	}
 
+	public function actionDeleteMean () {
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$userId  = $request->userId;
+	    @$reportId  = $request->reportId;
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($reportId)) {
+	    	return Response::json($this->reportMean->deleteReportMean($userId, $reportId));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
+	}
 
 }
 

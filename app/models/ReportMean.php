@@ -43,6 +43,7 @@ class ReportMean extends Eloquent {
 
 	public function getMean ($wordId) {
 		$listReport = DB::table('report_mean')->where('wordId', $wordId)->where('report_mean.status', 1)
+		->orderBy('report_mean.like', 'desc')
 		->join('users', 'users.userId', '=', 'report_mean.userId')->get();
 
 		if (count($listReport) == 0) {
@@ -78,5 +79,13 @@ class ReportMean extends Eloquent {
 		}
 	}
 
-
+	public function deleteReportMean($userId, $reportId) {
+		if (ReportMean::where('userId', $userId)->where('reportId', $reportId)
+		->delete()) {
+			RateReport::where('reportId', $reportId)->delete();
+			return array('status' => 200);
+		} else {
+			return array('status' => 304);
+		}
+	}
 }

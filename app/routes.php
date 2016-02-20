@@ -80,6 +80,8 @@ Route::post('api/check-mean', 'ReportMeanController@actionCheckMean');
 
 Route::post('api/update-mean', 'ReportMeanController@actionUpdateMean');
 
+Route::post('api/delete-mean', 'ReportMeanController@actionDeleteMean');
+
 // MyNote
 
 Route::controller('note', 'MyNoteController');
