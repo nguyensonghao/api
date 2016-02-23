@@ -105,3 +105,10 @@ Route::post('api/delete-note', 'MyNoteController@deleteNote');
 Route::controller('mazii', 'MaziiController');
 
 Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
+
+Route::get('demo', function () {
+	date_default_timezone_set('Europe/London');
+	$date = new DateTime();
+	$timeServer = $date->getTimestamp();
+	echo $timeServer;
+});

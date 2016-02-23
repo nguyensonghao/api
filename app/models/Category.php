@@ -24,10 +24,11 @@ class Category extends Eloquent {
 		$category->userId = $userId;
 		$category->date   = $date;
 		$category->categoryName = $categoryName;
-		if ($category->save())
-			return array('status' => 200);
-		else
-			return array('status' => 304);
+		if ($category->save()) {
+			$cateId = Category::where('userId', $userId)->where('data', $date)
+		    ->where('categoryName', $categoryName)->first()->categoryId;
+			return array('status' => 200, 'cateId' => $cateId);
+		} else return array('status' => 304);			
 	}
 
 	public function updateCategory ($categoryId, $category, $userId) {
