@@ -25,7 +25,7 @@ class Category extends Eloquent {
 		$category->date   = $date;
 		$category->categoryName = $categoryName;
 		if ($category->save()) {
-			$cateId = Category::where('userId', $userId)->where('data', $date)
+			$cateId = Category::where('userId', $userId)->where('date', $date)
 		    ->where('categoryName', $categoryName)->first()->categoryId;
 			return array('status' => 200, 'cateId' => $cateId);
 		} else return array('status' => 304);			
