@@ -7,7 +7,7 @@ class DateController {
 		$date = new DateTime();
 		$timeServer = $date->getTimestamp();
 	    $minus = $timeServer - $timeClient;
-	    if ($minus > 60) 
+	    if ($minus > 120) 
 	    	return false;
 	    else 
 	    	return true;
