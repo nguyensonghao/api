@@ -53,7 +53,7 @@ class AcountController extends BaseController {
 	    $time    = $decodeToken['time'];
 	    // Validate timeout
 	    if (!$this->dateExcute->checkInvalidDate($time)) {
-	    	return Response::json(array('status' => 304));
+	    	return Response::json(array('status' => 400));
 	    } else {
 	    	return Response::json($this->user->checkStatus($tokenId));
 	    }
