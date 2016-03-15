@@ -16,7 +16,7 @@ class CreateFlashcardTable extends Migration {
 			$table->increments('flashcardId');
 	        $table->integer('userId');
 	        $table->string('type');
-	        $table->string('word_id');
+	        $table->string('wordId');
 	        $table->timestamps();
 	    });
 	}
