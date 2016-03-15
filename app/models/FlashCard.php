@@ -5,7 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Flashcard extends Eloquent {
+class FlashCard extends Eloquent {
 
 	use UserTrait, RemindableTrait;
 
@@ -17,7 +17,7 @@ class Flashcard extends Eloquent {
 	protected $table = 'flashcard';
 
 	public function getFlashCard ($userId, $type) {
-		$listFlash = Flashcard::where('userId', $userId)->where('type', $type)
+		$listFlash = FlashCard::where('userId', $userId)->where('type', $type)
 		->get();
 		if (count($listFlash) == 0) {
 			return array('status' => 304);
@@ -27,7 +27,7 @@ class Flashcard extends Eloquent {
 	}
 
 	public function remember ($userId, $wordId, $type) {
-		$flashcard = new Flashcard();
+		$flashcard = new FlashCard();
 		$flashcard->userId = $userId;
 		$flashcard->wordId = $wordId;
 		$flashcard->type = $type;
@@ -39,7 +39,7 @@ class Flashcard extends Eloquent {
 	}
 
 	public function forget ($userId, $wordId, $type) {
-		if (Flashcard::where('userId', $userId)->where('wordId', $wordId)
+		if (FlashCard::where('userId', $userId)->where('wordId', $wordId)
 		->where('type', $type)->delete()) {
 			return array('status' => 200);
 		} else {

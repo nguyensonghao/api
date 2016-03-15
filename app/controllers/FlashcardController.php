@@ -6,7 +6,7 @@ class FlashcardController extends BaseController {
 
 	public function __construct () {
 		$this->validate = new ValidateController();
-		$this->flashcard = new Flashcard();
+		$this->flashcard = new FlashCard();
 	}
 
 	public function getFlashCard () {
