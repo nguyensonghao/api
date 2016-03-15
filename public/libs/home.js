@@ -19,7 +19,7 @@ angular.module('app').controller('HomeController',
         type : 'kanji'
     }
 
-    $http.post('api/remember-flash', dataSend)
+    $http.get('api/remember-flash', dataSend)
     .success(function (data) {
         console.log(data);
     })
