@@ -1,6 +1,6 @@
 <?php 
 
-class FlashcardController extends BaseController {
+class FlashCardController extends BaseController {
 	public $validate;
 	public $flashcard;
 

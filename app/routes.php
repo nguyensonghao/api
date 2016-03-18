@@ -108,11 +108,11 @@ Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
 
 // Flashcard
 
-Route::controller('flashcard', 'FlashcardController');
+Route::controller('flashcard', 'FlashCardController');
 
-Route::post('api/get-flashcard', 'FlashcardController@getFlashCard');
+Route::post('api/get-flashcard', 'FlashCardController@getFlashCard');
 
-Route::get('api/remember-flash', 'FlashcardController@rememberFlashCard');
+Route::get('api/remember-flash', 'FlashCardController@rememberFlashCard');
 
-Route::post('api/forget-flash', 'FlashcardController@forgetFlashCard');
+Route::post('api/forget-flash', 'FlashCardController@forgetFlashCard');
 
