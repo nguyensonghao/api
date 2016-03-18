@@ -11,6 +11,8 @@
 |
 */
 
+header('Access-Control-Allow-Origin: *');
+
 Route::get('/', function()
 {
 	echo 'This is admin Mazii';
