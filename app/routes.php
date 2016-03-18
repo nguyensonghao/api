@@ -115,4 +115,3 @@ Route::post('api/get-flashcard', 'FlashCardController@getFlashCard');
 Route::get('api/remember-flash', 'FlashCardController@rememberFlashCard');
 
 Route::post('api/forget-flash', 'FlashCardController@forgetFlashCard');
-
