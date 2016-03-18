@@ -13,12 +13,10 @@
 
 App::before(function($request)
 {
-	if (Request::getMethod() == "OPTIONS") {
-        $headers = array(
-            'Access-Control-Allow-Methods'=> 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Headers'=> 'X-Requested-With, content-type',);
-        return Response::make('', 200, $headers);
-    }
+	header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+    header('Access-Control-Allow-Credentials: true');
 });
 
 
