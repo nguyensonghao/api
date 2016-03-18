@@ -29,14 +29,12 @@ class FlashController extends BaseController {
 	    @$wordId  = $request->wordId;
 	    @$type    = $request->type;
 
-	    return Response::json(array('userId' => $userId, 'wordId' => $wordId, 'type' => $type));
-
-	    // if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($wordId)
-	    // 	&& $this->validate->validateSpecialChar($type)) {
-	    // 	return Response::json($this->flashcard->remember($userId, $wordId, $type));
-	    // } else {
-	    // 	return Response::json(array('status' => 400));
-	    // }
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($wordId)
+	    	&& $this->validate->validateSpecialChar($type)) {
+	    	return Response::json($this->flashcard->remember($userId, $wordId, $type));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
 	}
 
 	public function forgetFlashCard () {
