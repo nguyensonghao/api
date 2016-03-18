@@ -27,15 +27,21 @@ class FlashCard extends Eloquent {
 	}
 
 	public function remember ($userId, $wordId, $type) {
-		$flashcard = new FlashCard();
-		$flashcard->userId = $userId;
-		$flashcard->wordId = $wordId;
-		$flashcard->type = $type;
-		if ($flashcard->save()) {
-			return array('status' => 200);
+		$reuslt = FlashCard::where('userId', $userId)->where('wordId', $wordId)
+		->where('type', $type)->first();
+		if (!is_null($result)) {
+			return array('status' => 302);
 		} else {
-			return array('status' => 304);
-		}
+			$flashcard = new FlashCard();
+			$flashcard->userId = $userId;
+			$flashcard->wordId = $wordId;
+			$flashcard->type = $type;
+			if ($flashcard->save()) {
+				return array('status' => 200);
+			} else {
+				return array('status' => 304);
+			}
+		}		
 	}
 
 	public function forget ($userId, $wordId, $type) {
