@@ -11,12 +11,13 @@ class FlashController extends BaseController {
 	}
 
 	public function getFlashCard () {
-		$postdata  = file_get_contents("php://input");
-	    $request   = json_decode($postdata);
-	    @$userId   = $request->userId;
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$userId  = $request->userId;
+	    @$type    = $request->type; 
 
-	    if ($this->validate->validateSpecialChar($userId)) {
-	    	return Response::json($this->flashcard->getFlashCard($userId));
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($type)) {
+	    	return Response::json($this->flashcard->getFlashCard($userId, $type));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
