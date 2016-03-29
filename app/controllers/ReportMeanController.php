@@ -13,13 +13,14 @@ class ReportMeanController extends BaseController {
 	}
 
 	public function actionAddReportMean () {
-		$postdata  = file_get_contents("php://input");
-	    $request   = json_decode($postdata);
-	    @$userId   = $request->userId;
-	    @$mean     = $request->mean;
-	    @$wordId   = $request->wordId;
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$userId  = $request->userId;
+	    @$mean    = $request->mean;
+	    @$wordId  = $request->wordId;
+	    @$word    = $request->word;
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($mean)) {
-	    	return Response::json($this->reportMean->addReportMean($userId, $mean, $wordId));
+	    	return Response::json($this->reportMean->addReportMean($userId, $mean, $wordId, $word));
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }

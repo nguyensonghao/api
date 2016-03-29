@@ -16,7 +16,7 @@ class ReportMean extends Eloquent {
 	 */
 	protected $table = 'report_mean';
 
-	public function addReportMean ($userId, $mean, $wordId) {
+	public function addReportMean ($userId, $mean, $wordId, $wordName) {
 		$user = User::where('userId', $userId)->where('active', 1)->where('status', 1)->first();
 		if (is_null($user)) {
 			return array('status' => 304);
@@ -30,6 +30,7 @@ class ReportMean extends Eloquent {
 				$reportMean->mean   = $mean;
 				$reportMean->status = 1;
 				$reportMean->wordId = $wordId;
+				$reportMean->word   = $wordName;
 				$reportMean->like   = 0;
 				$reportMean->dislike = 0;
 				if ($reportMean->save()) {
