@@ -25,6 +25,7 @@ class ReportMean extends Eloquent {
 			if (!is_null($report)) {
 				return array('status' => 304);
 			} else {
+				Log::info($wordName);
 				$reportMean = new ReportMean();
 				$reportMean->userId = $user->userId;
 				$reportMean->mean   = $mean;
