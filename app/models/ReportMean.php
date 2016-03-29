@@ -23,7 +23,7 @@ class ReportMean extends Eloquent {
 		} else {
 			$report = ReportMean::where('wordId', $wordId)->where('userId', $user->userId)->first();
 			if (!is_null($report)) {
-				return array('status' => 302);
+				return array('status' => 304);
 			} else {
 				$reportMean = new ReportMean();
 				$reportMean->userId = $user->userId;
