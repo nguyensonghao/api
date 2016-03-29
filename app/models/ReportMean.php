@@ -92,13 +92,13 @@ class ReportMean extends Eloquent {
 		}
 	}
 
-	public function getNew ($number) {
+	public function getNew ($skip, $take) {
 		$listReport = DB::table('report_mean')
 		->where('report_mean.dislike', '<', 10)
 		->where('report_mean.status', '<>', -1)
 		->orderBy('report_mean.like', 'desc')
 		->join('users', 'users.userId', '=', 'report_mean.userId')
-		->skip(0)->take($number)->get();
+		->skip($skip)->take($take)->get();
 
 		if (count($listReport) == 0) {
 			return array('status' => 304);
