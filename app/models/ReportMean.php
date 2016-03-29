@@ -25,7 +25,6 @@ class ReportMean extends Eloquent {
 			if (!is_null($report)) {
 				return array('status' => 304);
 			} else {
-				Log::info($wordName);
 				$reportMean = new ReportMean();
 				$reportMean->userId = $user->userId;
 				$reportMean->mean   = $mean;
@@ -90,6 +89,21 @@ class ReportMean extends Eloquent {
 			return array('status' => 200);
 		} else {
 			return array('status' => 304);
+		}
+	}
+
+	public function getNew ($number) {
+		$listReport = DB::table('report_mean')
+		->where('report_mean.dislike', '<', 10)
+		->where('report_mean.status', '<>', -1)
+		->orderBy('report_mean.like', 'desc')
+		->join('users', 'users.userId', '=', 'report_mean.userId')
+		->skip(0)->take($number)->get();
+
+		if (count($listReport) == 0) {
+			return array('status' => 304);
+		} else {
+			return array('status' => 200, 'result' => $listReport);
 		}
 	}
 }

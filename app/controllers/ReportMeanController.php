@@ -98,6 +98,13 @@ class ReportMeanController extends BaseController {
 	    }
 	}
 
+	public function actionGetNew () {
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);
+	    @$number  = $request->number;
+		return Response::json($this->reportMean->getNew($number));
+	}
+
 }
 
 ?>
