@@ -125,14 +125,3 @@ Route::post('api/get-flashcard', 'FlashController@getFlashCard');
 Route::post('api/remember-flash', 'FlashController@rememberFlashCard');
 
 Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
-
-Route::get('demo', function () {
-	$result = json_decode(file_get_contents('http://admin:kanjiapp@128.199.226.39:5984/kanjiapp/b2e169caae52ec7c9b5cabff7bb4e189'));	
-	$list_data = DB::table('report_mean')->get();
-	foreach ($list_data as $key => $value) {
-		$id = $value->wordId;
-		$word = json_decode(file_get_contents('http://admin:kanjiapp@128.199.226.39:5984/kanjiapp/' . $id));
-		$wordmean = $word->word;
-		DB::table('report_mean')->where('wordId', $id)->update(array('word' => $wordmean));
-	}
-});

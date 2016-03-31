@@ -95,8 +95,7 @@ class ReportMean extends Eloquent {
 	public function getNew ($skip, $take) {
 		$query = DB::table('report_mean')
 		->where('report_mean.dislike', '<', 10)
-		->where('report_mean.status', '<>', -1)
-		->orderBy('report_mean.like', 'desc')
+		->where('report_mean.status', '<>', -1)		
 		->join('users', 'users.userId', '=', 'report_mean.userId')
 		->orderBy('report_mean.created_at', 'desc');
 		$listReport = $query->skip($skip)->take($take)->get();
