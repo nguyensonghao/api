@@ -97,7 +97,8 @@ class ReportMean extends Eloquent {
 		->where('report_mean.dislike', '<', 10)
 		->where('report_mean.status', '<>', -1)
 		->orderBy('report_mean.like', 'desc')
-		->join('users', 'users.userId', '=', 'report_mean.userId');
+		->join('users', 'users.userId', '=', 'report_mean.userId')
+		->orderBy('report_mean.created_at', 'desc');
 		$listReport = $query->skip($skip)->take($take)->get();
 		$count = $query->count();
 
