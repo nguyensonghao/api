@@ -50,7 +50,7 @@ class ReportMean extends Eloquent {
 		->join('users', 'users.userId', '=', 'report_mean.userId')->get();
 
 		if (count($listReport) == 0) {
-			return array('status' => 304);
+			return array('status' => 304, 'wordId' => $wordId);
 		} else {
 			return array('status' => 200, 'result' => $listReport);
 		}
