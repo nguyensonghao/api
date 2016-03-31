@@ -133,6 +133,6 @@ Route::get('demo', function () {
 		$id = $value->wordId;
 		$word = json_decode(file_get_contents('http://admin:kanjiapp@128.199.226.39:5984/kanjiapp/' . $id));
 		$wordmean = $word->word;
-		DB::table('report_mean')->where('wordId', $wordId)->update(array('word' => $wordmean));
+		DB::table('report_mean')->where('wordId', $id)->update(array('word' => $wordmean));
 	}
 });
