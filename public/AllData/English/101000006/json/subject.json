@@ -1,0 +1,461 @@
+[
+  {
+    "name": "Contracts",
+    "id": 101000191,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 14,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Marketing",
+    "id": 101000192,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 14,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Warranties",
+    "id": 101000193,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 11,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Business planning",
+    "id": 101000194,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 9,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Conferences /'kɔnfərəns/",
+    "id": 101000195,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Computers",
+    "id": 101000196,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 15,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Office Technology",
+    "id": 101000197,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Office Procedures",
+    "id": 101000198,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Electronics (điện tử)",
+    "id": 101000199,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Correspondence (quan hệ thư từ)",
+    "id": 101000200,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 14,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Job Advertising and Recruiting",
+    "id": 101000201,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 15,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Applying and Interviewing (xin việc và phỏng vấn)",
+    "id": 101000202,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 17,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Hiring and Training (mướn và đào tạo)",
+    "id": 101000203,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 14,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Salaries and benefits (lương và trợ cấp)",
+    "id": 101000204,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Promotions, Pensions and Awards",
+    "id": 101000205,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 24,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Shopping",
+    "id": 101000206,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Ordering Supplies (phiếu tiếp tế)",
+    "id": 101000207,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Shipping",
+    "id": 101000208,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Invoices (Hóa đơn)",
+    "id": 101000209,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Inventory (kiểm kê hoàng hóa)",
+    "id": 101000210,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Banking (Ngành ngân hàng)",
+    "id": 101000211,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Accounting (thanh toán)",
+    "id": 101000212,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 17,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Investments (đầu tư)",
+    "id": 101000213,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Taxes (nộp thuế)",
+    "id": 101000214,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Financial Statements (báo cáo tài chính)",
+    "id": 101000215,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 17,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Property and departments (Trụ sở & Các phòng b",
+    "id": 101000216,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Board Meetings and committees (cuộc họp hội đồng q",
+    "id": 101000217,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Quality control (kiểm soát chất lượng)",
+    "id": 101000218,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Product Development (phát triển sản phẩm)",
+    "id": 101000219,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Renting and Leasing (thuê và cho thuê)",
+    "id": 101000220,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Selecting a Restaurant (chọn lựa nhà hàng)",
+    "id": 101000221,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Eating out (ăn bên ngoài)",
+    "id": 101000222,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Ordering Lunch (gọi món ăn trưa)",
+    "id": 101000223,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Cooking as a career (Nghề nấu ăn)",
+    "id": 101000224,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Events (sự kiện)",
+    "id": 101000225,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "General Travel (du lịch tổng quan)",
+    "id": 101000226,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Airlines (hàng không)",
+    "id": 101000227,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Trains (tàu hỏa)",
+    "id": 101000228,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Hotels (khách sạn)",
+    "id": 101000229,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 17,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Car Rentals (cho thuê xe)",
+    "id": 101000230,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Movies (Phim ảnh)",
+    "id": 101000231,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Theater (nhà hát)",
+    "id": 101000232,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 18,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Music (âm nhạc)",
+    "id": 101000233,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Museums (Bảo tàng)",
+    "id": 101000234,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Media (Phương tiện truyền thông)",
+    "id": 101000235,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 14,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Doctor's Office",
+    "id": 101000236,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 12,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Dentist's Office",
+    "id": 101000237,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 12,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Health Insurance ( Bảo hiểm sức khoẻ )",
+    "id": 101000238,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 12,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Hospitals",
+    "id": 101000239,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 12,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Pharmacy ('fɑ:məsi) dược khoa",
+    "id": 101000240,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 16,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Grammar (V + V-ing) Các động từ theo sau là Ving",
+    "id": 101000241,
+    "id_course": 101000006,
+    "mean": null,
+    "total": 25,
+    "num_word": null,
+    "time_date": null
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Thức ăn và Trồng trọt",
+    "id": 101000136,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Toán và Tin học",
+    "id": 101000137,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Năng lượng",
+    "id": 101000138,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Tâm linh",
+    "id": 101000139,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Khoa học và Nghiên cứu",
+    "id": 101000140,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Lịch sử cổ đại",
+    "id": 101000141,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Bệnh tật",
+    "id": 101000142,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Chuyên ngành và Học thuật",
+    "id": 101000143,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Chiến tranh và Quân sự",
+    "id": 101000144,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Tài sản và Giai cấp xã hội",
+    "id": 101000145,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Tài chính và Thương mại",
+    "id": 101000146,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Chính trị",
+    "id": 101000147,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Công lý",
+    "id": 101000148,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Thế giới ngầm",
+    "id": 101000149,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Gia đình và Bạn bè",
+    "id": 101000150,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Sự say mê và Cảm xúc",
+    "id": 101000151,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Vấn đề xã hội",
+    "id": 101000152,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Điều tra hình sự",
+    "id": 101000153,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Nghệ thuật và Văn học",
+    "id": 101000154,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 20,
+    "num_word": null,
+    "time_date": null
+  },
+  {
+    "name": "Giải trí",
+    "id": 101000155,
+    "id_course": 101000003,
+    "mean": null,
+    "total": 19,
+    "num_word": null,
+    "time_date": null
+  }
+]
