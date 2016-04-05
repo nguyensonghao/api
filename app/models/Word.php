@@ -14,10 +14,18 @@ class Word extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'word';
+	protected $table = 'words';	
 
-	public function add () {
-		
+	public function getListExcute () {
+		return Word::where('status', 1)->paginate(20);
+	}
+
+	public function getListNotExcute () {
+		return Word::where('status', '<>', 1)->paginate(20);
+	}
+
+	public function completeImage ($id) {
+		return Word::where('id', $id)->update(array('status' => 1));
 	}
 
 

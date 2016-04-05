@@ -123,4 +123,12 @@ Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
 
 Route::controller('word', 'WordController');
 
-Route::get('word-add', 'WordController@addDataBase');
+Route::get('danh-sach-anh-da-duyet', 'WordController@showListImageExcuted');
+
+Route::get('danh-sach-anh-chua-duyet', 'WordController@showListImageNotExcuted');
+
+Route::get('hoan-thanh-duyet-anh/{id}', 'WordController@actionCompleteImage');
+
+Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
+
+Route::post('tai-anh-ve', 'WordController@actionDownloadImage');
