@@ -14,12 +14,21 @@ class CreateWordsTable extends Migration {
 	{
 		Schema::create('words', function ($table) {
 			$table->increments('id');
-			$table->string('wordId');
-			$table->string('email');
-			$table->string('tokenId');
-			$table->integer('status');
-			$table->integer('active');
-			$table->string('username');
+			$table->integer('id_word');
+			$table->integer('id_subject');
+			$table->integer('id_course');
+			$table->string('word');
+			$table->string('mean');
+			$table->string('example');
+			$table->string('example_mean');
+			$table->integer('num_ef');
+			$table->string('time_date');
+			$table->string('next_time');
+			$table->integer('num_n');
+			$table->integer('num_i');
+			$table->integer('max_q');
+			$table->string('phonectic');
+			$table->string('des');
 			$table->timestamps();
 		});
 	}
