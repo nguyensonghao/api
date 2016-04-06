@@ -16,12 +16,14 @@ class Word extends Eloquent {
 	 */
 	protected $table = 'words';	
 
-	public function getListExcute () {
-		return Word::where('status', 1)->paginate(20);
+	public function getListExcute ($id_course) {
+		return Word::where('status', 1)->where('id_course', '>', $id_course)
+		->where('id_course', '<', $id_course + 10)->paginate(20);
 	}
 
-	public function getListNotExcute () {
-		return Word::where('status', '<>', 1)->paginate(20);
+	public function getListNotExcute ($id_course) {
+		return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+		->where('id_course', '<', $id_course + 10)->paginate(20);
 	}
 
 	public function completeImage ($id) {

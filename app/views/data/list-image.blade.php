@@ -61,6 +61,8 @@
 					<div class="result">
 
 					</div>
+
+					<button type="button" class="btn btn-default btn-load-more">Thêm ảnh</button>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>					
@@ -71,8 +73,12 @@
 
 	<script>
 		var listImage = [];
+		var indexPage = 0;
+		var idWord;
 
-		var showImage = function (id, word, mean) {
+		var showImage = function (id, word, mean) {		
+			indexPage = 1;
+			idWord = id;	
 			$('#modal-show-image .modal-title').html('Ảnh cho từ ' + word + '('+ mean +')');
 			var str = '';
 			$('#modal-show-image').modal('show');
@@ -110,12 +116,12 @@
 		var downloadImage = function (id, index) {
 			$('.cover').css('display', 'block');
 			for (var i = 0; i < listImage.length; i++) {
-				if (listImage[i].index == index) {
+				if (listImage[i].index == index) {					
 					$.ajax({
 						url: "<?php echo Asset('tai-anh-ve') ?>",
 						type: 'post',
 						data : {id: id, url: listImage[i].url},
-						success: function (data) {
+						success: function (data) {							
 							$('.cover').css('display', 'none');
 							if (data.status == 200) {
 								$('#modal-show-image').modal('hide');
@@ -135,6 +141,40 @@
 				}
 			}
 		}
+
+		$('.btn-load-more').click(function () {
+			$('.cover').css('display', 'block');
+			++indexPage;
+			$.ajax({
+				url: '<?php echo Asset("them-anh") ?>',
+				type: 'post',
+				data: {start : indexPage * 20, id : idWord},
+				success: function (data) {					
+					$('.cover').css('display', 'none');
+					var listUrl = data.url;
+					if (listUrl == null) {
+						$('#modal-show-image').modal('hide');
+						alert('Có lỗi hệ thống xảy ra');
+					} else {
+						var str = '';
+						for (var i = 0; i < listUrl.length; i++) {
+							var index = i + indexPage * 20 ;
+							str += '<div class="col-md-3"><div class="box"><img src="'+ listUrl[i].url +'" height="300px" width="100%"><button onclick="downloadImage('+ data.id +', '+ index +')" class="btn btn-primary">Chọn</button></div></div>';
+							listImage.push({
+								index: i + indexPage * 20,
+								url : listUrl[i].url
+							})
+						}					
+						$('#modal-show-image .loadding').css('display', 'none');
+						$('#modal-show-image .modal-body .result').append(str);
+					}					
+				},
+				error: function () {
+					$('.cover').css('display', 'none');					
+					alert('Có lỗi hệ thống xảy ra');
+				}
+			})
+		})
 	</script>
 
 @endsection

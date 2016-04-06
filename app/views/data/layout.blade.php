@@ -24,15 +24,60 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý dữ liệu <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Anh <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{{ Asset('danh-sach-anh-da-duyet') }}">
+								<a href="{{ Asset('danh-sach-anh-da-duyet/101000000') }}">
 									Danh sách ảnh đã duyệt
 								</a>
 							</li>
 							<li>
-								<a href="{{ Asset('danh-sach-anh-chua-duyet') }}">
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/101000000') }}">
+									Danh sách ảnh chưa duyệt
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Trung <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{{ Asset('danh-sach-anh-da-duyet/102000000') }}">
+									Danh sách ảnh đã duyệt
+								</a>
+							</li>
+							<li>
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/102000000') }}">
+									Danh sách ảnh chưa duyệt
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Hàn <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{{ Asset('danh-sach-anh-da-duyet/103000000') }}">
+									Danh sách ảnh đã duyệt
+								</a>
+							</li>
+							<li>
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/103000000') }}">
+									Danh sách ảnh chưa duyệt
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Nhật <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{{ Asset('danh-sach-anh-da-duyet/104000000') }}">
+									Danh sách ảnh đã duyệt
+								</a>
+							</li>
+							<li>
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/104000000') }}">
 									Danh sách ảnh chưa duyệt
 								</a>
 							</li>

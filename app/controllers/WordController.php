@@ -18,17 +18,21 @@ class WordController extends BaseController {
 		return View::make('data.list-image', $list);
 	}
 
-	public function showListImageExcuted () {
-		$list['listWord'] = $this->word->getListExcute();
+	public function showListImageExcuted ($id_course) {
+		$list['listWord'] = $this->word->getListExcute($id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
+			str_replace("'", "", $list['listWord'][$i]->word);
+			str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image-excuted', $list);
 	}
 
-	public function showListImageNotExcuted () {
-		$list['listWord'] = $this->word->getListNotExcute();
+	public function showListImageNotExcuted ($id_course) {
+		$list['listWord'] = $this->word->getListNotExcute($id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
+			str_replace("'", "", $list['listWord'][$i]->word);
+			str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image', $list);
@@ -45,20 +49,28 @@ class WordController extends BaseController {
 	public function actionGetImageUrl () {
 		$id = $_POST['id'];
 		$word = DB::table('words')->where('id', $id)->first();
-		$word->url = $this->getUrlImage($word->word);
+		$word->url = $this->getUrlImage(0, $word->word);
 		return Response::json($word);
 	}
 
-	public function getUrlImage ($query) {
+	public function getUrlImage ($start, $query) {
 		try {
 			$query = rawurlencode($query);
-			$data = file_get_contents('https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&rsz=filtered_cse&num=20&hl=en&prettyPrint=true&source=gcsc&gss=.com&searchtype=image&q=' . $query . '&cx=011716203299611176711:o1y_nlme1qq');
+			$data = file_get_contents('https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&rsz=filtered_cse&start='. $start .'&num=20&hl=en&prettyPrint=true&source=gcsc&gss=.com&searchtype=image&q=' . $query . '&cx=011716203299611176711:o1y_nlme1qq');
 			$data = json_decode($data);
 			$result = $data->results;
 			return $result;	
 		} catch (Exception $e) {
 			return null;
-		}		
+		}
+	}
+
+	public function actionLoadMoreImageUrl () {
+		$id = $_POST['id'];
+		$start = $_POST['start'];
+		$word = DB::table('words')->where('id', $id)->first();
+		$word->url = $this->getUrlImage($start, $word->word);
+		return Response::json($word);		
 	}
 
 	public function actionDownloadImage () {
