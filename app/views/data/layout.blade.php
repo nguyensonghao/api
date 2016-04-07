@@ -23,7 +23,7 @@
 	
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">					
-					<li class="dropdown">
+					<li class="dropdown {{ WordController::actionActiveMenu(101000000) }}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Anh <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -38,7 +38,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="dropdown">
+					<li class="dropdown {{ WordController::actionActiveMenu(102000000) }}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Trung <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -53,7 +53,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="dropdown">
+					<li class="dropdown {{ WordController::actionActiveMenu(103000000) }}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Hàn <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -68,7 +68,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="dropdown">
+					<li class="dropdown {{ WordController::actionActiveMenu(104000000) }}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Nhật <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>

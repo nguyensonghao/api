@@ -127,7 +127,7 @@ Route::get('danh-sach-anh-da-duyet/{id_course}', 'WordController@showListImageEx
 
 Route::get('danh-sach-anh-chua-duyet/{id_course}', 'WordController@showListImageNotExcuted');
 
-Route::get('hoan-thanh-duyet-anh/{id}', 'WordController@actionCompleteImage');
+Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
 
@@ -135,7 +135,9 @@ Route::post('tai-anh-ve', 'WordController@actionDownloadImage');
 
 Route::post('them-anh', 'WordController@actionLoadMoreImageUrl');
 
-Route::get('test10', function () {
+Route::post('sua-nghia', 'WordController@actionFixMean');
+
+Route::get('test-10', function () {
 	$str = "I'm Hao";
 	echo str_replace("'", "", $str);
 });

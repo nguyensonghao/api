@@ -21,8 +21,10 @@ class WordController extends BaseController {
 	public function showListImageExcuted ($id_course) {
 		$list['listWord'] = $this->word->getListExcute($id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
-			str_replace("'", "", $list['listWord'][$i]->word);
-			str_replace("'", "", $list['listWord'][$i]->mean);
+			$word = str_replace("'", "", $list['listWord'][$i]->word);
+			$list['listWord'][$i]->word = $word;
+			$word = str_replace("'", "", $list['listWord'][$i]->mean);
+			$list['listWord'][$i]->mean = $mean;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image-excuted', $list);
@@ -31,25 +33,32 @@ class WordController extends BaseController {
 	public function showListImageNotExcuted ($id_course) {
 		$list['listWord'] = $this->word->getListNotExcute($id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
-			str_replace("'", "", $list['listWord'][$i]->word);
-			str_replace("'", "", $list['listWord'][$i]->mean);
+			$word = str_replace("'", "", $list['listWord'][$i]->word);
+			$list['listWord'][$i]->word = $word;
+			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
+			$list['listWord'][$i]->mean = $mean;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image', $list);
 	}
 
-	public function actionCompleteImage ($id) {
+	public function actionCompleteImage () {
+		$id = $_POST['id'];
 		if ($this->word->completeImage($id)) {
-			return Redirect::back()->with('notify', 'hoàn thành ảnh thành công');
+			return Response::json(array('status' => 200));
 		} else {
-			return Redirect::back()->with('error', 'có lỗi xảy ra');
+			return Response::json(array('status' => 304));
 		}
 	}
 
 	public function actionGetImageUrl () {
 		$id = $_POST['id'];
 		$word = DB::table('words')->where('id', $id)->first();
-		$word->url = $this->getUrlImage(0, $word->word);
+		if (isset($_POST['newWord']) && $_POST['newWord'] != null && $_POST['newWord'] != '') {
+			$word->url = $this->getUrlImage(0, $_POST['newWord']);
+		} else {
+			$word->url = $this->getUrlImage(0, $word->word);
+		}			
 		return Response::json($word);
 	}
 
@@ -95,6 +104,16 @@ class WordController extends BaseController {
 		} catch (Exception $e) {
 			return Response::json(array('status' => 304));
 		}		
+	}
+
+	public function actionFixMean () {
+		$id = $_POST['id'];
+		$mean = $_POST['mean'];
+		if ($this->word->updateMean($id, $mean)) {
+			return Response::json(array('status' => 200));
+		} else {
+			return Response::json(array('status' => 304));
+		}
 	}
 	
 	public function download_and_crop_image ($file_path, $file_name, $url_download, $h, $w) {
@@ -148,6 +167,13 @@ class WordController extends BaseController {
 			default:
 				return 'Japanese';
 		}
+	}
+
+	public static function actionActiveMenu ($type) {
+		$name = Request::segment(2);
+		if ($type == $name) {
+			return 'active';
+		} else return '';
 	}
 
 }

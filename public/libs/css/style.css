@@ -69,3 +69,10 @@
 body {
     background: #F1F1F1;
 }
+
+.btn-refresh {
+	position: fixed;
+	top: 50%;
+	right: 0px;
+	border-radius: 0px;
+}
