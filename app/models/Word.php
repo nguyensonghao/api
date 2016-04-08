@@ -14,12 +14,25 @@ class Word extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'word';
+	protected $table = 'words';	
 
-	public function add () {
-		
+	public function getListExcute ($id_course) {
+		return Word::where('status', 1)->where('id_course', '>', $id_course)
+		->where('id_course', '<', $id_course + 10)->paginate(20);
 	}
 
+	public function getListNotExcute ($id_course) {
+		return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+		->where('id_course', '<', $id_course + 10)->paginate(20);
+	}
+
+	public function completeImage ($id) {
+		return Word::where('id', $id)->update(array('status' => 1));
+	}
+
+	public function updateMean ($id, $mean) {
+		return Word::where('id', $id)->update(array('mean' => $mean));
+	}
 
 
 }
