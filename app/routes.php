@@ -138,13 +138,14 @@ Route::post('them-anh', 'WordController@actionLoadMoreImageUrl');
 Route::post('sua-nghia', 'WordController@actionFixMean');
 
 Route::get('test', function () {
+	ini_set('max_execution_time', 600000000);
 	$list_data = DB::table('words')->where('word', '')->where('id_course', '>', 104000000)->where('id_course', '<', 104000009)
 	->get();
 	foreach ($list_data as $key => $value) {
 		$phonectic = $value->phonectic;
 		$word = $value->word;
 		if ($word == null || $word == '') {
-			DB::table('words')->where('id', $value->id)->update('word', $phonectic);
+			DB::table('words')->where('id', $value->id)->update(array('word' => $phonectic));
 		}
 	}
 });
