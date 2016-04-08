@@ -137,7 +137,14 @@ Route::post('them-anh', 'WordController@actionLoadMoreImageUrl');
 
 Route::post('sua-nghia', 'WordController@actionFixMean');
 
-Route::get('test-10', function () {
-	$str = "I'm Hao";
-	echo str_replace("'", "", $str);
+Route::get('test', function () {
+	$list_data = DB::table('words')->where('word', '')->where('id_course', '>', 104000000)->where('id_course', '<', 104000009)
+	->get();
+	foreach ($list_data as $key => $value) {
+		$phonectic = $value->phonectic;
+		$word = $value->word;
+		if ($word == null || $word == '') {
+			DB::table('words')->where('id', $value->id)->update('word', $phonectic);
+		}
+	}
 });
