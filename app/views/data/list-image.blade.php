@@ -218,6 +218,7 @@
 		var fixMean = function (id, word, mean, phonectic) {
 			console.log(phonectic);
 			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
+			str += '<input type="text" name="word" class="form-control name-word" value="'+word+'"><p></p>';
 			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
 			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><hr>'
 			str += '<button type="button" class="btn btn-primary" onclick="updateMean('+id+')">Sửa</button>';
@@ -226,12 +227,13 @@
 		}
 
 		var updateMean = function (id) {			
+			var name = $('#modal-fix-mean .modal-body .name-word').val();
 			var mean = $('#modal-fix-mean .modal-body .mean-word').val();
 			var phonectic = $('#modal-fix-mean .modal-body .phonectic-word').val();
 			$.ajax({
 				url : '<?php echo Asset("sua-nghia") ?>',
 				type : 'post',
-				data : {id : id, mean : mean, phonectic : phonectic},
+				data : {id : id, mean : mean, phonectic : phonectic, word : name},
 				success : function (data) {
 					if (data.status == 200) {
 						$('#modal-fix-mean').modal('hide');

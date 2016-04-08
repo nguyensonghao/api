@@ -35,8 +35,8 @@ class Word extends Eloquent {
 		return Word::where('id', $id)->update(array('status' => 1));
 	}
 
-	public function updateMean ($id, $mean, $phonectic) {
-		return Word::where('id', $id)->update(array('mean' => $mean, 'phonectic' => $phonectic));
+	public function updateMean ($id, $mean, $phonectic, $word) {
+		return Word::where('id', $id)->update(array('mean' => $mean, 'phonectic' => $phonectic, 'word' => $word));
 	}
 
 

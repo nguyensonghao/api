@@ -114,7 +114,8 @@ class WordController extends BaseController {
 		$id = $_POST['id'];
 		$mean = $_POST['mean'];
 		$phonectic = $_POST['phonectic'];
-		if ($this->word->updateMean($id, $mean, $phonectic)) {
+		$word = $_POST['word'];
+		if ($this->word->updateMean($id, $mean, $phonectic, $word)) {
 			return Response::json(array('status' => 200));
 		} else {
 			return Response::json(array('status' => 304));
