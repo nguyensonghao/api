@@ -146,3 +146,12 @@ Route::post('sua-nghia', 'WordController@actionFixMean');
 Route::post('dang-nhap', 'WordController@actionLogin');
 
 Route::post('them-admin', 'WordController@actionAddAdmin');
+
+Route::get('test', function () {
+	$user = new User();
+	$user->username = 'admin';
+	$user->password = Hash::make('123456');
+	$user->tokenId = 10;
+	$user->id = User::count();
+	$user->save();
+});
