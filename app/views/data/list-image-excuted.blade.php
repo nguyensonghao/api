@@ -4,26 +4,32 @@
 @section('content')
 	
 	<div class="row list-image">
-		@foreach($listWord as $key=>$value)
-		<div class="col-md-3">
-			<div class="panel">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{ $value->word }}({{$value->mean}})</h3>
-				</div>
-				<div class="panel-body">
-					<a class="thumbnail">
-						<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
-					</a>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default" onclick='showImage({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}")'>
-							<span class="glyphicon glyphicon-eye-open"></span>
-							Xem
-						</button>
-					</div>
-				</div>				
+		@if (count($listWord) == 0)
+			<div class="alert alert-danger">				
+				Chưa có từ nào
 			</div>
-		</div>
-		@endforeach
+		@else
+			@foreach($listWord as $key=>$value)
+			<div class="col-md-3">
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{ $value->word }}({{$value->mean}})</h3>
+					</div>
+					<div class="panel-body">
+						<a class="thumbnail">
+							<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
+						</a>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default" onclick='showImage({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}")'>
+								<span class="glyphicon glyphicon-eye-open"></span>
+								Xem
+							</button>
+						</div>
+					</div>				
+				</div>
+			</div>
+			@endforeach
+		@endif
 	</div>	
 
 	{{ $listWord->links() }}
