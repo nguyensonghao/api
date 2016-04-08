@@ -4,11 +4,37 @@
 @section('content')
 	
 	<div class="row list-image">
+		<div class="col-md-12 select-subject">
+			<form class="form-inline">			
+				<div class="form-group">
+					<label>Danh sách khóa học:</label>
+					<select class="form-control" onchange="window.location.href = this.value">
+						<option value="{{ Asset('danh-sach-anh-chua-duyet') . '/' . Request::segment(2) . '/all'}}" @if (Session::get('select_subject') == 'all') selected @endif>
+							Tất cả							
+						</option>
+						@foreach ($listSubject as $value)
+							<option value="{{ Asset('danh-sach-anh-chua-duyet') . '/' . Request::segment(2) . '/' . $value->id }}" @if (Session::get('select_subject') == $value->id) selected @endif>
+								@if ($value->name != null && $value->name != '')
+									{{ $value->name }}
+								@else
+									{{ $value->mean }}
+								@endif								
+							</option>
+						@endforeach						
+					</select>
+				</div>
+			</form>
+		</div>
 		@foreach($listWord as $key=>$value)
 		<div class="col-md-3">
 			<div class="panel">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{ $value->word }}({{$value->mean}})</h3>
+				<div class="panel-heading panel-title">				
+					<h3>{{ $value->word }}({{$value->mean}})</h3>
+					@if ($value->phonectic != null && $value->phonectic != '')
+						<i>Phiên âm: {{ $value->phonectic }}</i>
+					@else 
+						<i>Phiên âm: Trống</i>
+					@endif
 				</div>
 				<div class="panel-body">
 					<a class="thumbnail">
@@ -23,7 +49,7 @@
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							Xem
 						</button>
-						<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}")'>
+						<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonectic }}")'>
 							<span class="glyphicon glyphicon glyphicon-pencil"></span> 
 							Sửa
 						</button>
@@ -189,9 +215,11 @@
 			})
 		}
 
-		var fixMean = function (id, word, mean) {
+		var fixMean = function (id, word, mean, phonectic) {
+			console.log(phonectic);
 			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
-			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><hr>';
+			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
+			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><hr>'
 			str += '<button type="button" class="btn btn-primary" onclick="updateMean('+id+')">Sửa</button>';
 			$('#modal-fix-mean .modal-body').html(str);
 			$('#modal-fix-mean').modal('show');
@@ -199,10 +227,11 @@
 
 		var updateMean = function (id) {			
 			var mean = $('#modal-fix-mean .modal-body .mean-word').val();
+			var phonectic = $('#modal-fix-mean .modal-body .phonectic-word').val();
 			$.ajax({
 				url : '<?php echo Asset("sua-nghia") ?>',
 				type : 'post',
-				data : {id : id, mean : mean},
+				data : {id : id, mean : mean, phonectic : phonectic},
 				success : function (data) {
 					if (data.status == 200) {
 						$('#modal-fix-mean').modal('hide');

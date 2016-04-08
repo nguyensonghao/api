@@ -21,17 +21,22 @@ class Word extends Eloquent {
 		->where('id_course', '<', $id_course + 10)->paginate(20);
 	}
 
-	public function getListNotExcute ($id_course) {
-		return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
-		->where('id_course', '<', $id_course + 10)->paginate(20);
+	public function getListNotExcute ($id_course, $id_subject) {
+		if ($id_subject == 'all') {
+			return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+		    ->where('id_course', '<', $id_course + 10)->paginate(20);
+		} else {
+			return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+		    ->where('id_subject', $id_subject)->where('id_course', '<', $id_course + 10)->paginate(20);
+		}		
 	}
 
 	public function completeImage ($id) {
 		return Word::where('id', $id)->update(array('status' => 1));
 	}
 
-	public function updateMean ($id, $mean) {
-		return Word::where('id', $id)->update(array('mean' => $mean));
+	public function updateMean ($id, $mean, $phonectic) {
+		return Word::where('id', $id)->update(array('mean' => $mean, 'phonectic' => $phonectic));
 	}
 
 

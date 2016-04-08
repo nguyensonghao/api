@@ -5,8 +5,16 @@
 
 .list-image .panel-title {
 	text-align: center;
-	height: 40px;
-	overflow: hidden;
+	height: 120px;
+	overflow: auto;	
+}
+
+.list-image .panel-title h3 {
+	font-size: 16px !important;
+}
+
+.list-image .panel-title i {
+	font-size: 14px !important;
 }
 
 #modal-show-image .loadding {
@@ -75,4 +83,18 @@ body {
 	top: 50%;
 	right: 0px;
 	border-radius: 0px;
+}
+
+.list-image {
+	padding-top: 10px;
+}
+
+.select-subject select {
+	margin-bottom: 20px;
+}
+
+.select-subject label {
+	position: relative;
+    top: -10px;
+    margin-right: 10px;
 }

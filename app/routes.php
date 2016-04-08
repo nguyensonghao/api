@@ -125,7 +125,7 @@ Route::controller('word', 'WordController');
 
 Route::get('danh-sach-anh-da-duyet/{id_course}', 'WordController@showListImageExcuted');
 
-Route::get('danh-sach-anh-chua-duyet/{id_course}', 'WordController@showListImageNotExcuted');
+Route::get('danh-sach-anh-chua-duyet/{id_course}/{id_subject}', 'WordController@showListImageNotExcuted');
 
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
@@ -139,13 +139,13 @@ Route::post('sua-nghia', 'WordController@actionFixMean');
 
 Route::get('test', function () {
 	ini_set('max_execution_time', 600000000);
-	$list_data = DB::table('words')->where('word', '')->where('id_course', '>', 104000000)->where('id_course', '<', 104000009)
-	->get();
-	foreach ($list_data as $key => $value) {
-		$phonectic = $value->phonectic;
-		$word = $value->word;
-		if ($word == null || $word == '') {
-			DB::table('words')->where('id', $value->id)->update(array('word' => $phonectic));
-		}
+	$list_data = file_get_contents(public_path() . '/AllData/English/101000001/json/words.json');
+	$list_data = json_decode($list_data);
+	for($i = 0; $i < count($list_data); $i++) {
+		$e = $list_data[$i];
+		$id_subject = $e->id_subject;
+		Word::where('id_word', $e->id_word)->update(array('id_subject' => $id_subject));
 	}
+
+	echo json_encode($list_data);
 });

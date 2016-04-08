@@ -3,9 +3,11 @@
 class WordController extends BaseController {
 
 	public $word;
+	public $subject;
 
 	public function __construct () {
 		$this->word = new Word();
+		$this->subject = new Subject();
 	}
 
 	public function showHome () {
@@ -19,19 +21,21 @@ class WordController extends BaseController {
 	}
 
 	public function showListImageExcuted ($id_course) {
-		$list['listWord'] = $this->word->getListExcute($id_course);
+		$list['listWord'] = $this->word->getListExcute($id_course);		
 		for ($i = 0; $i < count($list['listWord']); $i++) {
 			$word = str_replace("'", "", $list['listWord'][$i]->word);
 			$list['listWord'][$i]->word = $word;
-			$word = str_replace("'", "", $list['listWord'][$i]->mean);
+			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image-excuted', $list);
 	}
 
-	public function showListImageNotExcuted ($id_course) {
-		$list['listWord'] = $this->word->getListNotExcute($id_course);
+	public function showListImageNotExcuted ($id_course, $id_subject) {
+		$list['listWord'] = $this->word->getListNotExcute($id_course, $id_subject);
+		$list['listSubject'] = $this->subject->getList($id_course);
+		Session::set('select_subject', $id_subject);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
 			$word = str_replace("'", "", $list['listWord'][$i]->word);
 			$list['listWord'][$i]->word = $word;
@@ -109,7 +113,8 @@ class WordController extends BaseController {
 	public function actionFixMean () {
 		$id = $_POST['id'];
 		$mean = $_POST['mean'];
-		if ($this->word->updateMean($id, $mean)) {
+		$phonectic = $_POST['phonectic'];
+		if ($this->word->updateMean($id, $mean, $phonectic)) {
 			return Response::json(array('status' => 200));
 		} else {
 			return Response::json(array('status' => 304));

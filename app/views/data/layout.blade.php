@@ -32,7 +32,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ Asset('danh-sach-anh-chua-duyet/101000000') }}">
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/101000000/all') }}">
 									Danh sách ảnh chưa duyệt
 								</a>
 							</li>
@@ -47,7 +47,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ Asset('danh-sach-anh-chua-duyet/102000000') }}">
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/102000000/all') }}">
 									Danh sách ảnh chưa duyệt
 								</a>
 							</li>
@@ -62,7 +62,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ Asset('danh-sach-anh-chua-duyet/103000000') }}">
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/103000000/all') }}">
 									Danh sách ảnh chưa duyệt
 								</a>
 							</li>
@@ -77,7 +77,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ Asset('danh-sach-anh-chua-duyet/104000000') }}">
+								<a href="{{ Asset('danh-sach-anh-chua-duyet/104000000/all') }}">
 									Danh sách ảnh chưa duyệt
 								</a>
 							</li>
