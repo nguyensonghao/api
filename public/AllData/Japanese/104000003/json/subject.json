@@ -54,15 +54,6 @@
     "time_date": null
   },
   {
-    "id": 104000084,
-    "id_course": 104000003,
-    "name": "第1週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000085,
     "id_course": 104000003,
     "name": "第2週 (1) - 仕事を探しています",
@@ -113,15 +104,6 @@
     "name": "第2週 (6) - パソコンを使っています③",
     "mean": null,
     "total": 28,
-    "num_word": null,
-    "time_date": null
-  },
-  {
-    "id": 104000091,
-    "id_course": 104000003,
-    "name": "第2週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
     "num_word": null,
     "time_date": null
   },
@@ -180,15 +162,6 @@
     "time_date": null
   },
   {
-    "id": 104000098,
-    "id_course": 104000003,
-    "name": "第3週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000099,
     "id_course": 104000003,
     "name": "第4週 (1) - なんとか覚えよう",
@@ -239,15 +212,6 @@
     "name": "第4週 (6) - いったん覚えたら忘れない",
     "mean": null,
     "total": 46,
-    "num_word": null,
-    "time_date": null
-  },
-  {
-    "id": 104000105,
-    "id_course": 104000003,
-    "name": "第4週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
     "num_word": null,
     "time_date": null
   },
@@ -306,15 +270,6 @@
     "time_date": null
   },
   {
-    "id": 104000112,
-    "id_course": 104000003,
-    "name": "第5週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000113,
     "id_course": 104000003,
     "name": "第6週 (1) - カタカナで書く言葉①",
@@ -369,15 +324,6 @@
     "time_date": null
   },
   {
-    "id": 104000119,
-    "id_course": 104000003,
-    "name": "第6週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000120,
     "id_course": 104000003,
     "name": "第7週 (1) - 意味がたくさんある言葉①",
@@ -428,15 +374,6 @@
     "name": "第7週 (6) - 言葉の後ろにつく語②",
     "mean": null,
     "total": 39,
-    "num_word": null,
-    "time_date": null
-  },
-  {
-    "id": 104000126,
-    "id_course": 104000003,
-    "name": "第7週 (7) - 実戦問題 - N2_語彙",
-    "mean": null,
-    "total": 0,
     "num_word": null,
     "time_date": null
   },

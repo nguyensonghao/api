@@ -54,15 +54,6 @@
     "time_date": null
   },
   {
-    "id": 104000139,
-    "id_course": 104000004,
-    "name": "第1週 (7) - 実戦問題",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000140,
     "id_course": 104000004,
     "name": "第2週 (1) - 計画を立てましょう",
@@ -113,15 +104,6 @@
     "name": "第2週 (6) - 用事を済ませましょう",
     "mean": null,
     "total": 36,
-    "num_word": null,
-    "time_date": null
-  },
-  {
-    "id": 104000146,
-    "id_course": 104000004,
-    "name": "第2週 (7) - 実戦問題",
-    "mean": null,
-    "total": 0,
     "num_word": null,
     "time_date": null
   },
@@ -180,15 +162,6 @@
     "time_date": null
   },
   {
-    "id": 104000153,
-    "id_course": 104000004,
-    "name": "第3週 (7) - 実戦問題",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000154,
     "id_course": 104000004,
     "name": "第4週 (1) - 学校へ行きましょう①",
@@ -243,15 +216,6 @@
     "time_date": null
   },
   {
-    "id": 104000160,
-    "id_course": 104000004,
-    "name": "第4週 (7) - 実戦問題",
-    "mean": null,
-    "total": 0,
-    "num_word": null,
-    "time_date": null
-  },
-  {
     "id": 104000161,
     "id_course": 104000004,
     "name": "第5週 (1) - どういう関係ですか",
@@ -302,15 +266,6 @@
     "name": "第5週 (6) - どんなようすですか②",
     "mean": null,
     "total": 33,
-    "num_word": null,
-    "time_date": null
-  },
-  {
-    "id": 104000167,
-    "id_course": 104000004,
-    "name": "第5週 (7) - 実戦問題",
-    "mean": null,
-    "total": 0,
     "num_word": null,
     "time_date": null
   },
