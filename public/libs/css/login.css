@@ -1,0 +1,121 @@
+body {
+	background: rgb(42, 63, 84);
+	font-family: Roboto ,"Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.box-login {
+	background: white;
+	margin-top: 60px;
+	border-radius: 2px;
+	width: 600px;
+	overflow: auto;
+	text-align: left;
+	position: absolute;
+    left: 50%;
+    margin-left: -300px;
+}
+
+.form-control, .btn {
+	border-radius: 0px;
+}
+
+.banner {
+	height: 50px;
+    background: #E16C6C;
+    font-size: 16px;
+    color: white;
+    line-height: 50px;
+    padding-left: 20px;
+}
+
+.banner i {
+	font-size: 20px;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+}
+
+/*.form {
+	width: 60
+}*/
+
+.form .col-md-6 {
+	padding: 0px;
+}
+
+.form .action {
+	padding: 0px;
+}
+
+.form .forget-password {
+	line-height: 40px;
+}
+
+.form, .introduction {
+	padding: 20px 15px;
+}
+
+.introduction {
+	height: 265px;
+	color: gray;
+	background: whitesmoke;
+	width: 40%;
+	float: left;
+	margin-right: 10px;
+}
+
+.form label {
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.form .btn-link {
+	font-size: 15px;
+}
+
+.introduction .title {
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+.half {
+	float: left;
+}
+
+.action {
+	overflow: auto;
+}
+
+.forget-password {
+	text-align: center;
+}
+
+.btn-login {
+	clear: both;
+}
+
+.wrapper {
+	text-align: center;
+}
+
+@media (max-width: 630px) {
+	.not-mobile {
+		display: none;
+	}
+
+	.box-login {
+		width: 500px;
+		margin-left: -250px;
+	}
+}
+
+@media (max-width: 500px) {
+	.box-login {
+		width: 360px;
+		margin-left: -180px;
+	}
+}	
+
+.btn-login {
+	margin-top: 4px;
+}

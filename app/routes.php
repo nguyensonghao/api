@@ -127,6 +127,12 @@ Route::get('danh-sach-anh-da-duyet/{id_course}', 'WordController@showListImageEx
 
 Route::get('danh-sach-anh-chua-duyet/{id_course}/{id_subject}', 'WordController@showListImageNotExcuted');
 
+Route::get('dang-nhap', 'WordController@showLogin');
+
+Route::get('dang-xuat', 'WordController@actionLogout');
+
+Route::get('them-admin', 'WordController@showAddAdmin');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
@@ -137,15 +143,6 @@ Route::post('them-anh', 'WordController@actionLoadMoreImageUrl');
 
 Route::post('sua-nghia', 'WordController@actionFixMean');
 
-Route::get('test', function () {
-	ini_set('max_execution_time', 600000000);
-	$list_data = file_get_contents(public_path() . '/AllData/English/101000001/json/words.json');
-	$list_data = json_decode($list_data);
-	for($i = 0; $i < count($list_data); $i++) {
-		$e = $list_data[$i];
-		$id_subject = $e->id_subject;
-		Word::where('id_word', $e->id_word)->update(array('id_subject' => $id_subject));
-	}
+Route::post('dang-nhap', 'WordController@actionLogin');
 
-	echo json_encode($list_data);
-});
+Route::post('them-admin', 'WordController@actionAddAdmin');

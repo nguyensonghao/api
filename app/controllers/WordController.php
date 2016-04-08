@@ -4,10 +4,13 @@ class WordController extends BaseController {
 
 	public $word;
 	public $subject;
+	public $admin;
 
 	public function __construct () {
+		$this->beforeFilter('login-systerm');
 		$this->word = new Word();
 		$this->subject = new Subject();
+		$this->admin = new Admin();
 	}
 
 	public function showHome () {
@@ -46,12 +49,78 @@ class WordController extends BaseController {
 		return View::make('data.list-image', $list);
 	}
 
+	public function showLogin () {
+		if (Auth::check()) {
+			return Redirect::to('danh-sach-anh-chua-duyet/101000000/all');
+		} else {
+			return View::make('data.login');
+		}
+		
+	}
+
+	public function showAddAdmin () {
+		if (Auth::user()->tokenId != '10') {
+			return Redirect::to('dang-nhap');
+		} else {
+			return View::make('data.add-admin');
+		}		
+	}
+
 	public function actionCompleteImage () {
 		$id = $_POST['id'];
 		if ($this->word->completeImage($id)) {
 			return Response::json(array('status' => 200));
 		} else {
 			return Response::json(array('status' => 304));
+		}
+	}
+
+	public function actionLogin () {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		if ($username == null || $password == null || $username == '' || $password == '') {
+			return Redirect::back()->with('error', 'Tài khoản hoặc mật khẩu không đúng');
+		} else {
+			$user = $array = array('username' => $username, 'password' => $password, 'tokenId' => '1' );
+			if (Auth::attempt($user)) {
+				if (Auth::user()->status == -1) {
+					return Redirect::back()->with('error', 'Tài khoản đã bị khóa');
+				} else {
+					return Redirect::to('danh-sach-anh-chua-duyet/101000000/all');
+				}				
+			} else {
+				return Redirect::back()->with('error', 'Tài khoản hoặc mật khẩu không đúng');
+			}
+		}
+	}
+
+	public function actionLogout () {
+		Auth::logout();
+		return Redirect::to('dang-nhap')->with('error', 'Bạn vừa đăng xuất hệ thống');
+	}
+
+	public function actionAddAdmin () {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$password_confirm = $_POST['password_confirm'];
+		if ($username == null || $username == '' || $password_confirm == '' || $password_confirm == null) {
+			return Redirect::back()->with('error', 'không được để trống');
+		} else {
+			if ($password != $password_confirm) {
+				return Redirect::back()->with('error', 'mật khẩu không khớp');
+			} else {
+				$user = new User();
+				$user->username = $username;
+				$user->password = Hash::make($password);
+				$user->tokenId = 1;
+				$user->id = User::count();
+				if ($user->save()) {
+					return Redirect::back()->with('notify', 'thêm tài khoản thành công');
+				} else {
+					return Redirect::back()->with('error', 'có lỗi xử lý');
+				}
+
+			}						
 		}
 	}
 

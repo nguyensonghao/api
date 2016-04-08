@@ -92,3 +92,10 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('login-systerm', function () {
+	if (!Auth::check() && Request::segment(1) != 'dang-nhap') {
+		return Redirect::to('dang-nhap');
+	}
+});

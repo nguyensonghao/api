@@ -83,7 +83,15 @@
 							</li>
 						</ul>
 					</li>
-				</ul>				
+				</ul>
+				<ul class="nav navbar-nav navbar-right">					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ Asset('dang-xuat') }}">Đăng xuất</a></li>							
+						</ul>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</nav>
