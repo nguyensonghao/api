@@ -59,7 +59,7 @@ class WordController extends BaseController {
 	}
 
 	public function showAddAdmin () {
-		if (Auth::user()->tokenId != '10') {
+		if (Auth::user()->active != 10) {
 			return Redirect::to('dang-nhap');
 		} else {
 			return View::make('data.add-admin');
