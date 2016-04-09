@@ -22,12 +22,25 @@ class Word extends Eloquent {
 	}
 
 	public function getListNotExcute ($id_course, $id_subject) {
-		if ($id_subject == 'all') {
-			return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
-		    ->where('id_course', '<', $id_course + 10)->paginate(20);
+		$id = (string)$id_course;
+		$id = substr($id, -1);
+		$id = (int)$id;
+		if ($id == 0) {
+			if ($id_subject == 'all') {
+				return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+				->where('id_course', '<', $id_course + 10)->paginate(20);
+			} else {
+				return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
+				->where('id_course', '<', $id_course + 10)
+			    ->where('id_subject', $id_subject)->paginate(20);
+			}		
 		} else {
-			return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
-		    ->where('id_subject', $id_subject)->where('id_course', '<', $id_course + 10)->paginate(20);
+			if ($id_subject == 'all') {
+				return Word::where('status', '<>', 1)->where('id_course', $id_course)->paginate(20);
+			} else {
+				return Word::where('status', '<>', 1)->where('id_course', $id_course)
+			    ->where('id_subject', $id_subject)->paginate(20);
+			}		
 		}		
 	}
 

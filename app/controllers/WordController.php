@@ -5,11 +5,13 @@ class WordController extends BaseController {
 	public $word;
 	public $subject;
 	public $admin;
+	public $course;
 
 	public function __construct () {
 		$this->beforeFilter('login-systerm');
 		$this->word = new Word();
 		$this->subject = new Subject();
+		$this->course = new Course();
 		$this->admin = new Admin();
 	}
 
@@ -38,7 +40,9 @@ class WordController extends BaseController {
 	public function showListImageNotExcuted ($id_course, $id_subject) {
 		$list['listWord'] = $this->word->getListNotExcute($id_course, $id_subject);
 		$list['listSubject'] = $this->subject->getList($id_course);
+		$list['listCourse']  = $this->course->getList($id_course);
 		Session::set('select_subject', $id_subject);
+		Session::set('select_course', $id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
 			$word = str_replace("'", "", $list['listWord'][$i]->word);
 			$list['listWord'][$i]->word = $word;
@@ -46,6 +50,7 @@ class WordController extends BaseController {
 			$list['listWord'][$i]->mean = $mean;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
+		Log::info(Request::segment(3));
 		return View::make('data.list-image', $list);
 	}
 
@@ -66,34 +71,8 @@ class WordController extends BaseController {
 		}		
 	}
 
-	public function showExportData () {
-		$listSubject = Subject::all();
-		$list['listSubject'] = [];
-		foreach ($listSubject as $key => $value) {
-			$found = false;
-			$size = count($list['listSubject']);
-			$id_course = $value->id_course;
-			for ($i = 0; $i < $size; $i++) {
-				if ($size == 0) {
-					break;
-				} else {
-					if ($list['listSubject'][$i]['id_course'] == $id_course) {
-						$found = true;
-						break;
-					}
-				}				
-			}
-			if (!$found) {
-				$subject = array(
-					'id_course' => $id_course,
-					'count'     => Word::where('id_course', $id_course)->count(),
-					'countSubject' => Subject::where('id_course', $id_course)->count(),
-					'name_course' => $this->convertNameCourse($id_course)
-				);
-				array_push($list['listSubject'], $subject);
-			}			
-		}
-
+	public function showExportData () {		
+		$list['listCourse'] = Course::get();
 		return View::make('data.export-data', $list);
 	}
 

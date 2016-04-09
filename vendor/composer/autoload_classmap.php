@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AcountController' => $baseDir . '/app/controllers/AcountController.php',
     'ActiveUser' => $baseDir . '/app/models/ActiveUser.php',
+    'Admin' => $baseDir . '/app/models/Admin.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -35,6 +36,7 @@ return array(
     'CreateActiveUserTable' => $baseDir . '/app/database/migrations/2016_01_27_044319_create_active_user_table.php',
     'CreateAdminTable' => $baseDir . '/app/database/migrations/2016_04_08_034613_create_admin_table.php',
     'CreateCategoryTable' => $baseDir . '/app/database/migrations/2016_02_17_085033_create_category_table.php',
+    'CreateCourseTable' => $baseDir . '/app/database/migrations/2016_04_09_035857_create_course_table.php',
     'CreateFlashcardTable' => $baseDir . '/app/database/migrations/2016_03_15_080408_create_flashcard_table.php',
     'CreateKeyResetTable' => $baseDir . '/app/database/migrations/2016_01_27_044304_create_key_reset_table.php',
     'CreateMaziiTable' => $baseDir . '/app/database/migrations/2016_02_19_011122_create_mazii_table.php',

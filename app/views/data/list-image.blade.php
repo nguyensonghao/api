@@ -5,9 +5,22 @@
 	
 	<div class="row list-image">
 		<div class="col-md-12 select-subject">
-			<form class="form-inline">			
+			<form class="form-inline">
 				<div class="form-group">
-					<label>Danh sách khóa học:</label>
+					<label>Khóa học:</label>
+					<select class="form-control" onchange="window.location.href = this.value">
+						<option @if (Session::get('select_course') == 'all') selected @endif value="{{ Asset('danh-sach-anh-chua-duyet/'. ((int)(Request::segment(2) / 1000)) * 1000 .'/all') }}">
+							Tất cả							
+						</option>
+						@foreach ($listCourse as $value)
+							<option value="{{ Asset('danh-sach-anh-chua-duyet') . '/' . $value->id . '/all' }}" @if (Session::get('select_course') == $value->id) selected @endif>
+								{{ $value->name }}
+							</option>
+						@endforeach						
+					</select>
+				</div>
+				<div class="form-group">
+					<label style="margin-left: 20px">Topic:</label>
 					<select class="form-control" onchange="window.location.href = this.value">
 						<option value="{{ Asset('danh-sach-anh-chua-duyet') . '/' . Request::segment(2) . '/all'}}" @if (Session::get('select_subject') == 'all') selected @endif>
 							Tất cả							
@@ -22,7 +35,7 @@
 							</option>
 						@endforeach						
 					</select>
-				</div>
+				</div>				
 			</form>
 		</div>
 		@foreach($listWord as $key=>$value)

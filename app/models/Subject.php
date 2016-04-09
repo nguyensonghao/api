@@ -17,8 +17,15 @@ class Subject extends Eloquent {
 	protected $table = 'subjects';	
 
 	public function getList ($id_course) {
-		return Subject::where('id_course', '>', $id_course)
-		->where('id_course', '<', $id_course + 9)->get();
+		$id = (string)$id_course;
+		$id = substr($id, -1);
+		$id = (int)$id;
+		if ($id == 0) {
+			return Subject::where('id_course', '>', $id_course)
+			->where('id_course', '<', $id_course + 10)->get();
+		} else {
+			return Subject::where('id_course', $id_course)->get();
+		}		
 	}
 
 }

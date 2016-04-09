@@ -152,5 +152,11 @@ Route::post('dang-nhap', 'WordController@actionLogin');
 Route::post('them-admin', 'WordController@actionAddAdmin');
 
 Route::get('test', function () {
-	Word::where('id_course', 101002)->update(array('id_course' => 101000002));
+	ini_set('max_execution_time', 600000000);
+	$file_name = public_path() . '/AllData/English/101000008/json/words.json';
+	$list_data = file_get_contents($file_name);
+	$list_data = json_decode($list_data);
+	for ($i = 0; $i < count($list_data); $i++) {
+		Word::where('id_word', $list_data[$i]->id_word)->update(array('id_subject' => $list_data[$i]->id_subject));
+	}
 });
