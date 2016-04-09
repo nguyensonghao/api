@@ -66,6 +66,36 @@ class WordController extends BaseController {
 		}		
 	}
 
+	public function showExportData () {
+		$listSubject = Subject::all();
+		$list['listSubject'] = [];
+		foreach ($listSubject as $key => $value) {
+			$found = false;
+			$size = count($list['listSubject']);
+			$id_course = $value->id_course;
+			for ($i = 0; $i < $size; $i++) {
+				if ($size == 0) {
+					break;
+				} else {
+					if ($list['listSubject'][$i]['id_course'] == $id_course) {
+						$found = true;
+						break;
+					}
+				}				
+			}
+			if (!$found) {
+				$subject = array(
+					'id_course' => $id_course,
+					'count'     => Word::where('id_course', $id_course)->count(),
+					'countSubject' => Subject::where('id_course', $id_course)->count()
+				);
+				array_push($list['listSubject'], $subject);
+			}			
+		}
+
+		return View::make('data.export-data', $list);
+	}
+
 	public function actionCompleteImage () {
 		$id = $_POST['id'];
 		if ($this->word->completeImage($id)) {
@@ -180,11 +210,12 @@ class WordController extends BaseController {
 	}
 
 	public function actionFixMean () {
-		$id = $_POST['id'];
-		$mean = $_POST['mean'];
-		$phonectic = $_POST['phonectic'];
+		$id   = $_POST['id'];
+		$mean = $_POST['mean'];		
 		$word = $_POST['word'];
-		if ($this->word->updateMean($id, $mean, $phonectic, $word)) {
+		$des  = $_POST['des'];
+		$phonectic = $_POST['phonectic'];
+		if ($this->word->updateMean($id, $mean, $phonectic, $word, $des)) {
 			return Response::json(array('status' => 200));
 		} else {
 			return Response::json(array('status' => 304));
@@ -227,6 +258,30 @@ class WordController extends BaseController {
 		}
 	}
 
+	public function actionExportData ($id_course) {
+		try {
+			$course_name = $this->convertNameCourse($id_course);
+			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonectic', 'des')->where('id_course', $id_course)->get());
+			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());
+			$fileNameWord = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/words.json';
+			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';
+			$fileWord = fopen($fileNameWord, "w");
+			$fileSubject = fopen($fileNameSubject, "w");
+			if (fwrite($fileWord, $strListWord) && fwrite($fileSubject, $strListSubject)) {
+				fclose($fileWord);
+				fclose($fileSubject);
+				return Redirect::to('xuat-du-lieu')->with('notify', 'Xuất dữ liệu mã khóa học '.$id_course.' thành công');
+			} else {
+				fclose($fileWord);
+				fclose($fileSubject);
+				return Redirect::to('xuat-du-lieu')->with('error', 'Có lỗi trong quá trình xử lý');
+			}			
+		} catch (Exception $e) {
+			Log::info($e);
+			return Redirect::to('xuat-du-lieu')->with('error', 'Có lỗi trong quá trình xử lý');
+		}		
+	}
+
 	public function convertNameCourse ($id_course) {
 		$id = (int)($id_course / 1000000);
 		switch ($id) {
@@ -249,7 +304,7 @@ class WordController extends BaseController {
 		if ($type == $name) {
 			return 'active';
 		} else return '';
-	}
+	}	
 
 }
 

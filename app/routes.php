@@ -133,6 +133,10 @@ Route::get('dang-xuat', 'WordController@actionLogout');
 
 Route::get('them-admin', 'WordController@showAddAdmin');
 
+Route::get('xuat-du-lieu', 'WordController@showExportData');
+
+Route::get('xuat-du-lieu/{id_course}', 'WordController@actionExportData');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
@@ -148,10 +152,5 @@ Route::post('dang-nhap', 'WordController@actionLogin');
 Route::post('them-admin', 'WordController@actionAddAdmin');
 
 Route::get('test', function () {
-	$user = new User();
-	$user->username = 'admin';
-	$user->password = Hash::make('123456');
-	$user->tokenId = 10;
-	$user->id = User::count();
-	$user->save();
+	Word::where('id_course', 101002)->update(array('id_course' => 101000002));
 });

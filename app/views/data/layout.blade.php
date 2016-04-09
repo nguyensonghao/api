@@ -83,6 +83,11 @@
 							</li>
 						</ul>
 					</li>
+					@if (Auth::user()->active == 10) 
+						<li class="{{ WordController::actionActiveMenu('xuat-du-lieu') }}">
+							<a href="{{ Asset('xuat-du-lieu') }}">Xuất dữ liệu</a>
+						</li>
+					@endif
 				</ul>
 				<ul class="nav navbar-nav navbar-right">					
 					<li class="dropdown">

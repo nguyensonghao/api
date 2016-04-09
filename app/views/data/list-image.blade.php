@@ -49,7 +49,7 @@
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							Xem
 						</button>
-						<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonectic }}")'>
+						<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonectic }}", "{{ $value->des }}")'>
 							<span class="glyphicon glyphicon glyphicon-pencil"></span> 
 							Sửa
 						</button>
@@ -215,12 +215,12 @@
 			})
 		}
 
-		var fixMean = function (id, word, mean, phonectic) {
-			console.log(phonectic);
+		var fixMean = function (id, word, mean, phonectic, des) {			
 			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
 			str += '<input type="text" name="word" class="form-control name-word" value="'+word+'"><p></p>';
 			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
-			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><hr>'
+			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><p></p>';
+			str += '<textarea class="des-word form-control" placeholder="Miêu tả">'+des+'</textarea><hr>';
 			str += '<button type="button" class="btn btn-primary" onclick="updateMean('+id+')">Sửa</button>';
 			$('#modal-fix-mean .modal-body').html(str);
 			$('#modal-fix-mean').modal('show');
@@ -230,10 +230,11 @@
 			var name = $('#modal-fix-mean .modal-body .name-word').val();
 			var mean = $('#modal-fix-mean .modal-body .mean-word').val();
 			var phonectic = $('#modal-fix-mean .modal-body .phonectic-word').val();
+			var des = $('#modal-fix-mean .modal-body .des-word').val();
 			$.ajax({
 				url : '<?php echo Asset("sua-nghia") ?>',
 				type : 'post',
-				data : {id : id, mean : mean, phonectic : phonectic, word : name},
+				data : {id : id, mean : mean, phonectic : phonectic, word : name, des: des},
 				success : function (data) {
 					if (data.status == 200) {
 						$('#modal-fix-mean').modal('hide');

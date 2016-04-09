@@ -98,3 +98,17 @@ body {
     top: -10px;
     margin-right: 10px;
 }
+
+.export .title {
+	padding: 10px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.export .btn {
+	border-radius: 0px;
+}
+
+.alert {
+	border-radius: none !important;
+}
