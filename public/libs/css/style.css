@@ -112,3 +112,21 @@ body {
 .alert {
 	border-radius: none !important;
 }
+
+.list-subject .title {
+	padding: 6px 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.list-subject .bg-danger {
+	background: #C14239 !important;
+	color: white;
+}
+
+.btn-export {
+    position: fixed;
+    right: 0px;
+    border-radius: 0px;
+    top: 50%;
+}

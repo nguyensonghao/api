@@ -266,6 +266,62 @@ class WordController extends BaseController {
 		}		
 	}
 
+	public function sortDataSubject ($id_course) {
+		$list['course'] = Course::where('id', $id_course)->first();
+		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')
+		->where('id_course', $id_course)->get();		
+		$listSubjectSort = [];		
+		$size = count($listSubject);
+		for ($i = 0; $i < $size; $i++) {
+			$subject = array(
+				'id' => $listSubject[$i]->id,
+				'name' => $listSubject[$i]->name,
+				'id_course' => $listSubject[$i]->id_course,
+				'mean' => $listSubject[$i]->mean,
+				'total' => Word::where('id_subject', $listSubject[$i]->id)->count(),
+				'num_word' => $listSubject[$i]->num_word,
+				'time_date' => $listSubject[$i]->time_date,
+			);			
+			array_push($listSubjectSort, $subject);
+		}
+
+		$list['listSubject'] = $listSubject;		
+		$list['listSubjectSort'] = $listSubjectSort;
+
+		return View::make('data.list-subject', $list);
+	}
+
+	public function sortDataSubjectJson ($id_course) {
+		ini_set('max_execution_time', 600000000);
+		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')
+		->where('id_course', $id_course)->get();		
+		$size = count($listSubject);
+		for ($i = 0; $i < $size; $i++) {
+			$subject = $listSubject[$i];
+			$count = Word::where('id_subject', $subject->id)->count();
+			Subject::where('id', $subject->id)->update(array('total' => $count));
+		}
+		try {
+			$course_name = $this->convertNameCourse($id_course);			
+			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());			
+			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';			
+			$fileSubject = fopen($fileNameSubject, "w");
+			if (fwrite($fileSubject, $strListSubject)) {
+				fclose($fileSubject);
+				return Redirect::back()->with('notify', 'Xuất dữ liệu thành công');
+			} else {				
+				fclose($fileSubject);
+				return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
+			}			
+		} catch (Exception $e) {
+			return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
+		}		
+	}
+
+	public function sortDataCourse ($id_course) {
+
+	}
+
 	public function convertNameCourse ($id_course) {
 		$id = (int)($id_course / 1000000);
 		switch ($id) {

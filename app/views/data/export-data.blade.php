@@ -27,7 +27,7 @@
 					<span class="badge">{{ $value['word'] }} từ</span>
 					<span class="badge">{{ $value['subject'] }} khóa con</span>
 					<p>Khóa học: {{ $value['name'] }}({{ $value['type'] }})</p>
-					<a href="{{ Asset('xuat-du-lieu') . '/' . $value['id'] }}" class="btn btn-success btn-sm">
+					<a href="{{ Asset('sap-xep-du-lieu') . '/' . $value['id'] }}" class="btn btn-success btn-sm">
 						Xuất dữ liệu
 					</a>
 				</li>

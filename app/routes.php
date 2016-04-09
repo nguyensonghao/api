@@ -137,6 +137,14 @@ Route::get('xuat-du-lieu', 'WordController@showExportData');
 
 Route::get('xuat-du-lieu/{id_course}', 'WordController@actionExportData');
 
+Route::get('sap-xep-du-lieu/{id_course}', 'WordController@sortDataSubject');
+
+Route::get('xuat-du-lieu-khoa-hoc', 'WordController@showExportCourse');
+
+Route::get('xuat-du-lieu-topic', 'WordController@showExportSubject');
+
+Route::get('xuat-du-lieu-json/{id_course}', 'WordController@sortDataSubjectJson');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
@@ -150,13 +158,3 @@ Route::post('sua-nghia', 'WordController@actionFixMean');
 Route::post('dang-nhap', 'WordController@actionLogin');
 
 Route::post('them-admin', 'WordController@actionAddAdmin');
-
-Route::get('test', function () {
-	ini_set('max_execution_time', 600000000);
-	$file_name = public_path() . '/AllData/English/101000008/json/words.json';
-	$list_data = file_get_contents($file_name);
-	$list_data = json_decode($list_data);
-	for ($i = 0; $i < count($list_data); $i++) {
-		Word::where('id_word', $list_data[$i]->id_word)->update(array('id_subject' => $list_data[$i]->id_subject));
-	}
-});
