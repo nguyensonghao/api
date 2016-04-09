@@ -32,6 +32,8 @@ class WordController extends BaseController {
 			$list['listWord'][$i]->word = $word;
 			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
+			$list['listWord'][$i]->mean = $mean;
+			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonectic);
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image-excuted', $list);
@@ -48,6 +50,8 @@ class WordController extends BaseController {
 			$list['listWord'][$i]->word = $word;
 			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
+			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonectic);
+			$list['listWord'][$i]->phonectic = $phonectic;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		Log::info(Request::segment(3));

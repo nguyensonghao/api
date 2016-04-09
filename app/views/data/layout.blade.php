@@ -42,7 +42,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Trung <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{{ Asset('danh-sach-anh-da-duyet/102000002') }}">
+								<a href="{{ Asset('danh-sach-anh-da-duyet/102000000') }}">
 									Danh sách ảnh đã duyệt
 								</a>
 							</li>
@@ -72,7 +72,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Nhật <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{{ Asset('danh-sach-anh-da-duyet/104000002') }}">
+								<a href="{{ Asset('danh-sach-anh-da-duyet/104000000') }}">
 									Danh sách ảnh đã duyệt
 								</a>
 							</li>
