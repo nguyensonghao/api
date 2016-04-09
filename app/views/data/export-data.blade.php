@@ -26,7 +26,7 @@
 				<li class="list-group-item">
 					<span class="badge">{{ $value['count'] }} từ</span>
 					<span class="badge">{{ $value['countSubject'] }} khóa con</span>
-					<p>Mã khóa học: {{ $value['id_course'] }}</p>
+					<p>Mã khóa học: {{ $value['id_course'] }}({{ $value['name_course'] }})</p>
 					<a href="{{ Asset('xuat-du-lieu') . '/' . $value['id_course'] }}" class="btn btn-success btn-sm">
 						Xuất dữ liệu
 					</a>

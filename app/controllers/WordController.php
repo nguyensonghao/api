@@ -87,7 +87,8 @@ class WordController extends BaseController {
 				$subject = array(
 					'id_course' => $id_course,
 					'count'     => Word::where('id_course', $id_course)->count(),
-					'countSubject' => Subject::where('id_course', $id_course)->count()
+					'countSubject' => Subject::where('id_course', $id_course)->count(),
+					'name_course' => $this->convertNameCourse($id_course)
 				);
 				array_push($list['listSubject'], $subject);
 			}			
