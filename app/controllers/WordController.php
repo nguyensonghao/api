@@ -300,10 +300,16 @@ class WordController extends BaseController {
 	}
 
 	public static function actionActiveMenu ($type) {
-		$name = Request::segment(2);
-		if ($type == $name) {
+		if (Request::segment(1) == 'xuat-du-lieu') {
 			return 'active';
-		} else return '';
+		} else {
+			$name = Request::segment(2);		
+			if ($type == $name) {
+				return 'active';
+			}
+		}
+
+		return '';
 	}	
 
 }
