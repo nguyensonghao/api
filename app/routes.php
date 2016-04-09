@@ -133,17 +133,17 @@ Route::get('dang-xuat', 'WordController@actionLogout');
 
 Route::get('them-admin', 'WordController@showAddAdmin');
 
-Route::get('xuat-du-lieu', 'WordController@showExportData');
-
 Route::get('xuat-du-lieu/{id_course}', 'WordController@actionExportData');
 
 Route::get('sap-xep-du-lieu/{id_course}', 'WordController@sortDataSubject');
 
-Route::get('xuat-du-lieu-khoa-hoc', 'WordController@showExportCourse');
+Route::get('xuat-du-lieu-khoa-hoc', 'WordController@showExportDataCourse');
 
-Route::get('xuat-du-lieu-topic', 'WordController@showExportSubject');
+Route::get('xuat-du-lieu-topic', 'WordController@showExportDataSubject');
 
 Route::get('xuat-du-lieu-json/{id_course}', 'WordController@sortDataSubjectJson');
+
+Route::get('xuat-du-lieu-course-json', 'WordController@sortDataCourseJson');
 
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 

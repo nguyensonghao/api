@@ -75,9 +75,30 @@ class WordController extends BaseController {
 		}		
 	}
 
-	public function showExportData () {		
+	public function showExportDataSubject () {		
 		$list['listCourse'] = Course::get();
-		return View::make('data.export-data', $list);
+		return View::make('data.export-data-subject', $list);
+	}
+
+	public function showExportDataCourse () {
+		$listCourse = Course::get();
+		$listCourseSort = [];		
+		$size = count($listCourse);
+		for ($i = 0; $i < $size; $i++) {
+			$course = array(
+				'id' => $listCourse[$i]->id,
+				'name' => $listCourse[$i]->name,
+				'desc' => $listCourse[$i]->desc,
+				'subject' => Subject::where('id_course', $listCourse[$i]->id)->count(),
+				'word' => Word::where('id_course', $listCourse[$i]->id)->count()
+			);			
+			array_push($listCourseSort, $course);
+		}
+
+		$list['listCourse'] = $listCourse;		
+		$list['listCourseSort'] = $listCourseSort;
+
+		return View::make('data.list-course', $list);
 	}
 
 	public function actionCompleteImage () {
@@ -318,8 +339,30 @@ class WordController extends BaseController {
 		}		
 	}
 
-	public function sortDataCourse ($id_course) {
-
+	public function sortDataCourseJson () {
+		ini_set('max_execution_time', 600000000);
+		$listCourse = Course::select('id', 'name', 'desc', 'subject', 'word')->get();
+		$size = count($listCourse);
+		for ($i = 0; $i < $size; $i++) {
+			$course = $listCourse[$i];
+			$subject = Subject::where('id_course', $course->id)->count();
+			$word = Word::where('id_course', $course->id)->count();
+			Course::where('id', $course->id)->update(array('subject' => $subject, 'word' => $word));
+		}
+		try {			
+			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word')->get());			
+			$fileNameCourse = public_path() . '/AllData/course.json';			
+			$fileCourse = fopen($fileNameCourse, "w");
+			if (fwrite($fileCourse, $strListCourse)) {
+				fclose($fileCourse);
+				return Redirect::back()->with('notify', 'Xuất dữ liệu thành công');
+			} else {				
+				fclose($fileCourse);
+				return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
+			}			
+		} catch (Exception $e) {
+			return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
+		}		
 	}
 
 	public function convertNameCourse ($id_course) {

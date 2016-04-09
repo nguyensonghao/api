@@ -87,6 +87,21 @@
 						<li class="{{ WordController::actionActiveMenu('xuat-du-lieu') }}">
 							<a href="{{ Asset('xuat-du-lieu') }}">Xuất dữ liệu</a>
 						</li>
+						<li class="{{ WordController::actionActiveMenu('xuat-du-lieu') }}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Xuất dữ liệu <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="{{ Asset('xuat-du-lieu-khoa-hoc') }}">
+										Khóa học
+									</a>
+								</li>
+								<li>
+									<a href="{{ Asset('xuat-du-lieu-topic') }}">
+										Topic
+									</a>
+								</li>
+							</ul>
+						</li>
 					@endif
 				</ul>
 				<ul class="nav navbar-nav navbar-right">					
