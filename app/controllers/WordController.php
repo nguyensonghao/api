@@ -351,7 +351,7 @@ class WordController extends BaseController {
 		}
 		try {			
 			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word')->get());			
-			$fileNameCourse = public_path() . '/AllData/course.json';			
+			$fileNameCourse = public_path() . '/AllData/courses.json';			
 			$fileCourse = fopen($fileNameCourse, "w");
 			if (fwrite($fileCourse, $strListCourse)) {
 				fclose($fileCourse);
@@ -360,7 +360,7 @@ class WordController extends BaseController {
 				fclose($fileCourse);
 				return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
 			}			
-		} catch (Exception $e) {
+		} catch (Exception $e) {			
 			return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
 		}		
 	}
