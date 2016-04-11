@@ -10,7 +10,6 @@
 <body>
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 					<span class="sr-only">Toggle navigation</span>
@@ -22,7 +21,7 @@
 			</div>
 	
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">					
+				<ul class="nav navbar-nav">
 					<li class="dropdown {{ WordController::actionActiveMenu(101000000) }}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiếng Anh <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -103,9 +102,12 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							{{ Auth::user()->username }} 
+							<b class="caret"></b>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="{{ Asset('dang-xuat') }}">Đăng xuất</a></li>							
+							<li><a href="{{ Asset('dang-xuat') }}">Đăng xuất</a></li>
 						</ul>
 					</li>
 				</ul>
