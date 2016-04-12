@@ -314,7 +314,7 @@ class WordController extends BaseController {
 
 	public function sortDataSubjectJson ($id_course) {
 		ini_set('max_execution_time', 600000000);
-		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')
+		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')		
 		->where('id_course', $id_course)->get();		
 		$size = count($listSubject);
 		for ($i = 0; $i < $size; $i++) {
@@ -325,13 +325,18 @@ class WordController extends BaseController {
 		try {
 			$course_name = $this->convertNameCourse($id_course);			
 			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());			
-			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';			
+			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonetic', 'des')->get());
+			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';
+			$fileNameWord = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/words.json';
 			$fileSubject = fopen($fileNameSubject, "w");
-			if (fwrite($fileSubject, $strListSubject)) {
+			$fileWord = fopen($fileNameWord, "w");
+			if (fwrite($fileSubject, $strListSubject) && fwrite($fileWord, $strListWord)) {
 				fclose($fileSubject);
+				fclose($fileWord);
 				return Redirect::back()->with('notify', 'Xuất dữ liệu thành công');
 			} else {				
 				fclose($fileSubject);
+				fclose($fileWord);
 				return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
 			}			
 		} catch (Exception $e) {
