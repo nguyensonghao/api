@@ -324,8 +324,8 @@ class WordController extends BaseController {
 		}
 		try {
 			$course_name = $this->convertNameCourse($id_course);			
-			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());			
-			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonetic', 'des')->get());
+			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());
+			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonetic', 'des')->where('id_course', $id_course)->get());
 			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';
 			$fileNameWord = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/words.json';
 			$fileSubject = fopen($fileNameSubject, "w");
