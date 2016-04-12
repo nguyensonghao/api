@@ -24,7 +24,7 @@
 								<span class="glyphicon glyphicon-eye-open"></span>
 								Xem
 							</button>
-							<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonectic }}", "{{ $value->des }}")'>
+							<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonetic }}", "{{ $value->des }}")'>
 								<span class="glyphicon glyphicon glyphicon-pencil"></span> 
 								Sửa
 							</button>
