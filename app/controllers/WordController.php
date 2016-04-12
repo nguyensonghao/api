@@ -33,7 +33,7 @@ class WordController extends BaseController {
 			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
 			$list['listWord'][$i]->mean = $mean;
-			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonectic);
+			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		return View::make('data.list-image-excuted', $list);
@@ -50,8 +50,8 @@ class WordController extends BaseController {
 			$list['listWord'][$i]->word = $word;
 			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
-			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonectic);
-			$list['listWord'][$i]->phonectic = $phonectic;
+			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
+			$list['listWord'][$i]->phonetic = $phonectic;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}
 		Log::info(Request::segment(3));
@@ -266,7 +266,7 @@ class WordController extends BaseController {
 	public function actionExportData ($id_course) {
 		try {
 			$course_name = $this->convertNameCourse($id_course);
-			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonectic', 'des')->where('id_course', $id_course)->get());
+			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonetic', 'des')->where('id_course', $id_course)->get());
 			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());
 			$fileNameWord = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/words.json';
 			$fileNameSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/subject.json';
