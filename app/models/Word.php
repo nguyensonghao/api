@@ -16,9 +16,27 @@ class Word extends Eloquent {
 	 */
 	protected $table = 'words';	
 
-	public function getListExcute ($id_course) {
-		return Word::where('status', 1)->where('id_course', '>', $id_course)
-		->where('id_course', '<', $id_course + 10)->paginate(20);
+	public function getListExcute ($id_course, $id_subject) {
+		$id = (string)$id_course;
+		$id = substr($id, -1);
+		$id = (int)$id;
+		if ($id == 0) {
+			if ($id_subject == 'all') {
+				return Word::where('status', 1)->where('id_course', '>', $id_course)
+				->where('id_course', '<', $id_course + 10)->paginate(20);
+			} else {
+				return Word::where('status', 1)->where('id_course', '>', $id_course)
+				->where('id_course', '<', $id_course + 10)
+			    ->where('id_subject', $id_subject)->paginate(20);
+			}		
+		} else {
+			if ($id_subject == 'all') {
+				return Word::where('status', 1)->where('id_course', $id_course)->paginate(20);
+			} else {
+				return Word::where('status', 1)->where('id_course', $id_course)
+			    ->where('id_subject', $id_subject)->paginate(20);
+			}		
+		}		
 	}
 
 	public function getListNotExcute ($id_course, $id_subject) {

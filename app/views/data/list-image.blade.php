@@ -144,7 +144,8 @@
 				url: '<?php echo Asset("lay-danh-sach-anh") ?>',
 				type: 'post',
 				data: {id : id},
-				success: function (data) {					
+				success: function (data) {
+					console.log(data);
 					var listUrl = data.url;
 					if (listUrl == null) {
 						$('#modal-show-image').modal('hide');

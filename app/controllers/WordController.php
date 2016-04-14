@@ -25,17 +25,21 @@ class WordController extends BaseController {
 		return View::make('data.list-image', $list);
 	}
 
-	public function showListImageExcuted ($id_course) {
-		$list['listWord'] = $this->word->getListExcute($id_course);		
+	public function showListImageExcuted ($id_course, $id_subject) {
+		$list['listWord'] = $this->word->getListExcute($id_course, $id_subject);
+		$list['listSubject'] = $this->subject->getList($id_course);
+		$list['listCourse']  = $this->course->getList($id_course);
+		Session::set('select_subject', $id_subject);
+		Session::set('select_course', $id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {
 			$word = str_replace("'", "", $list['listWord'][$i]->word);
 			$list['listWord'][$i]->word = $word;
 			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
 			$list['listWord'][$i]->mean = $mean;
-			$list['listWord'][$i]->mean = $mean;
 			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
+			$list['listWord'][$i]->phonetic = $phonectic;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
-		}
+		}		
 		return View::make('data.list-image-excuted', $list);
 	}
 
@@ -53,8 +57,7 @@ class WordController extends BaseController {
 			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
 			$list['listWord'][$i]->phonetic = $phonectic;
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
-		}
-		Log::info(Request::segment(3));
+		}		
 		return View::make('data.list-image', $list);
 	}
 
@@ -173,11 +176,12 @@ class WordController extends BaseController {
 	public function getUrlImage ($start, $query) {
 		try {
 			$query = rawurlencode($query);
-			$data = file_get_contents('https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&rsz=filtered_cse&start='. $start .'&num=20&hl=en&prettyPrint=true&source=gcsc&gss=.com&searchtype=image&q=' . $query . '&cx=011716203299611176711:o1y_nlme1qq');
+			$data = file_get_contents('https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&rsz=filtered_cse&start='. $start .'&num=20&hl=en&prettyPrint=true&source=gcsc&gss=.com&searchtype=image&q=' . $query . '&cx=011716203299611176711:fmop1dxcjq4');
 			$data = json_decode($data);
 			$result = $data->results;
 			return $result;	
 		} catch (Exception $e) {
+			Log::info($e);
 			return null;
 		}
 	}

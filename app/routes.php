@@ -123,7 +123,7 @@ Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
 
 Route::controller('word', 'WordController');
 
-Route::get('danh-sach-anh-da-duyet/{id_course}', 'WordController@showListImageExcuted');
+Route::get('danh-sach-anh-da-duyet/{id_course}/{id_subject}', 'WordController@showListImageExcuted');
 
 Route::get('danh-sach-anh-chua-duyet/{id_course}/{id_subject}', 'WordController@showListImageNotExcuted');
 

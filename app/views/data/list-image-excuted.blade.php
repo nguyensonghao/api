@@ -4,24 +4,65 @@
 @section('content')
 	
 	<div class="row list-image">
+		<div class="col-md-12 select-subject">
+			<form class="form-inline">
+				<div class="form-group">
+					<label>Khóa học:</label>
+					<select class="form-control" onchange="window.location.href = this.value">
+						<option @if (Session::get('select_course') == 'all') selected @endif value="{{ Asset('danh-sach-anh-da-duyet/'. ((int)(Request::segment(2) / 1000)) * 1000 .'/all') }}">
+							Tất cả							
+						</option>
+						@foreach ($listCourse as $value)
+							<option value="{{ Asset('danh-sach-anh-da-duyet') . '/' . $value->id . '/all' }}" @if (Session::get('select_course') == $value->id) selected @endif>
+								{{ $value->name }}
+							</option>
+						@endforeach						
+					</select>
+				</div>
+				<div class="form-group">
+					<label style="margin-left: 20px">Topic:</label>
+					<select class="form-control" onchange="window.location.href = this.value">
+						<option value="{{ Asset('danh-sach-anh-da-duyet') . '/' . Request::segment(2) . '/all'}}" @if (Session::get('select_subject') == 'all') selected @endif>
+							Tất cả							
+						</option>
+						@foreach ($listSubject as $value)
+							<option value="{{ Asset('danh-sach-anh-da-duyet') . '/' . Request::segment(2) . '/' . $value->id }}" @if (Session::get('select_subject') == $value->id) selected @endif>
+								@if ($value->name != null && $value->name != '')
+									{{ $value->name }}
+								@else
+									{{ $value->mean }}
+								@endif								
+							</option>
+						@endforeach						
+					</select>
+				</div>				
+			</form>
+		</div>
 		@if (count($listWord) == 0)
-			<div class="alert alert-danger">				
-				Chưa có từ nào
+			<div class="col-md-8">
+				<div class="alert alert-danger">				
+					Không có ảnh nào đã duyệt ở chủ đề này
+				</div>
 			</div>
 		@else
 			@foreach($listWord as $key=>$value)
 			<div class="col-md-3">
 				<div class="panel">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{ $value->word }}({{$value->mean}})</h3>
+					<div class="panel-heading panel-title">				
+						<h3>{{ $value->word }}({{$value->mean}})</h3>
+						@if ($value->phonetic != null && $value->phonetic != '')
+							<i>Phiên âm: {{ $value->phonetic }}</i>
+						@else 
+							<i>Phiên âm: Trống</i>
+						@endif
 					</div>
 					<div class="panel-body">
 						<a class="thumbnail">
 							<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
 						</a>
-						<div class="btn-group">
+						<div class="btn-group">						
 							<button type="button" class="btn btn-default" onclick='showImage({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}")'>
-								<span class="glyphicon glyphicon-eye-open"></span>
+								<span class="glyphicon glyphicon-eye-open"></span> 
 								Xem
 							</button>
 							<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonetic }}", "{{ $value->des }}")'>
@@ -49,10 +90,19 @@
 					<div class="loadding">
 						Đang tải ....
 					</div>
-
+					<a class="btn btn-link" role="button" data-toggle="collapse" href="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch">
+					  Tìm ảnh mới
+					</a>
+					<div class="collapse" id="collapseSearch" style="margin-top: 10px">
+						<input type="text" placeholder="Nhập từ khóa tìm kiếm thay thế" class="enter-input-search form-control">
+						<hr>
+						<button type="button" class="btn btn-primary" onclick="searchImage()">Tìm  kiếm</button>
+					</div>
 					<div class="result">
 
 					</div>
+
+					<button type="button" class="btn btn-default btn-load-more">Thêm ảnh</button>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>					
@@ -78,13 +128,15 @@
 		</div>
 	</div>
 
+	<button type="button" class="btn btn-refresh btn-success" onclick="location.reload()">Làm mới</button>
+
 	<script>
 		var listImage = [];
 		var indexPage = 0;
 		var idWord;
 
 		var showImage = function (id, word, mean) {		
-			indexPage = 1;
+			indexPage = 0;
 			idWord = id;	
 			$('#modal-show-image .modal-title').html('Ảnh cho từ ' + word + '('+ mean +')');
 			var str = '';
@@ -96,7 +148,8 @@
 				url: '<?php echo Asset("lay-danh-sach-anh") ?>',
 				type: 'post',
 				data: {id : id},
-				success: function (data) {					
+				success: function (data) {
+					console.log(data);
 					var listUrl = data.url;
 					if (listUrl == null) {
 						$('#modal-show-image').modal('hide');
@@ -116,6 +169,83 @@
 				error: function () {
 					$('#modal-show-image').modal('hide');
 					alert('Có lỗi hệ thống xảy ra');
+				}
+			})
+		}
+
+		var searchImage = function () {
+			listImage = [];
+			indexPage = 0;
+			var newWord = $('#modal-show-image .enter-input-search').val();
+			if (newWord == null || newWord == '') {
+				alert('Điền từ cần tìm kiếm');
+				return;
+			}
+
+			$('#modal-show-image .modal-title').html('Ảnh cho từ ' + newWord);
+
+			$('.cover').css('display', 'block');
+			$.ajax({
+				url: '<?php echo Asset("lay-danh-sach-anh") ?>',
+				type: 'post',
+				data: {id : idWord, newWord : newWord},
+				success: function (data) {
+					$('.cover').css('display', 'none');
+					var listUrl = data.url;
+					if (listUrl == null) {					
+						alert('Có lỗi hệ thống xảy ra');
+					} else {
+						var str = '';
+						for (var i = 0; i < listUrl.length; i++) {						
+							str += '<div class="col-md-3"><div class="box"><img src="'+ listUrl[i].url +'" height="300px" width="100%"><button onclick="downloadImage('+ data.id +', '+ i +')" class="btn btn-primary">Chọn</button></div></div>';
+							listImage.push({
+								index: i,
+								url : listUrl[i].url
+							})
+						}					
+						$('#modal-show-image .modal-body .result').html(str);
+					}					
+				},
+				error: function () {
+					$('.cover').css('display', 'none');
+					alert('Có lỗi hệ thống xảy ra');
+				}
+			})
+		}		
+
+		var fixMean = function (id, word, mean, phonectic, des) {			
+			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
+			str += '<input type="text" name="word" class="form-control name-word" value="'+word+'"><p></p>';
+			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
+			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><p></p>';
+			str += '<textarea class="des-word form-control" placeholder="Miêu tả">'+des+'</textarea><hr>';
+			str += '<button type="button" class="btn btn-primary" onclick="updateMean('+id+')">Sửa</button>';
+			$('#modal-fix-mean .modal-body').html(str);
+			$('#modal-fix-mean').modal('show');
+		}
+
+		var updateMean = function (id) {			
+			var name = $('#modal-fix-mean .modal-body .name-word').val();
+			var mean = $('#modal-fix-mean .modal-body .mean-word').val();
+			var phonectic = $('#modal-fix-mean .modal-body .phonectic-word').val();
+			var des = $('#modal-fix-mean .modal-body .des-word').val();
+			$.ajax({
+				url : '<?php echo Asset("sua-nghia") ?>',
+				type : 'post',
+				data : {id : id, mean : mean, phonectic : phonectic, word : name, des: des},
+				success : function (data) {
+					console.log(data);
+					if (data.status == 200) {
+						$('#modal-fix-mean').modal('hide');
+						location.reload();
+					} else {
+						$('#modal-fix-mean').modal('hide');
+						alert('Có lỗi trong quá trình xử lý');
+					}
+				},
+				error : function () {
+					$('#modal-fix-mean').modal('hide');
+					alert('Có lỗi trong quá trình xử lý');
 				}
 			})
 		}
@@ -148,43 +278,6 @@
 				}
 			}
 		}
-
-		var fixMean = function (id, word, mean, phonectic, des) {			
-			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
-			str += '<input type="text" name="word" class="form-control name-word" value="'+word+'"><p></p>';
-			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
-			str += '<input type="text" name="phonectic" class="form-control phonectic-word" value="'+phonectic+'" placeholder="Phiên âm"><p></p>';
-			str += '<textarea class="des-word form-control" placeholder="Miêu tả">'+des+'</textarea><hr>';
-			str += '<button type="button" class="btn btn-primary" onclick="updateMean('+id+')">Sửa</button>';
-			$('#modal-fix-mean .modal-body').html(str);
-			$('#modal-fix-mean').modal('show');
-		}
-
-		var updateMean = function (id) {			
-			var name = $('#modal-fix-mean .modal-body .name-word').val();
-			var mean = $('#modal-fix-mean .modal-body .mean-word').val();
-			var phonectic = $('#modal-fix-mean .modal-body .phonectic-word').val();
-			var des = $('#modal-fix-mean .modal-body .des-word').val();
-			$.ajax({
-				url : '<?php echo Asset("sua-nghia") ?>',
-				type : 'post',
-				data : {id : id, mean : mean, phonectic : phonectic, word : name, des: des},
-				success : function (data) {
-					if (data.status == 200) {
-						$('#modal-fix-mean').modal('hide');
-						location.reload();
-					} else {
-						$('#modal-fix-mean').modal('hide');
-						alert('Có lỗi trong quá trình xử lý');
-					}
-				},
-				error : function () {
-					$('#modal-fix-mean').modal('hide');
-					alert('Có lỗi trong quá trình xử lý');
-				}
-			})
-		}
-
 
 		$('.btn-load-more').click(function () {
 			$('.cover').css('display', 'block');
