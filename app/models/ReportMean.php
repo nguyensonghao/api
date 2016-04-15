@@ -44,7 +44,7 @@ class ReportMean extends Eloquent {
 	}
 
 	public function addReportMeanMobile ($userId, $mean, $wordId, $wordName) {
-		$user = User::where('userId', $userId)->where('active', 1)->where('status', 1)->first();
+		$user = User::where('userId', $userId)->where('active', 1)->where('status', 0)->first();
 		if (is_null($user)) {
 			return array('status' => 304);
 		} else {
