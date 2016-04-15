@@ -84,6 +84,24 @@ Route::post('api/delete-mean', 'ReportMeanController@actionDeleteMean');
 
 Route::post('api/get-new', 'ReportMeanController@actionGetNew');
 
+// ReportMobile
+
+Route::controller('report-mobile', 'ReportMeanMobileController');
+
+Route::post('api/add-mean-mobile', 'ReportMeanMobileController@actionAddReportMean');
+
+Route::post('api/get-mean-mobile', 'ReportMeanMobileController@actionGetMean');
+
+Route::post('api/rate-mean-mobile', 'ReportMeanMobileController@actionRateMean');
+
+Route::post('api/get-rate-mobile', 'ReportMeanMobileController@actionGetRateReport');
+
+Route::post('api/check-mean-mobile', 'ReportMeanMobileController@actionCheckMean');
+
+Route::post('api/update-mean-mobile', 'ReportMeanMobileController@actionUpdateMean');
+
+Route::post('api/delete-mean-mobile', 'ReportMeanMobileController@actionDeleteMean');
+
 // MyNote
 
 Route::controller('note', 'MyNoteController');
@@ -158,3 +176,4 @@ Route::post('sua-nghia', 'WordController@actionFixMean');
 Route::post('dang-nhap', 'WordController@actionLogin');
 
 Route::post('them-admin', 'WordController@actionAddAdmin');
+
