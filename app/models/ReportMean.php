@@ -44,7 +44,7 @@ class ReportMean extends Eloquent {
 	}
 
 	public function addReportMeanMobile ($userId, $mean, $wordId, $wordName) {
-		$user = User::where('userId', $userId)->where('active', 1)->where('status', 0)->first();
+		$user = User::where('userId', $userId)->where('active', 1)->where('status', 1)->first();
 		if (is_null($user)) {
 			return array('status' => 304);
 		} else {
@@ -102,7 +102,7 @@ class ReportMean extends Eloquent {
 
 	public function checkMean ($wordId, $userId) {
 		$report = ReportMean::where('wordId', $wordId)->where('userId', $userId)
-		->where('status', 1)->where('type', 0)->first();
+		->where('status', '<>', -1)->where('type', 0)->first();
 		if (is_null($report)) {
 			return array('status' => 304);
 		} else {
@@ -112,7 +112,7 @@ class ReportMean extends Eloquent {
 
 	public function checkMeanMobile ($wordId, $userId) {
 		$report = ReportMean::where('wordId', $wordId)->where('userId', $userId)
-		->where('status', 1)->where('type', 1)->first();
+		->where('status', '<>', -1)->where('type', 1)->first();
 		if (is_null($report)) {
 			return array('status' => 304);
 		} else {
@@ -122,7 +122,7 @@ class ReportMean extends Eloquent {
 
 	public function updateReportMean ($userId, $mean, $wordId) {
 		$report = ReportMean::where('userId', $userId)->where('wordId', $wordId)
-		->where('status', 1)->where('type', 0)->first();
+		->where('status', '<>', -1)->where('type', 0)->first();
 		if (is_null($report)) {
 			return array('status' => 304);
 		} else {
@@ -138,7 +138,7 @@ class ReportMean extends Eloquent {
 
 	public function updateReportMeanMobile ($userId, $mean, $wordId) {
 		$report = ReportMean::where('userId', $userId)->where('wordId', $wordId)
-		->where('status', 1)->where('type', 1)->first();
+		->where('status', '<>', -1)->where('type', 1)->first();
 		if (is_null($report)) {
 			return array('status' => 304);
 		} else {
