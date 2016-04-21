@@ -17,6 +17,7 @@ class SyncController extends BaseController {
 	    @$timeLocal = $request->timeLocal;	    
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($timeLocal)) {
 	    	$listNote = $this->note->pullData($userId, $timeLocal);
+	    	return Response::json($listNote);
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }

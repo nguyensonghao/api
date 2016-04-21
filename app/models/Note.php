@@ -72,7 +72,7 @@ class Note extends Eloquent {
 	}
 
 	public function pullData ($userId, $timeLocal) {
-		$listNote = Note::where('updated_at', $timeLocal)
+		$listNote = Note::where('updated_at', '>', $timeLocal)
 		->where('userId', $userId)->get();
 		if (count($listNote) == 0) {
 			return array('status' => 304);
