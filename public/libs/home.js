@@ -14,12 +14,11 @@ angular.module('app').controller('HomeController',
 		$scope.logined = true;
 
     var dataSend = {
-        userId : 1,
-        wordId : '1232',
-        type : 'kanji'
+        userId : 38,
+        timeLocal : '2015-04-21T04:06:38.790Z',
     }
 
-    $http.get('api/remember-flash', dataSend)
+    $http.post('api/pull-note', dataSend)
     .success(function (data) {
         console.log(data);
     })
