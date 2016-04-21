@@ -140,7 +140,7 @@ Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
 
 Route::controller('sync', 'SyncController');
 
-Route::get('api/pull-note', 'SyncController@actionPullNoteServer');
+Route::post('api/pull-note', 'SyncController@actionPullNoteServer');
 
 // Word
 
