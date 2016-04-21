@@ -128,7 +128,6 @@ Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
 
 // Flashcard
 
-
 Route::controller('flash', 'FlashController');
 
 Route::post('api/get-flashcard', 'FlashController@getFlashCard');
@@ -136,6 +135,12 @@ Route::post('api/get-flashcard', 'FlashController@getFlashCard');
 Route::post('api/remember-flash', 'FlashController@rememberFlashCard');
 
 Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
+
+// Sync
+
+Route::controller('sync', 'SyncController');
+
+Route::get('api/pull-note', 'SyncController@actionPullNoteServer');
 
 // Word
 
