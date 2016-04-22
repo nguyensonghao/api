@@ -5,7 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class TimeServer extends Eloquent {
+class Time extends Eloquent {
 
 	use UserTrait, RemindableTrait;
 
@@ -14,7 +14,7 @@ class TimeServer extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'timeserver';
+	protected $table = 'time';
 
 
 	public function getTime ($userId, $type) {
