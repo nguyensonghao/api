@@ -214,6 +214,7 @@ class WordController extends BaseController {
 				return Response::json(array('status' => 304));
 			}	
 		} catch (Exception $e) {
+			Log::info($e);
 			return Response::json(array('status' => 304));
 		}		
 	}
@@ -251,6 +252,7 @@ class WordController extends BaseController {
 			imagejpeg($thumb_im, $file_path . '/' . $file_name);
 			return true;
 		} catch (Exception $e) {
+			Log::info($e);
 			return false;
 		}
 	}
@@ -263,6 +265,7 @@ class WordController extends BaseController {
 		   	$resize->save($from_path . '/' . $file_name);			
 		   	return true;
 		} catch (Exception $e) {
+			Log::info($e);
 			return false;
 		}
 	}
