@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTimeserverTable extends Migration {
+class CreateTimeTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,10 @@ class CreateTimeserverTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('timeserver', function ($table) {
+		Schema::create('time', function ($table) {
 			$table->integer('id');
-			$table->string('time');			
+			$table->string('type');
+			$table->date('time');
 			$table->timestamps();			
 		});
 	}
