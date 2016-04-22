@@ -144,6 +144,8 @@ Route::post('api/pull-note', 'SyncController@actionPullNoteServer');
 
 Route::post('api/push-note-new', 'SyncController@actionPushNoteNewServer');
 
+Route::post('api/get-time', 'SyncController@actionGetTime');
+
 // Word
 
 Route::controller('word', 'WordController');
