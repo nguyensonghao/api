@@ -16,8 +16,7 @@ angular.module('app').controller('HomeController',
 	var string = '[{"type":"word","query":"のに","date":1461210621514,"category":4,"isRemember":0,"id":3}]';
 	var listNote = JSON.parse(string);
     var listDataSend = [];
-    var size = listNote.length;
-    var deferred = $q.defer();
+    var size = listNote.length;    
     var urlAddNote = baseUrlApi + 'api/push-note-new';
     for (var i = 0; i < size; i++) {
         var note = listNote[i];            
