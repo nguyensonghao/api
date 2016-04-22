@@ -13,6 +13,7 @@ angular.module('app').controller('HomeController',
 	else 
 		$scope.logined = true;
 
+	var baseUrlApi = "http://api.mazii.net/";
 	var string = '[{"type":"word","query":"のに","date":1461210621514,"category":4,"isRemember":0,"id":3}]';
 	var listNote = JSON.parse(string);
     var listDataSend = [];
