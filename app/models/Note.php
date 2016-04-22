@@ -82,4 +82,14 @@ class Note extends Eloquent {
 		}
 	}
 
+	public function pushDataNew ($userId, $listNote) {
+		$list = json_decode(json_encode($listNote), true);
+		$size = count($list);
+		for ($i = 0; $i < $size; $i++) {
+			Note::insert($list[$i]);
+		}
+
+		return array('status' => 200);
+	}
+
 }
