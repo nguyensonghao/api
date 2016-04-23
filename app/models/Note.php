@@ -89,7 +89,7 @@ class Note extends Eloquent {
 		for ($i = 0; $i < $size; $i++) {						
 			$id = DB::table('note')->insertGetId($list[$i]);
 			$name = $list[$i]['noteName'];
-			array_push($listNote, array('id' => $id, 'noteName' => $name));
+			array_push($listNote, array('id' => $id, 'query' => $name));
 		}
 
 		return array('status' => 200, 'result' => $listNote);
