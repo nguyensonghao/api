@@ -84,25 +84,44 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$listCate = $request->listCate;
+	    @$timeStamp = $request->timeStamp;
+
+	    // Update time Server
+	    $this->updateTimeServer($timeStamp, $userId, 'cate');
 
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($listCate)) {
-	    	$result = $this->cate->pushDataNew($userId, json_decode($listCate));
+	    	$result = $this->cate->pushDataNew($userId, $timeStamp, json_decode($listCate));
+	    	return Response::json($result);
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }	    
+	}
+
+	public function actionUpdateCate () {
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);	
+	    @$userId  = $request->userId;
+	    @$listCate = $request->listCate;
+	    @$timeStamp = $request->timeStamp;
+
+	    // Update time Server
+	    $this->updateTimeServer($timeStamp);
+	    
+	    if ($this->validate->validateSpecialChar($listCate) && $this->validate->validateSpecialChar($userId)) {
+	    	$result = $this->cate->updateDataChange(json_decode($listCate), $timeStamp);
 	    	return Response::json($result);
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
 	}
 
-	public function actionUpdateCate () {
-		$postdata = file_get_contents("php://input");
-	    $request  = json_decode($postdata);	    
-	    @$listCate = $request->listCate;
-	    if ($this->validate->validateSpecialChar($listCate)) {
-	    	$result = $this->cate->updateDataChange(json_decode($listCate));
-	    	return Response::json($result);
-	    } else {
-	    	return Response::json(array('status' => 400));
-	    }
+	protected function updateTimeServer ($timeServer, $userId, $type) {
+		$time = Time::where('type', $type)->where('userId', $userId)->first();
+		if (is_null($time)) {
+			Time::insert(array('type' => $type, 'userId' => $userId, 'time' => $timeStamp));
+		} else {
+			Time::where('type', $type)->where('userId', $userId)->update(array('time' => $timeStamp));
+		}
 	}
 }
 

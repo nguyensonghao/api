@@ -75,11 +75,12 @@ class Category extends Eloquent {
 		}
 	}
 
-	public function pushDataNew ($userId, $listCate) {
+	public function pushDataNew ($userId, $timeStamp, $listCate) {
 		$list = json_decode(json_encode($listCate), true);
 		$size = count($list);
 		$listCateReturn = [];
-		for ($i = 0; $i < $size; $i++) {						
+		for ($i = 0; $i < $size; $i++) {
+			$list[$i]['updated_at'] = $timeStamp;
 			$id = DB::table('category')->insertGetId($list[$i]);
 			$name = $list[$i]['categoryName'];
 			array_push($listCateReturn, array('id' => $id, 'category' => $name));
@@ -88,12 +89,13 @@ class Category extends Eloquent {
 		return array('status' => 200, 'result' => $listCateReturn);
 	}
 
-	public function updateDataChange ($listCate) {
+	public function updateDataChange ($listCate, $timeStamp) {
 		$list = json_decode(json_encode($listCate), true);
-		$size = count($list);		
-		for ($i = 0; $i < $size; $i++) {						
+		$size = count($list);
+		for ($i = 0; $i < $size; $i++) {
 			$cate = $listCate[$i];
-			Category::where('categoryId', $note['categoryId'])->update($cate);
+			$cate['updated_at'] = $timeStamp;
+			Category::where('categoryId', $cate['categoryId'])->update($cate);
 		}
 
 		return array('status' => 200);
