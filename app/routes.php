@@ -146,6 +146,14 @@ Route::post('api/push-note-new', 'SyncController@actionPushNoteNewServer');
 
 Route::post('api/get-time', 'SyncController@actionGetTime');
 
+Route::post('api/update-note-server', 'SyncController@actionUpdateNote');
+
+Route::post('api/pull-cate', 'SyncController@actionPullCateServer');
+
+Route::post('api/push-cate-new', 'SyncController@actionPushCateNewServer');
+
+Route::post('api/update-cate-server', 'SyncController@actionUpdateCate');
+
 // Word
 
 Route::controller('word', 'WordController');

@@ -95,4 +95,15 @@ class Note extends Eloquent {
 		return array('status' => 200, 'result' => $listNote);
 	}
 
+	public function updateDataChange ($listNote) {
+		$list = json_decode(json_encode($listNote), true);
+		$size = count($list);		
+		for ($i = 0; $i < $size; $i++) {						
+			$note = $listNote[$i];
+			Note::where('noteId', $note['noteId'])->update($note);
+		}
+
+		return array('status' => 200);
+	}
+
 }

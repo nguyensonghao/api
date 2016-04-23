@@ -65,4 +65,38 @@ class Category extends Eloquent {
 		}
 	}
 
+	public function pullData ($userId, $timeLocal) {
+		$listCate = DB::table('category')->where('userId', $userId)
+		->where('updated_at', '>', $timeLocal)->get();
+		if (count($listCate) != 0) {
+			return array('status' => 200, 'result' => $listCate);
+		} else {
+			return array('status' => 304);
+		}
+	}
+
+	public function pushDataNew ($userId, $listCate) {
+		$list = json_decode(json_encode($listCate), true);
+		$size = count($list);
+		$listCateReturn = [];
+		for ($i = 0; $i < $size; $i++) {						
+			$id = DB::table('category')->insertGetId($list[$i]);
+			$name = $list[$i]['categoryName'];
+			array_push($listCateReturn, array('id' => $id, 'category' => $name));
+		}
+
+		return array('status' => 200, 'result' => $listCateReturn);
+	}
+
+	public function updateDataChange ($listCate) {
+		$list = json_decode(json_encode($listCate), true);
+		$size = count($list);		
+		for ($i = 0; $i < $size; $i++) {						
+			$cate = $listCate[$i];
+			Category::where('categoryId', $note['categoryId'])->update($cate);
+		}
+
+		return array('status' => 200);
+	}
+
 }
