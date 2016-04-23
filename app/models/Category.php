@@ -93,7 +93,7 @@ class Category extends Eloquent {
 		$list = json_decode(json_encode($listCate), true);
 		$size = count($list);
 		for ($i = 0; $i < $size; $i++) {
-			$cate = $listCate[$i];
+			$cate = $list[$i];
 			$cate['updated_at'] = $timeStamp;
 			Category::where('categoryId', $cate['categoryId'])->update($cate);
 		}
