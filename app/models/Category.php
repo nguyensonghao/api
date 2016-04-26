@@ -24,6 +24,7 @@ class Category extends Eloquent {
 		$category->userId = $userId;
 		$category->date   = $date;
 		$category->categoryName = $categoryName;
+		$category->status = 0;
 		if ($category->save()) {
 			$cate = Category::where('userId', $userId)->where('date', $date)
 		    ->where('categoryName', $categoryName)->first();
@@ -45,8 +46,9 @@ class Category extends Eloquent {
 	}
 
 	public function deleteCategory ($userId, $categoryId) {
-		if (Category::where('categoryId', $categoryId)->where('userId', $userId)->delete()) {
-			Note::where('cateId', $categoryId)->delete();
+		if (Category::where('categoryId', $categoryId)->where('userId', $userId)
+			->update(array('status' => -1))) {
+			Note::where('cateId', $categoryId)->update(array('status' => -1));
 			return array('status' => 200);
 		} else {
 			return array('status' => 304);
@@ -63,7 +65,7 @@ class Category extends Eloquent {
 
 	public function getCategory ($userId) {
 		if ($this->checkExitsUser($userId)) {
-			$myCategory = Category::where('userId', $userId)->get();
+			$myCategory = Category::where('userId', $userId)->where('status', '<>', -1)->get();
 			return $myCategory;
 		} else {
 			return [];

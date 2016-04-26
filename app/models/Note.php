@@ -28,6 +28,7 @@ class Note extends Eloquent {
 		$note->noteMean = $noteMean;
 		$note->cateId   = $categoryId;
 		$note->idx      = $idx;
+		$note->status   = 0;
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
 			->where('date', $date)->first()->noteId;
@@ -42,7 +43,7 @@ class Note extends Eloquent {
 	}
 
 	public function deleteNote ($noteId) {
-		if (Note::where('noteId', $noteId)->delete())
+		if (Note::where('noteId', $noteId)->update(array('status' => -1)))
 			return array('status' => 200);
 		else
 			return array('status' => 304);
@@ -73,7 +74,7 @@ class Note extends Eloquent {
 
 	public function pullData ($userId, $timeLocal) {
 		$listNote = DB::table('category')->select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
-		->where('userId', $userId)->join('note', 'note.cateId', '=', 'category.categoryId')
+		->where('userId', $userId)->where('note.status', '<>', -1)->join('note', 'note.cateId', '=', 'category.categoryId')
 		->where('note.updated_at', '>', $timeLocal)->get();		
 		if (count($listNote) != 0) {
 			return array('status' => 200, 'result' => $listNote);
@@ -86,7 +87,7 @@ class Note extends Eloquent {
 		$list = json_decode(json_encode($listNote), true);
 		$size = count($list);
 		$listNote = [];
-		for ($i = 0; $i < $size; $i++) {						
+		for ($i = 0; $i < $size; $i++) {			
 			$id = DB::table('note')->insertGetId($list[$i]);
 			$name = $list[$i]['noteName'];
 			array_push($listNote, array('id' => $id, 'query' => $name));
