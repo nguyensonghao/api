@@ -31,13 +31,7 @@ class WordController extends BaseController {
 		$list['listCourse']  = $this->course->getList($id_course);
 		Session::set('select_subject', $id_subject);
 		Session::set('select_course', $id_course);
-		for ($i = 0; $i < count($list['listWord']); $i++) {
-			$word = str_replace("'", "", $list['listWord'][$i]->word);
-			$list['listWord'][$i]->word = $word;
-			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
-			$list['listWord'][$i]->mean = $mean;
-			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
-			$list['listWord'][$i]->phonetic = $phonectic;
+		for ($i = 0; $i < count($list['listWord']); $i++) {			
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}		
 		return View::make('data.list-image-excuted', $list);
@@ -49,13 +43,7 @@ class WordController extends BaseController {
 		$list['listCourse']  = $this->course->getList($id_course);
 		Session::set('select_subject', $id_subject);
 		Session::set('select_course', $id_course);
-		for ($i = 0; $i < count($list['listWord']); $i++) {
-			$word = str_replace("'", "", $list['listWord'][$i]->word);
-			$list['listWord'][$i]->word = $word;
-			$mean = str_replace("'", "", $list['listWord'][$i]->mean);
-			$list['listWord'][$i]->mean = $mean;
-			$phonectic = str_replace("'", "", $list['listWord'][$i]->phonetic);
-			$list['listWord'][$i]->phonetic = $phonectic;
+		for ($i = 0; $i < count($list['listWord']); $i++) {			
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
 		}		
 		return View::make('data.list-image', $list);
