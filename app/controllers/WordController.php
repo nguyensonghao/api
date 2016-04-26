@@ -347,7 +347,7 @@ class WordController extends BaseController {
 				return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu');
 			}			
 		} catch (Exception $e) {			
-			return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu' . json_encode($e));
+			return Redirect::back()->with('error', 'Có lỗi trong quá trình xuất dữ liệu' . $e);
 		}		
 	}
 
