@@ -72,6 +72,10 @@ class SyncController extends BaseController {
 	    @$userId  = $request->userId;
 	    @$timeLocal = $request->timeLocal;
 	    @$timeStamp = $request->timeStamp;
+
+	    // Update time Server
+	    $this->updateTimeServer($timeStamp, $userId, 'cate');
+	    
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($timeLocal)) {
 	    	$listCate = $this->cate->pullData($userId, $timeLocal, $timeStamp);
 	    	return Response::json($listCate);
@@ -85,10 +89,7 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$listCate = $request->listCate;
-	    @$timeStamp = $request->timeStamp;
-
-	    // Update time Server
-	    $this->updateTimeServer($timeStamp, $userId, 'cate');
+	    @$timeStamp = $request->timeStamp;	    
 
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($listCate)) {
 	    	$result = $this->cate->pushDataNew($userId, $timeStamp, json_decode($listCate));
@@ -103,10 +104,7 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);	
 	    @$userId  = $request->userId;
 	    @$listCate = $request->listCate;
-	    @$timeStamp = $request->timeStamp;
-
-	    // Update time Server
-	    $this->updateTimeServer($timeStamp, $userId, 'cate');
+	    @$timeStamp = $request->timeStamp;	    
 	    
 	    if ($this->validate->validateSpecialChar($listCate) && $this->validate->validateSpecialChar($userId)) {
 	    	$result = $this->cate->updateDataChange(json_decode($listCate), $timeStamp);
