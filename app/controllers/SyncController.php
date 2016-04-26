@@ -106,7 +106,7 @@ class SyncController extends BaseController {
 	    @$timeStamp = $request->timeStamp;
 
 	    // Update time Server
-	    $this->updateTimeServer($timeStamp);
+	    $this->updateTimeServer($timeStamp, $userId, 'cate');
 	    
 	    if ($this->validate->validateSpecialChar($listCate) && $this->validate->validateSpecialChar($userId)) {
 	    	$result = $this->cate->updateDataChange(json_decode($listCate), $timeStamp);
