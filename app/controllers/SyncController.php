@@ -14,6 +14,15 @@ class SyncController extends BaseController {
 		$this->time = new Time();
 	}
 
+	protected function updateTimeServer ($timeServer, $userId, $type) {
+		$time = Time::where('type', $type)->where('userId', $userId)->first();
+		if (is_null($time)) {
+			Time::insert(array('type' => $type, 'userId' => $userId, 'time' => $timeStamp));
+		} else {
+			Time::where('type', $type)->where('userId', $userId)->update(array('time' => $timeStamp));
+		}
+	}
+
 	public function actionPullNoteServer () {
 		$postdata = file_get_contents("php://input");
 	    $request  = json_decode($postdata);
@@ -71,13 +80,12 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$timeLocal = $request->timeLocal;
-	    @$timeStamp = $request->timeStamp;
+	    @$timeStamp = $request->timeStamp;	    
 
-	    // Update time Server
-	    $this->updateTimeServer($timeStamp, $userId, 'cate');
-	    
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($timeLocal)) {
 	    	$listCate = $this->cate->pullData($userId, $timeLocal, $timeStamp);
+	    	// Update time Server
+	    	$this->updateTimeServer($timeStamp, $userId, 'cate');
 	    	return Response::json($listCate);
 	    } else {
 	    	return Response::json(array('status' => 400));
@@ -112,16 +120,7 @@ class SyncController extends BaseController {
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
-	}
-
-	protected function updateTimeServer ($timeServer, $userId, $type) {
-		$time = Time::where('type', $type)->where('userId', $userId)->first();
-		if (is_null($time)) {
-			Time::insert(array('type' => $type, 'userId' => $userId, 'time' => $timeStamp));
-		} else {
-			Time::where('type', $type)->where('userId', $userId)->update(array('time' => $timeStamp));
-		}
-	}
+	}	
 }
 
 ?>
