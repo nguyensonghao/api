@@ -48,6 +48,12 @@ class Category extends Eloquent {
 	public function deleteCategory ($userId, $categoryId) {
 		if (Category::where('categoryId', $categoryId)->where('userId', $userId)
 			->update(array('status' => -1))) {
+
+			$updated_at = Category::where('categoryId', $categoryId)->where('userId', $userId)->first()->updated_at;
+			// Update time server
+		    $this->updateTimeServer($updated_at, $userId, 'cate');
+
+		    // Delete all note in category
 			Note::where('cateId', $categoryId)->update(array('status' => -1));
 			return array('status' => 200);
 		} else {
