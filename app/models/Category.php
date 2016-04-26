@@ -25,8 +25,13 @@ class Category extends Eloquent {
 		$category->date   = $date;
 		$category->categoryName = $categoryName;
 		if ($category->save()) {
-			$cateId = Category::where('userId', $userId)->where('date', $date)
-		    ->where('categoryName', $categoryName)->first()->categoryId;
+			$cate = Category::where('userId', $userId)->where('date', $date)
+		    ->where('categoryName', $categoryName)->first();
+		    $update_at = $cate->updated_at;
+
+		    // Update time server
+		    $this->updateTimeServer($updated_at, $userId, 'cate');
+		    $cateId = $cate->categoryId;
 			return array('status' => 200, 'cateId' => $cateId);
 		} else return array('status' => 304);			
 	}
@@ -62,6 +67,15 @@ class Category extends Eloquent {
 			return $myCategory;
 		} else {
 			return [];
+		}
+	}
+
+	public function updateTimeServer ($timeStamp, $userId, $type) {
+		$time = Time::where('type', $type)->where('userId', $userId)->first();
+		if (is_null($time)) {
+			Time::insert(array('type' => $type, 'userId' => $userId, 'time' => $timeStamp));
+		} else {
+			Time::where('type', $type)->where('userId', $userId)->update(array('time' => $timeStamp));
 		}
 	}
 

@@ -14,7 +14,7 @@ class SyncController extends BaseController {
 		$this->time = new Time();
 	}
 
-	protected function updateTimeServer ($timeServer, $userId, $type) {
+	public function updateTimeServer ($timeStamp, $userId, $type) {
 		$time = Time::where('type', $type)->where('userId', $userId)->first();
 		if (is_null($time)) {
 			Time::insert(array('type' => $type, 'userId' => $userId, 'time' => $timeStamp));
@@ -85,8 +85,8 @@ class SyncController extends BaseController {
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($timeLocal)) {
 	    	$listCate = $this->cate->pullData($userId, $timeLocal, $timeStamp);
 	    	// Update time Server
-	    	// $this->updateTimeServer($timeStamp, $userId, 'cate');
-	    	// return Response::json($listCate);
+	    	$this->updateTimeServer($timeStamp, $userId, 'cate');
+	    	return Response::json($listCate);
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
