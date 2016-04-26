@@ -65,9 +65,12 @@ class Category extends Eloquent {
 		}
 	}
 
-	public function pullData ($userId, $timeLocal) {
+	public function pullData ($userId, $timeLocal, $timeStamp) {
 		$listCate = DB::table('category')->where('userId', $userId)
 		->where('updated_at', '>', $timeLocal)->get();
+		// Update update_at list cate return
+		DB::table('category')->where('userId', $userId)
+		->where('updated_at', '>', $timeLocal)->update(array('update_at' => $timeStamp));
 		if (count($listCate) != 0) {
 			return array('status' => 200, 'result' => $listCate);
 		} else {

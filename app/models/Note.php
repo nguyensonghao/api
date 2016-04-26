@@ -74,7 +74,7 @@ class Note extends Eloquent {
 	public function pullData ($userId, $timeLocal) {
 		$listNote = DB::table('category')->select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
 		->where('userId', $userId)->join('note', 'note.cateId', '=', 'category.categoryId')
-		->where('note.updated_at', '>', $timeLocal)->get();
+		->where('note.updated_at', '>', $timeLocal)->get();		
 		if (count($listNote) != 0) {
 			return array('status' => 200, 'result' => $listNote);
 		} else {
