@@ -53,7 +53,7 @@ class Category extends Eloquent {
 			// Update time server
 		    $this->updateTimeServer($updated_at, $userId, 'cate');
 
-		    // Delete all note in category
+		    // Delete all note in cate
 			Note::where('cateId', $categoryId)->update(array('status' => -1));
 			return array('status' => 200);
 		} else {

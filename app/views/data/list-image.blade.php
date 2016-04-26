@@ -58,11 +58,11 @@
 							<span class="glyphicon glyphicon-ok"></span> 
 							Xong
 						</button>
-						<button type="button" class="btn btn-default" onclick='showImage({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}")'>
+						<button type="button" class="btn btn-default btn-show-image-{{ $value->id }}" onclick='showImage({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}">
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							Xem
 						</button>
-						<button type="button" class="btn btn-danger" onclick='fixMean({{$value->id}}, "{{ $value->word }}", "{{ $value->mean }}", "{{ $value->phonetic }}", "{{ $value->des }}")'>
+						<button type="button" class="btn btn-danger btn-fix-word-{{ $value->id }}" onclick='fixMean({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}" phonetic="{{ $value->phonetic }}" des="{{ $value->des }}">
 							<span class="glyphicon glyphicon glyphicon-pencil"></span> 
 							Sửa
 						</button>
@@ -131,7 +131,9 @@
 		var indexPage = 0;
 		var idWord;
 
-		var showImage = function (id, word, mean) {		
+		var showImage = function (id) {
+			var word = $('.btn-show-image-' + id).attr('word');
+			var mean = $('.btn-show-image-' + id).attr('mean');			
 			indexPage = 0;
 			idWord = id;	
 			$('#modal-show-image .modal-title').html('Ảnh cho từ ' + word + '('+ mean +')');
@@ -145,7 +147,6 @@
 				type: 'post',
 				data: {id : id},
 				success: function (data) {
-					console.log(data);
 					var listUrl = data.url;
 					if (listUrl == null) {
 						$('#modal-show-image').modal('hide');
@@ -229,7 +230,11 @@
 			})
 		}
 
-		var fixMean = function (id, word, mean, phonectic, des) {			
+		var fixMean = function (id) {
+			var word = $('.btn-fix-word-' + id).attr('word');
+			var mean = $('.btn-fix-word-' + id).attr('mean');
+			var phonectic = $('.btn-fix-word-' + id).attr('phonetic');
+			var des = $('.btn-fix-word-' + id).attr('des');
 			var str = '<p>Sửa nghĩa cho từ: '+word+'</p>';
 			str += '<input type="text" name="word" class="form-control name-word" value="'+word+'"><p></p>';
 			str += '<input type="text" name="mean" class="form-control mean-word" value="'+mean+'"><p></p>';
