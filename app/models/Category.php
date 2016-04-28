@@ -28,7 +28,7 @@ class Category extends Eloquent {
 		if ($category->save()) {
 			$cate = Category::where('userId', $userId)->where('date', $date)
 		    ->where('categoryName', $categoryName)->first();
-		    $update_at = $cate->updated_at;
+		    $updated_at = $cate->updated_at;
 
 		    // Update time server
 		    $this->updateTimeServer($updated_at, $userId, 'cate');
