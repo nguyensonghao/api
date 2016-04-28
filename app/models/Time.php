@@ -17,10 +17,11 @@ class Time extends Eloquent {
 	protected $table = 'time';
 
 
-	public function getTime ($userId, $type) {
+	public function getTime ($userId, $type, $timeStamp) {
 		$time = Time::where('userId', $userId)->where('type', $type)->first();
 		if (is_null($time)) {
-			return array('status' => 304);
+			Time::insert(array('userId' => $userId, 'type' => $type, 'time' => $timeStamp));
+			return array('status' => 306);
 		} else {
 			return array('status' => 200, 'result' => $time);
 		}

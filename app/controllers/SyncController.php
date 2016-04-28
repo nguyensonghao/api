@@ -55,8 +55,9 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$type    = $request->type;
+	    @$timeStamp = $request->timeStamp;
 		if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($type)) {
-			$result = $this->time->getTime($userId, $type);
+			$result = $this->time->getTime($userId, $type, $timeStamp);
 	    	return Response::json($result);
 	    } else {
 	    	return Response::json(array('status' => 400));
