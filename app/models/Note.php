@@ -28,7 +28,7 @@ class Note extends Eloquent {
 		$note->noteMean = $noteMean;
 		$note->cateId   = $categoryId;
 		$note->idx      = $idx;
-		$note->status   = 0;
+		$note->status   = 0;		
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
 			->where('date', $date)->first()->noteId;
@@ -36,11 +36,7 @@ class Note extends Eloquent {
 		} else {
 			return array('status' => 304);
 		}
-	}
-
-	public function updateNote ($noteId, $note) {
-		
-	}
+	}	
 
 	public function deleteNote ($noteId) {
 		if (Note::where('noteId', $noteId)->update(array('status' => -1)))
@@ -62,6 +58,7 @@ class Note extends Eloquent {
 		for ($i = 0; $i < $size; $i++) {
 			$categoryId = $myCategory[$i]->categoryId;
 			$note = DB::table('note')->where('cateId', $categoryId)
+			->where('note.status', '<>', -1)
 			->leftJoin('category', 'category.categoryId', '=', 'note.cateId')->get();
 			$sizeNote = count($note);
 			for ($j = 0; $j < $sizeNote; $j++) {
@@ -74,7 +71,7 @@ class Note extends Eloquent {
 
 	public function pullData ($userId, $timeLocal, $timeStamp) {
 		$listNote = DB::table('category')->select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
-		->where('userId', $userId)->where('note.status', '<>', -1)->join('note', 'note.cateId', '=', 'category.categoryId')
+		->where('userId', $userId)->join('note', 'note.cateId', '=', 'category.categoryId')
 		->where('note.updated_at', '>', $timeLocal)->get();
 		$size = count($listNote);
 
