@@ -140,11 +140,11 @@ Route::post('api/forget-flash', 'FlashController@forgetFlashCard');
 
 Route::controller('sync', 'SyncController');
 
+Route::post('api/get-time', 'SyncController@actionGetTime');
+
 Route::post('api/pull-note', 'SyncController@actionPullNoteServer');
 
 Route::post('api/push-note-new', 'SyncController@actionPushNoteNewServer');
-
-Route::post('api/get-time', 'SyncController@actionGetTime');
 
 Route::post('api/update-note-server', 'SyncController@actionUpdateNote');
 

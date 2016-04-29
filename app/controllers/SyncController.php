@@ -28,8 +28,12 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$timeLocal = $request->timeLocal;
+	    @$timeStamp = $request->timeStamp;	    
+
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($timeLocal)) {
-	    	$listNote = $this->note->pullData($userId, $timeLocal);
+	    	$listNote = $this->note->pullData($userId, $timeLocal, $timeStamp);
+	    	// Update time Server
+	    	$this->updateTimeServer($timeStamp, $userId, 'note');
 	    	return Response::json($listNote);
 	    } else {
 	    	return Response::json(array('status' => 400));
@@ -41,14 +45,30 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$userId  = $request->userId;
 	    @$listNote = $request->listNote;
+	    @$timeStamp = $request->timeStamp;
 
 	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($listNote)) {
-	    	$result = $this->note->pushDataNew($userId, json_decode($listNote));
+	    	$result = $this->note->pushDataNew($userId, $timeStamp, json_decode($listNote));
+	    	return Response::json($result);
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }	    
+	}
+
+	public function actionUpdateNote () {
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);	
+	    @$userId  = $request->userId;
+	    @$listNote = $request->listNote;
+	    @$timeStamp = $request->timeStamp;	    
+	    
+	    if ($this->validate->validateSpecialChar($listNote) && $this->validate->validateSpecialChar($userId)) {
+	    	$result = $this->note->updateDataChange(json_decode($listNote), $timeStamp);
 	    	return Response::json($result);
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
-	}
+	}	
 
 	public function actionGetTime () {
 		$postdata = file_get_contents("php://input");
@@ -58,18 +78,6 @@ class SyncController extends BaseController {
 	    @$timeStamp = $request->timeStamp;
 		if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($type)) {
 			$result = $this->time->getTime($userId, $type, $timeStamp);
-	    	return Response::json($result);
-	    } else {
-	    	return Response::json(array('status' => 400));
-	    }
-	}
-
-	public function actionUpdateNote () {
-		$postdata = file_get_contents("php://input");
-	    $request  = json_decode($postdata);	    
-	    @$listNote = $request->listNote;
-	    if ($this->validate->validateSpecialChar($listNote)) {
-	    	$result = $this->note->updateDataChange(json_decode($listNote));
 	    	return Response::json($result);
 	    } else {
 	    	return Response::json(array('status' => 400));
@@ -121,7 +129,7 @@ class SyncController extends BaseController {
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
-	}	
+	}
 }
 
 ?>

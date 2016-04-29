@@ -72,35 +72,43 @@ class Note extends Eloquent {
 		return $listNote;
 	}
 
-	public function pullData ($userId, $timeLocal) {
+	public function pullData ($userId, $timeLocal, $timeStamp) {
 		$listNote = DB::table('category')->select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
 		->where('userId', $userId)->where('note.status', '<>', -1)->join('note', 'note.cateId', '=', 'category.categoryId')
-		->where('note.updated_at', '>', $timeLocal)->get();		
-		if (count($listNote) != 0) {
+		->where('note.updated_at', '>', $timeLocal)->get();
+		$size = count($listNote);
+
+		if ($size != 0) {
+			// Update update_at list cate return
+			for ($i = 0; $i < $size; $i++) {
+				DB::table('note')->where('noteId', $listNote[$i]->noteId)->update(array('updated_at' => $timeStamp));
+			}
 			return array('status' => 200, 'result' => $listNote);
 		} else {
 			return array('status' => 304);
 		}
 	}
 
-	public function pushDataNew ($userId, $listNote) {
+	public function pushDataNew ($userId, $timeStamp, $listNote) {
 		$list = json_decode(json_encode($listNote), true);
 		$size = count($list);
-		$listNote = [];
-		for ($i = 0; $i < $size; $i++) {			
+		$listNoteReturn = [];
+		for ($i = 0; $i < $size; $i++) {
+			$list[$i]['updated_at'] = $timeStamp;
 			$id = DB::table('note')->insertGetId($list[$i]);
-			$name = $list[$i]['noteName'];
-			array_push($listNote, array('id' => $id, 'query' => $name));
+			$query = $list[$i]['noteName'];			
+			array_push($listNoteReturn, array('id' => $id, 'query' => $query));
 		}
 
-		return array('status' => 200, 'result' => $listNote);
+		return array('status' => 200, 'result' => $listNoteReturn);
 	}
 
-	public function updateDataChange ($listNote) {
+	public function updateDataChange ($listNote, $timeStamp) {
 		$list = json_decode(json_encode($listNote), true);
-		$size = count($list);		
-		for ($i = 0; $i < $size; $i++) {						
-			$note = $listNote[$i];
+		$size = count($list);
+		for ($i = 0; $i < $size; $i++) {
+			$note = $list[$i];
+			$note['updated_at'] = $timeStamp;
 			Note::where('noteId', $note['noteId'])->update($note);
 		}
 
