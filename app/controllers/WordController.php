@@ -382,6 +382,62 @@ class WordController extends BaseController {
 		}
 	}
 
+	public function showImportData () {
+		return View::make('data.import-data');
+	}
+
+	public function actionImportData () {
+		ini_set('max_execution_time', 600000000);
+		if (Input::hasFile('file')) {
+			Input::file('file')->move(public_path() . '/import', 'data.json');
+
+			// Load file json then import database
+			$filePath = public_path() . '/import/data.json';
+			try {
+				$data = file_get_contents($filePath);
+				$data = json_decode($data, true);
+				$dataCourse = $data['course'];
+				$dataSubject = $data['subjects'];
+				$dataWord = $data['words'];
+				$sizeSubject = count($dataSubject);
+				$sizeWord = count($dataWord);
+
+				// Insert into database
+				if (DB::table('courses')->insert($dataCourse)) {
+					// Insert subject
+
+					for ($i = 0; $i < $sizeSubject; $i++) {
+						if ($this->subject->insertSubject(($dataSubject[$i]))) {
+							Log::info('Insert subject success');
+						} else {
+							return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm subject');
+						}
+					}
+
+					// Insert word
+
+					for ($i = 0; $i < $sizeWord; $i++) {
+						if ($this->word->insertWord($dataWord[$i])) {
+							Log::info('Insert subject success');
+						} else {
+							return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm word');
+						}
+					}
+					
+					return Redirect::back()->with('notify', 'Thêm dữ liệu thành công');					
+				} else {
+					return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm course');
+				}				
+			} catch (Exception $e) {
+				Log::info($e);
+				return Redirect::back()->with('error', 'Có lỗi trong quá trình import dữ liệu ' . $e->getMessage());
+			}
+		} else {
+			return Redirect::back()->with('error', 'Bạn phải chọn file trước khi upload');
+		}
+	}
+
+
 	public static function actionActiveMenu ($type) {
 		if (Request::segment(1) == $type) {
 			return 'active';

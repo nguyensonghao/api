@@ -70,5 +70,31 @@ class Word extends Eloquent {
 		return Word::where('id', $id)->update(array('mean' => $mean, 'phonetic' => $phonectic, 'word' => $word, 'des' => $des));
 	}
 
+	public function insertWord ($word) {
+		if (is_null($word['mean']))
+			$word['meam'] = '';
+
+		if (is_null($word['example']))
+			$word['example'] = '';
+
+		if (is_null($word['example_mean']))
+			$word['example_mean'] = '';			
+
+		if (is_null($word['phonetic']))
+			$word['phonetic'] == null;
+
+		if (is_null($word['des']))
+			$word['des'] = '';
+
+		$word['next_time'] = '';		
+		$word['time_date'] = '';
+		$word['num_ef'] = 0;
+		$word['num_n'] = 0;
+		$word['num_i'] = 0;
+		$word['max_q'] = 0;
+
+		return Word::insert($word);
+	}
+
 
 }

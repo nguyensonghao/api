@@ -180,6 +180,8 @@ Route::get('xuat-du-lieu-json/{id_course}', 'WordController@sortDataSubjectJson'
 
 Route::get('xuat-du-lieu-course-json', 'WordController@sortDataCourseJson');
 
+Route::get('them-du-lieu', 'WordController@showImportData');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
@@ -194,3 +196,4 @@ Route::post('dang-nhap', 'WordController@actionLogin');
 
 Route::post('them-admin', 'WordController@actionAddAdmin');
 
+Route::post('them-dulieu-json', 'WordController@actionImportData');
