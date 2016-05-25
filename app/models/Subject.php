@@ -28,4 +28,13 @@ class Subject extends Eloquent {
 		}		
 	}
 
+	public function insertSubject ($subject) {
+		if (is_null($subject['mean']))
+			$subject['mean'] = '';
+
+		$subject['time_date'] = '';
+
+		return Subject::insert($subject);
+	}
+
 }
