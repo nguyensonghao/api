@@ -5,7 +5,6 @@
 	<div class="col-md-12 content-import-data">
 		<form action="{{ Asset('them-dulieu-json') }}" method="POST" role="form" enctype="multipart/form-data">
 			<legend>Import cơ sở dữ liệu</legend>
-			
 			<p class="title">Chọn file cần import</p>
 			<input type="file" name="file" accept=".json">
 			<p class="note">Chú ý: file phải ở dạng chuẩn cấu trúc json</p>
@@ -21,6 +20,8 @@
 					<strong>Thông báo!</strong> {{ Session::get('notify') }}
 				</div>
 			@endif
+			
+			<h3>Quá trình import dữ liệu diễn ra khác lâu. Yêu cầu chỉ <b>click 1 lần</b> vào nút <b>thêm dữ liệu</b> và chờ đợi</h3>
 
 			<button type="submit" class="btn btn-danger">Thêm dữ liệu</button>
 		</form>		
