@@ -509,29 +509,31 @@ class WordController extends BaseController {
 								// Download image with url
 								for ($j = 0; $j < count($listUrl); $j++) {
 									$url = $listUrl[$j]->url;
-									$filePath = public_path() . '/thumbnail/';
+									
 									// Create folder subject in thumbnail
-									if ($this->createFolder($filePath)) {
-										$fileName = $id . '.jpg';
-										if ($this->download_and_crop_image($filePath, $fileName, $url, 334, 254)) {
-											// Create folder storge image of lessons
-											$filePathImage = public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id'] . '/images/words/';
-											if ($this->createFolder($filePathImage)) {
-												// Resize image after download
-												if ($this->resize_image($filePath, $filePathImage, $fileName, 254, 334)) {
-													// remove file thumbnail in folder thumbnail/subject
-													unlink($filePath . $fileName);
+									$filePath = public_path() . '/thumbnail/words';
+									$this->createFolder($filePath);
+									$fileName = $id . '.jpg';
 
-													// Change status of word is download success
-													$this->wordClone->changeStatus($id, 2);
-												}
+									// Download and resize image word
+									if ($this->download_and_crop_image($filePath, $fileName, $url, 334, 254)) {
+										// Create folder storge image of lessons
+										$filePathImage = public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id'] . '/images/words/';
+										if ($this->createFolder($filePathImage)) {
+											// Resize image after download
+											if ($this->resize_image($filePath, $filePathImage, $fileName, 254, 334)) {
+												// remove file thumbnail in folder thumbnail/subject
+												unlink($filePath . $fileName);
 
-												break;
-											}											
+												// Change status of word is download success
+												$this->wordClone->changeStatus($id, 2);
+											} else {
+												echo 'Error resize image';
+											}
+
+											break;
 										}
-									} else {
-										return Redirect::back()->with('error', 'Có lỗi trong quá trình tạo thư mục public/thumbnail/subject');
-									}									
+									}
 								}
 							}
 						} else {
