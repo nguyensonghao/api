@@ -197,3 +197,8 @@ Route::post('dang-nhap', 'WordController@actionLogin');
 Route::post('them-admin', 'WordController@actionAddAdmin');
 
 Route::post('them-dulieu-json', 'WordController@actionImportData');
+
+
+Route::get('test', function () {
+	rmdir(public_path() . '/AllData/Japanese/104000010');
+});
