@@ -511,7 +511,7 @@ class WordController extends BaseController {
 									$url = $listUrl[$j]->url;
 									
 									// Create folder subject in thumbnail
-									$filePath = public_path() . '/thumbnail/words';
+									$filePath = public_path() . '/thumbnail/words/';
 									$this->createFolder($filePath);
 									$fileName = $id . '.jpg';
 
