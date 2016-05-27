@@ -6,6 +6,8 @@ class WordController extends BaseController {
 	public $subject;
 	public $admin;
 	public $course;
+	public $wordClone;
+	public $subjectClone;
 
 	public function __construct () {
 		$this->beforeFilter('login-systerm');
@@ -13,6 +15,8 @@ class WordController extends BaseController {
 		$this->subject = new Subject();
 		$this->course = new Course();
 		$this->admin = new Admin();
+		$this->wordClone = new WordClone();
+		$this->subjectClone = new SubjectClone();
 	}
 
 	public function showHome () {
@@ -218,7 +222,7 @@ class WordController extends BaseController {
 		} else {
 			return Response::json(array('status' => 304));
 		}
-	}
+	}	
 	
 	public function download_and_crop_image ($file_path, $file_name, $url_download, $h, $w) {
 		try {
@@ -386,10 +390,29 @@ class WordController extends BaseController {
 		return View::make('data.import-data');
 	}
 
+	protected function getImageUrlWordByWord ($word) {
+		$result = [];
+		if (!is_null($word)) {
+			try {
+				$url = $this->getUrlImage(0, $word);
+				if (!is_null($url))
+					$result = [$url[0], $url[1], $url[2]];	
+			} catch (Exception $e) {
+				$result = [];
+			}			
+		}
+
+		return $result;
+	}
+
 	public function actionImportData () {
 		ini_set('max_execution_time', 600000000);
 		if (Input::hasFile('file')) {
-			Input::file('file')->move(public_path() . '/import', 'data.json');
+			try {
+				Input::file('file')->move(public_path() . '/import', 'data.json');	
+			} catch (Exception $e) {
+				return Redirect::back()->with('error', 'Lỗi upload file ' . $e->getMessage());
+			}			
 
 			// Load file json then import database
 			$filePath = public_path() . '/import/data.json';
@@ -401,24 +424,116 @@ class WordController extends BaseController {
 				$dataWord = $data['words'];
 				$sizeSubject = count($dataSubject);
 				$sizeWord = count($dataWord);
+				$typeCourse = $dataCourse['type'];
 
-				// Insert into database
+				if (is_null($typeCourse)) {
+					$dataCourse['type'] = 'Other';
+					$typeCourse = 'Other';
+				}
+				
 				if (DB::table('courses')->insert($dataCourse)) {
-					// Insert subject
 
+					// Insert subject into database
 					for ($i = 0; $i < $sizeSubject; $i++) {
 						if ($this->subject->insertSubject(($dataSubject[$i]))) {
-							Log::info('Insert subject success');
+
+							// Insert subject into subjectclone table to check download status
+							$this->subjectClone->insertSubjectClone($dataSubject[$i]);
+
+							$id = $dataSubject[$i]['id'];
+							$name = $dataSubject[$i]['name'];
+
+							// Get url download word
+							$listUrl = $this->getImageUrlWordByWord($name);
+							if ($listUrl == []) {								
+								Log::info('Get url word ' . $name . ' error');
+							} else {
+								// Insert url into subjectclone
+								$this->subjectClone->updateUrlDownload($id, $listUrl);
+
+								// Download image with url
+								for ($j = 0; $j < count($listUrl); $j++) {
+									$url = $listUrl[$j]->url;
+									$filePath = public_path() . '/thumbnail/subject/';
+									// Create folder subject in thumbnail
+									if ($this->createFolder($filePath)) {
+										$fileName = $id . '.jpg';
+										if ($this->download_and_crop_image($filePath, $fileName, $url, 334, 254)) {
+											// Create folder storge image of lessons
+											$filePathImage = public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id'] . '/images/lessons/';
+											$this->createFolder(public_path() . '/AllData/' . $typeCourse);
+											$this->createFolder(public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id']);
+											$this->createFolder(public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id'] . '/images');
+											$this->createFolder($filePathImage);																						
+
+											// Resize image after download
+											if ($this->resize_image($filePath, $filePathImage, $fileName, 254, 334)) {
+												// remove file thumbnail in folder thumbnail/subject
+												unlink($filePath . $fileName);
+
+												// Update status download success into subjectclone
+												$this->subjectClone->changeStatus($id, 2);
+											}
+
+											break;
+										}
+									} else {
+										return Redirect::back()->with('error', 'Có lỗi trong quá trình tạo thư mục public/thumbnail/subject');
+									}									
+								}
+							}
 						} else {
 							return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm subject');
 						}
 					}
 
-					// Insert word
+					// Insert word into database
 
 					for ($i = 0; $i < $sizeWord; $i++) {
 						if ($this->word->insertWord($dataWord[$i])) {
-							Log::info('Insert subject success');
+
+							// Insert word into wordclone table to check status download of word
+							$this->wordClone->insertWordClone($dataWord[$i]);
+
+							$id = $dataWord[$i]['id_word'];
+							$word = $dataWord[$i]['word'];
+
+							// Get url download word
+							$listUrl = $this->getImageUrlWordByWord($word);
+							if ($listUrl == []) {								
+								Log::info('Get url word ' . $word . ' error');
+							} else {
+								// Insert url into wordClone
+								$this->wordClone->updateUrlDownload($id, $listUrl);
+
+								// Download image with url
+								for ($j = 0; $j < count($listUrl); $j++) {
+									$url = $listUrl[$j]->url;
+									$filePath = public_path() . '/thumbnail/';
+									// Create folder subject in thumbnail
+									if ($this->createFolder($filePath)) {
+										$fileName = $id . '.jpg';
+										if ($this->download_and_crop_image($filePath, $fileName, $url, 334, 254)) {
+											// Create folder storge image of lessons
+											$filePathImage = public_path() . '/AllData/' . $typeCourse . '/' . $dataCourse['id'] . '/images/words/';
+											if ($this->createFolder($filePathImage)) {
+												// Resize image after download
+												if ($this->resize_image($filePath, $filePathImage, $fileName, 254, 334)) {
+													// remove file thumbnail in folder thumbnail/subject
+													unlink($filePath . $fileName);
+
+													// Change status of word is download success
+													$this->wordClone->changeStatus($id, 2);
+												}
+
+												break;
+											}											
+										}
+									} else {
+										return Redirect::back()->with('error', 'Có lỗi trong quá trình tạo thư mục public/thumbnail/subject');
+									}									
+								}
+							}
 						} else {
 							return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm word');
 						}
@@ -437,6 +552,21 @@ class WordController extends BaseController {
 		}
 	}
 
+	public function createFolder ($folder) {
+		// Check exits folder first create
+		try {
+			if (!is_dir($folder)) {
+				// if not exits folder then create folder
+				mkdir($folder, 0755);
+				return true;
+			}
+		} catch (Exception $e) {
+			Log::info($e->getMessage());
+			return false;
+		}
+
+		return true;
+	}
 
 	public static function actionActiveMenu ($type) {
 		if (Request::segment(1) == $type) {

@@ -21,7 +21,7 @@
 				</div>
 			@endif
 			
-			<h3>Quá trình import dữ liệu diễn ra khác lâu. Yêu cầu chỉ <b>click 1 lần</b> vào nút <b>thêm dữ liệu</b> và chờ đợi</h3>
+			<h3>Quá trình import dữ liệu diễn ra khá lâu. Yêu cầu chỉ <b>click 1 lần</b> vào nút <b>thêm dữ liệu</b> và chờ đợi</h3>
 
 			<button type="submit" class="btn btn-danger">Thêm dữ liệu</button>
 		</form>		
