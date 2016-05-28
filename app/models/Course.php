@@ -18,7 +18,7 @@ class Course extends Eloquent {
 
 	public function getList ($id_course) {
 		$id_course = ((int)($id_course / 1000000)) * 1000000;
-		return Course::where('id', '>', $id_course)->where('id', '<', $id_course + 10)->get();
+		return Course::where('id', '>', $id_course)->where('id', '<', $id_course + 100)->get();
 	}
 
 	public function getLastIdCourse ($id_course) {
