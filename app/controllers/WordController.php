@@ -390,7 +390,8 @@ class WordController extends BaseController {
 	}
 
 	public function showImportData () {
-		return View::make('data.import-data');
+		$list['importStatus'] = DB::table('import_status')->first();
+		return View::make('data.import-data', $list);
 	}
 
 	protected function getImageUrlWordByWord ($word) {
@@ -454,6 +455,8 @@ class WordController extends BaseController {
 				
 				// Import course into database
 				if (DB::table('courses')->insert($dataCourse)) {
+					// Show notify importing...
+					$this->changeStatusImport($idCourse, $dataCourse['name'], 1);
 
 					// Get last id subject of course and increament subjectId
 					$lastSubjectId = $this->subject->getLastIdSubject($idCourse);
@@ -524,11 +527,11 @@ class WordController extends BaseController {
 					for ($i = 0; $i < $sizeWord; $i++) {
 						// Create new wordId and reset value of wordId
 						++ $lastWordId;
-						$id = $dataWord[$i]['id_word'];
 						$word = $dataWord[$i]['word'];
 						$dataWord[$i]['id_subject'] = $listStorgeSubject[$dataWord[$i]['id_subject']];
 						$dataWord[$i]['id_course'] = $idCourse;
 						$dataWord[$i]['id_word'] = $lastWordId;
+						$id = $lastWordId;
 
 						if ($this->word->insertWord($dataWord[$i])) {
 
@@ -577,6 +580,8 @@ class WordController extends BaseController {
 							return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm word');
 						}
 					}
+
+					$this->changeStatusImport($idCourse, $dataCourse['name'], 0);
 					
 					return Redirect::back()->with('notify', 'Thêm dữ liệu thành công');					
 				} else {
@@ -619,9 +624,19 @@ class WordController extends BaseController {
 		}
 
 		return true;
-
 	}
 
+	protected function changeStatusImport ($id, $name, $status) {
+		$import = DB::table('import_status')->first();
+		if (is_null($import)) {
+			return DB::table('import_status')
+			->insert(array('id' => $id, 'name' => $name, 'status' => $status));
+		} else {
+			return DB::table('import_status')
+			->where('id', $import->id)->where('name', $import->name)
+			->update(array('id' => $id, 'name' => $name, 'status' => $status));
+		}
+	}
 
 	public static function actionActiveMenu ($type) {
 		if (Request::segment(1) == $type) {
