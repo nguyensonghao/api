@@ -22,7 +22,7 @@ class Subject extends Eloquent {
 		$id = (int)$id;
 		if ($id == 0) {
 			return Subject::where('id_course', '>', $id_course)
-			->where('id_course', '<', $id_course + 10)->get();
+			->where('id_course', '<', $id_course + 100)->get();
 		} else {
 			return Subject::where('id_course', $id_course)->get();
 		}		

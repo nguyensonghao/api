@@ -23,10 +23,10 @@ class Word extends Eloquent {
 		if ($id == 0) {
 			if ($id_subject == 'all') {
 				return Word::where('status', 1)->where('id_course', '>', $id_course)
-				->where('id_course', '<', $id_course + 10)->paginate(20);
+				->where('id_course', '<', $id_course + 100)->paginate(20);
 			} else {
 				return Word::where('status', 1)->where('id_course', '>', $id_course)
-				->where('id_course', '<', $id_course + 10)
+				->where('id_course', '<', $id_course + 100)
 			    ->where('id_subject', $id_subject)->paginate(20);
 			}		
 		} else {
@@ -46,10 +46,10 @@ class Word extends Eloquent {
 		if ($id == 0) {
 			if ($id_subject == 'all') {
 				return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
-				->where('id_course', '<', $id_course + 10)->paginate(20);
+				->where('id_course', '<', $id_course + 100)->paginate(20);
 			} else {
 				return Word::where('status', '<>', 1)->where('id_course', '>', $id_course)
-				->where('id_course', '<', $id_course + 10)
+				->where('id_course', '<', $id_course + 100)
 			    ->where('id_subject', $id_subject)->paginate(20);
 			}		
 		} else {

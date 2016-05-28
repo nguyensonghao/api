@@ -424,7 +424,12 @@ class WordController extends BaseController {
 				$data = json_decode($data, true);
 				$dataCourse = $data['course'];
 				$dataSubject = $data['subjects'];
-				$dataWord = $data['words'];				
+				$dataWord = $data['words'];
+
+				// Check exits courseName
+				if (!is_null(Course::where('name', $dataCourse['name'])->first())) {
+					return Redirect::back()->with('error', 'Tên khóa học bị trùng');
+				}
 
 				// Validate fields is empty
 				if (!$this->checkEmpty([$dataCourse['srclang'], $dataCourse['deslang'], $dataCourse['name'], $dataCourse['id'], $dataCourse
