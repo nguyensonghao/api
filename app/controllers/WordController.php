@@ -354,7 +354,7 @@ class WordController extends BaseController {
 			Course::where('id', $course->id)->update(array('subject' => $subject, 'word' => $word));
 		}
 		try {			
-			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word')->get());			
+			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word', 'status', 'srclang', 'deslang')->get());
 			$fileNameCourse = public_path() . '/AllData/courses.json';			
 			$fileCourse = fopen($fileNameCourse, "w");
 			if (fwrite($fileCourse, $strListCourse)) {
@@ -381,8 +381,11 @@ class WordController extends BaseController {
 			case 103:
 				return 'Korea';
 
-			default:
+			case 104:
 				return 'Japanese';
+
+			default:
+				return 'Other';
 		}
 	}
 
@@ -421,27 +424,48 @@ class WordController extends BaseController {
 				$data = json_decode($data, true);
 				$dataCourse = $data['course'];
 				$dataSubject = $data['subjects'];
-				$dataWord = $data['words'];
+				$dataWord = $data['words'];				
+
+				// Validate fields is empty
+				if (!$this->checkEmpty([$dataCourse['srclang'], $dataCourse['deslang'], $dataCourse['name'], $dataCourse['id'], $dataCourse
+					['word'], $dataCourse['subject']])) {
+					return Redirect::back()->with('error', 'Kiểm tra lại những trường bạn bắt buộc phải điền trong course: id, name, srclang, deslang, subject, word');
+				}
+
+				// get Last id of course and auto increament
+				$idCourse = $dataCourse['id'];
+				$idCourse = $this->course->getLastIdCourse($idCourse) + 1;				
+				$dataCourse['id'] = $idCourse;
+
+				// Validate id course
+				$typeCourse = $this->convertNameCourse($idCourse);
+				if ($typeCourse == 'Other') {
+					return Redirect::back()->with('error', 'Có vẻ như id course không hợp lệ, kiểm tra lại');
+				}
+
+				$dataCourse['type'] = $typeCourse;
 				$sizeSubject = count($dataSubject);
 				$sizeWord = count($dataWord);
-				$typeCourse = $dataCourse['type'];
-
-				if (is_null($typeCourse)) {
-					$dataCourse['type'] = 'Other';
-					$typeCourse = 'Other';
-				}
 				
+				// Import course into database
 				if (DB::table('courses')->insert($dataCourse)) {
+
+					// Get last id subject of course and increament subjectId
+					$lastSubjectId = $this->subject->getLastIdSubject($idCourse);
 
 					// Insert subject into database
 					for ($i = 0; $i < $sizeSubject; $i++) {
+						// Create new subjectId and reset value of subject
+						++ $lastSubjectId;
+						$id = $lastSubjectId;
+						$listStorgeSubject[$dataSubject[$i]['id']] = $lastSubjectId;
+						$dataSubject[$i]['id'] = $id;
+						$dataSubject[$i]['id_course'] = $idCourse;
+						$name = $dataSubject[$i]['name'];
+
 						if ($this->subject->insertSubject(($dataSubject[$i]))) {
-
-							// Insert subject into subjectclone table to check download status
-							$this->subjectClone->insertSubjectClone($dataSubject[$i]);
-
-							$id = $dataSubject[$i]['id'];
-							$name = $dataSubject[$i]['name'];
+							// Insert subject into subjectclone table to check download status							
+							$this->subjectClone->insertSubjectClone($dataSubject[$i]);							
 
 							// Get url download word
 							$listUrl = $this->getImageUrlWordByWord($name);
@@ -489,14 +513,22 @@ class WordController extends BaseController {
 
 					// Insert word into database
 
+					// Get last wordID and auto increament
+					$lastWordId = $this->word->getLastIdWord($idCourse);
+
 					for ($i = 0; $i < $sizeWord; $i++) {
+						// Create new wordId and reset value of wordId
+						++ $lastWordId;
+						$id = $dataWord[$i]['id_word'];
+						$word = $dataWord[$i]['word'];
+						$dataWord[$i]['id_subject'] = $listStorgeSubject[$dataWord[$i]['id_subject']];
+						$dataWord[$i]['id_course'] = $idCourse;
+						$dataWord[$i]['id_word'] = $lastWordId;
+
 						if ($this->word->insertWord($dataWord[$i])) {
 
 							// Insert word into wordclone table to check status download of word
-							$this->wordClone->insertWordClone($dataWord[$i]);
-
-							$id = $dataWord[$i]['id_word'];
-							$word = $dataWord[$i]['word'];
+							$this->wordClone->insertWordClone($dataWord[$i]);							
 
 							// Get url download word
 							$listUrl = $this->getImageUrlWordByWord($word);
@@ -554,12 +586,12 @@ class WordController extends BaseController {
 		}
 	}
 
-	public function createFolder ($folder) {
+	protected function createFolder ($folder) {
 		// Check exits folder first create
 		try {
 			if (!is_dir($folder)) {
 				// if not exits folder then create folder
-				mkdir($folder, 0755);
+				mkdir($folder);
 				return true;
 			}
 		} catch (Exception $e) {
@@ -570,19 +602,34 @@ class WordController extends BaseController {
 		return true;
 	}
 
+	protected function checkEmpty ($array) {
+		if (!is_array($array))
+			return false;
+		
+		$size = count($array);
+		for ($i = 0; $i < $size; $i++) {
+			$item = (string) $array[$i];
+			if (is_null($item))
+				return false;
+		}
+
+		return true;
+
+	}
+
+
 	public static function actionActiveMenu ($type) {
 		if (Request::segment(1) == $type) {
 			return 'active';
 		} else {
-			$name = Request::segment(2);		
+			$name = Request::segment(2);
 			if ($type == $name) {
 				return 'active';
 			}
 		}
 
 		return '';
-	}	
-
+	}
 }
 
 

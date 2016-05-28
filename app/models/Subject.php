@@ -26,7 +26,7 @@ class Subject extends Eloquent {
 		} else {
 			return Subject::where('id_course', $id_course)->get();
 		}		
-	}
+	}	
 
 	public function insertSubject ($subject) {
 		if (is_null($subject['mean']))
@@ -35,6 +35,23 @@ class Subject extends Eloquent {
 		$subject['time_date'] = '';
 
 		return Subject::insert($subject);
+	}
+
+	public function getLastIdSubject ($idCourse) {
+		$idCourseTest = (int)($idCourse / 1000) * 1000;
+		$idCoureFirst = (int)($idCourse / 1000000);
+		$subject = Subject::where('id_course', '>=', $idCourseTest)
+				->where('id_course', '<=', $idCourseTest + 100)
+		        ->orderBy('id', 'desc')->first();
+
+		if (is_null($subject)) {
+			return $idCoureFirst * 1000000;
+		} else {
+			$id = (string)($subject->id);
+			$first = (string)$idCoureFirst;
+			$last = substr($id, 3, strlen($id) - 3);
+			return $first . $last;
+		}		
 	}
 
 }

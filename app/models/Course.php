@@ -21,5 +21,16 @@ class Course extends Eloquent {
 		return Course::where('id', '>', $id_course)->where('id', '<', $id_course + 10)->get();
 	}
 
+	public function getLastIdCourse ($id_course) {
+		$id_course = ((int)($id_course / 1000000)) * 1000000;
+		$course = Course::where('id', '>', $id_course)->where('id', '<', $id_course + 100)
+		->orderBy('id', 'desc')->first();
+		if (is_null($course)) {
+			return $id_course;
+		} else {
+			return $course->id;
+		}
+	}
+
 
 }

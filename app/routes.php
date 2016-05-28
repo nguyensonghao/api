@@ -200,5 +200,8 @@ Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 
 Route::get('test', function () {
-	rmdir(public_path() . '/AllData/Japanese/104000010');
+	echo '<pre>';
+	$subject = new Subject();
+	print_r($subject->getLastIdSubject(101000010));
+	echo '</pre>';
 });

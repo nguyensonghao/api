@@ -96,5 +96,22 @@ class Word extends Eloquent {
 		return Word::insert($word);
 	}
 
+	public function getLastIdWord ($idCourse) {
+		$idCourseTest = (int)($idCourse / 1000) * 1000;
+		$idCoureFirst = (int)($idCourse / 1000000);
+		$word = Word::where('id_course', '>=', $idCourseTest)
+				->where('id_course', '<=', $idCourseTest + 100)
+		        ->orderBy('id_word', 'desc')->first();
+
+		if (is_null($word)) {
+			return $idCoureFirst * 1000000;
+		} else {
+			$id = (string)($word->id_word);
+			$first = (string)$idCoureFirst;
+			$last = substr($id, 3, strlen($id) - 3);
+			return $first . $last;
+		}		
+	}
+
 
 }
