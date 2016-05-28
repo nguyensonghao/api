@@ -312,6 +312,12 @@ class WordController extends BaseController {
 	}
 
 	public function sortDataSubjectJson ($id_course) {
+		// Check public course
+		$checkPublic = Course::where('id', $id_course)->first()->status;
+		if (is_null($checkPublic) || $checkPublic == 0) {
+			return Redirect::back()->with('error', 'Khóa học chưa được public');
+		}
+		
 		ini_set('max_execution_time', 600000000);
 		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')		
 		->where('id_course', $id_course)->get();		
@@ -593,6 +599,19 @@ class WordController extends BaseController {
 			}
 		} else {
 			return Redirect::back()->with('error', 'Bạn phải chọn file trước khi upload');
+		}
+	}
+
+	public function showManagerCourse () {
+		$list['listCourse'] = Course::paginate(10);
+		return View::make('data.manager-course', $list);
+	}
+
+	public function actionPublicCoures ($idCourse, $status) {
+		if (Course::where('id', $idCourse)->update(array('status' => $status))) {
+			return Redirect::back()->with('notify', 'Chuyển trạng thái khóa học thành công');
+		} else {
+			return Redirect::back()->with('error', 'Có lỗi trong quá trình xử lý');
 		}
 	}
 

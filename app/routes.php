@@ -182,6 +182,10 @@ Route::get('xuat-du-lieu-course-json', 'WordController@sortDataCourseJson');
 
 Route::get('them-du-lieu', 'WordController@showImportData');
 
+Route::get('quan-ly-khoa-hoc', 'WordController@showManagerCourse');
+
+Route::get('phat-hanh-khoa-hoc/{id}/{status}', 'WordController@actionPublicCoures');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');

@@ -102,6 +102,10 @@
 					<li class="{{ WordController::actionActiveMenu('them-du-lieu') }}">
 						<a href="{{ Asset('them-du-lieu') }}">Import dữ liệu</a>
 					</li>
+
+					<li class="{{ WordController::actionActiveMenu('quan-ly-khoa-hoc') }}">
+						<a href="{{ Asset('quan-ly-khoa-hoc') }}">Quản lý khóa học</a>
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">					
 					<li class="dropdown">
