@@ -5625,7 +5625,7 @@
     {
       "id_word": 314,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "発",
       "mean": "phát - bắt đầu",
       "example": "",
@@ -5642,7 +5642,7 @@
     {
       "id_word": 315,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "建",
       "mean": "kiến - xây dựng",
       "example": "",
@@ -5659,7 +5659,7 @@
     {
       "id_word": 316,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "物",
       "mean": "vật - đồ vật",
       "example": "",
@@ -5676,7 +5676,7 @@
     {
       "id_word": 317,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "品",
       "mean": "phẩm - sản phẩm",
       "example": "",
@@ -5693,7 +5693,7 @@
     {
       "id_word": 318,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "旅",
       "mean": "lữ - du lịch",
       "example": "",
@@ -5710,7 +5710,7 @@
     {
       "id_word": 319,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "通",
       "mean": "thông - vượt qua, thay thế",
       "example": "",
@@ -5727,7 +5727,7 @@
     {
       "id_word": 320,
       "id_subject": 20,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "進",
       "mean": "tiến - lớn lên,tiến lên",
       "example": "",
@@ -5744,7 +5744,7 @@
     {
       "id_word": 321,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "丸",
       "mean": "hoàn - cuộn,vặn",
       "example": "",
@@ -5761,7 +5761,7 @@
     {
       "id_word": 322,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "熱",
       "mean": "nhiệt - hơi nóng",
       "example": "",
@@ -5778,7 +5778,7 @@
     {
       "id_word": 323,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "冷",
       "mean": "lãnh - lạnh,rét mướt",
       "example": "",
@@ -5795,7 +5795,7 @@
     {
       "id_word": 324,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "甘",
       "mean": "cam - kẹo,ngọt",
       "example": "",
@@ -5812,7 +5812,7 @@
     {
       "id_word": 325,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "汚",
       "mean": "ô - bẩn",
       "example": "",
@@ -5829,7 +5829,7 @@
     {
       "id_word": 326,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "果",
       "mean": "quả - hoa quả",
       "example": "",
@@ -5846,7 +5846,7 @@
     {
       "id_word": 327,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "卵",
       "mean": "noãn - trứng",
       "example": "",
@@ -5863,7 +5863,7 @@
     {
       "id_word": 328,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "皿",
       "mean": "mãnh - đĩa",
       "example": "",
@@ -5880,7 +5880,7 @@
     {
       "id_word": 329,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "酒",
       "mean": "tửu - rượu",
       "example": "",
@@ -5897,7 +5897,7 @@
     {
       "id_word": 330,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "塩",
       "mean": "diêm - mặn",
       "example": "",
@@ -5914,7 +5914,7 @@
     {
       "id_word": 331,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "付",
       "mean": "phụ - thêm,đính kèm",
       "example": "",
@@ -5931,7 +5931,7 @@
     {
       "id_word": 332,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "片",
       "mean": "phiến - một bên",
       "example": "",
@@ -5948,7 +5948,7 @@
     {
       "id_word": 333,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "焼",
       "mean": "thiêu - đốt cháy",
       "example": "",
@@ -5965,7 +5965,7 @@
     {
       "id_word": 334,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "消",
       "mean": "tiêu - biến mất,không xuất hiện",
       "example": "",
@@ -5982,7 +5982,7 @@
     {
       "id_word": 335,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "固",
       "mean": "cố - cứng",
       "example": "",
@@ -5999,7 +5999,7 @@
     {
       "id_word": 336,
       "id_subject": 21,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "個",
       "mean": "cá - cá nhân",
       "example": "",
@@ -6016,7 +6016,7 @@
     {
       "id_word": 337,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "笑",
       "mean": "tiếu - cười",
       "example": "",
@@ -6033,7 +6033,7 @@
     {
       "id_word": 338,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "泣",
       "mean": "khấp - khóc",
       "example": "",
@@ -6050,7 +6050,7 @@
     {
       "id_word": 339,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "怒",
       "mean": "nộ - tức giận",
       "example": "",
@@ -6067,7 +6067,7 @@
     {
       "id_word": 340,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "幸",
       "mean": "hạnh - hạnh phúc",
       "example": "",
@@ -6084,7 +6084,7 @@
     {
       "id_word": 341,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "悲",
       "mean": "bi - buồn",
       "example": "",
@@ -6101,7 +6101,7 @@
     {
       "id_word": 342,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "苦",
       "mean": "khổ - chịu,đau khổ",
       "example": "",
@@ -6118,7 +6118,7 @@
     {
       "id_word": 343,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "痛",
       "mean": "thống - sự đau đớn",
       "example": "",
@@ -6135,7 +6135,7 @@
     {
       "id_word": 344,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "恥",
       "mean": "sỉ - xấu hổ",
       "example": "",
@@ -6152,7 +6152,7 @@
     {
       "id_word": 345,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "配",
       "mean": "phối - đạt được,cung cấp",
       "example": "",
@@ -6169,7 +6169,7 @@
     {
       "id_word": 346,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "困",
       "mean": "khốn - rắc rối",
       "example": "",
@@ -6186,7 +6186,7 @@
     {
       "id_word": 347,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "辛",
       "mean": "tân - đau",
       "example": "",
@@ -6203,7 +6203,7 @@
     {
       "id_word": 348,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "眠",
       "mean": "miên - ngủ",
       "example": "",
@@ -6220,7 +6220,7 @@
     {
       "id_word": 349,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "残",
       "mean": "tàn - còn lại",
       "example": "",
@@ -6237,7 +6237,7 @@
     {
       "id_word": 350,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "念",
       "mean": "niệm - nghĩ",
       "example": "",
@@ -6254,7 +6254,7 @@
     {
       "id_word": 351,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "感",
       "mean": "cảm - đã cảm thấy",
       "example": "",
@@ -6271,7 +6271,7 @@
     {
       "id_word": 352,
       "id_subject": 22,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "情",
       "mean": "tình - cảm giác,cảm thấy",
       "example": "",
@@ -6288,7 +6288,7 @@
     {
       "id_word": 353,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "覚",
       "mean": "giác - nhớ,hồi tưởng",
       "example": "",
@@ -6305,7 +6305,7 @@
     {
       "id_word": 354,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "忘",
       "mean": "vong - quên",
       "example": "",
@@ -6322,7 +6322,7 @@
     {
       "id_word": 355,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "決",
       "mean": "quyết - quyết định",
       "example": "",
@@ -6339,7 +6339,7 @@
     {
       "id_word": 356,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "定",
       "mean": "định - chọn,quyết định,",
       "example": "",
@@ -6356,7 +6356,7 @@
     {
       "id_word": 357,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "比",
       "mean": "tỉ - so sánh",
       "example": "",
@@ -6373,7 +6373,7 @@
     {
       "id_word": 358,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "受",
       "mean": "thụ - nhận",
       "example": "",
@@ -6390,7 +6390,7 @@
     {
       "id_word": 359,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "授",
       "mean": "thụ - hướng dẫn",
       "example": "",
@@ -6407,7 +6407,7 @@
     {
       "id_word": 360,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "練",
       "mean": "luyện - luyện tập",
       "example": "",
@@ -6424,7 +6424,7 @@
     {
       "id_word": 361,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "徒",
       "mean": "đồ - theo dõi",
       "example": "",
@@ -6441,7 +6441,7 @@
     {
       "id_word": 362,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "復",
       "mean": "phục - lặp lại",
       "example": "",
@@ -6458,7 +6458,7 @@
     {
       "id_word": 363,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "表",
       "mean": "biểu - thể hiện",
       "example": "",
@@ -6475,7 +6475,7 @@
     {
       "id_word": 364,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "卒",
       "mean": "tốt - tốt nghiệp",
       "example": "",
@@ -6492,7 +6492,7 @@
     {
       "id_word": 365,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "違",
       "mean": "vi - khác",
       "example": "",
@@ -6509,7 +6509,7 @@
     {
       "id_word": 366,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "役",
       "mean": "dịch - nhiệm vụ",
       "example": "",
@@ -6526,7 +6526,7 @@
     {
       "id_word": 367,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "皆",
       "mean": "giai - mọi người",
       "example": "",
@@ -6543,7 +6543,7 @@
     {
       "id_word": 368,
       "id_subject": 23,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "彼",
       "mean": "bỉ - anh ấy",
       "example": "",
@@ -6560,7 +6560,7 @@
     {
       "id_word": 369,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "全",
       "mean": "toàn - tất cả",
       "example": "",
@@ -6577,7 +6577,7 @@
     {
       "id_word": 370,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "部",
       "mean": "bộ - chỗ,vùng",
       "example": "",
@@ -6594,7 +6594,7 @@
     {
       "id_word": 371,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "必",
       "mean": "tất - chắc chắn",
       "example": "",
@@ -6611,7 +6611,7 @@
     {
       "id_word": 372,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "要",
       "mean": "yêu, yếu - cần thiết",
       "example": "",
@@ -6628,7 +6628,7 @@
     {
       "id_word": 373,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "荷",
       "mean": "hà - đồ đạc",
       "example": "",
@@ -6645,7 +6645,7 @@
     {
       "id_word": 374,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "由",
       "mean": "do - bởi vì",
       "example": "",
@@ -6662,7 +6662,7 @@
     {
       "id_word": 375,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "届",
       "mean": "giới - giao,chuyển",
       "example": "",
@@ -6679,7 +6679,7 @@
     {
       "id_word": 376,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "利",
       "mean": "lợi - thuận lợi, bổ ích",
       "example": "",
@@ -6696,7 +6696,7 @@
     {
       "id_word": 377,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "払",
       "mean": "phất - trả",
       "example": "",
@@ -6713,7 +6713,7 @@
     {
       "id_word": 378,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "濯",
       "mean": "trạc - giặt",
       "example": "",
@@ -6730,7 +6730,7 @@
     {
       "id_word": 379,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "寝",
       "mean": "tẩm - ngủ",
       "example": "",
@@ -6747,7 +6747,7 @@
     {
       "id_word": 380,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "踊",
       "mean": "dũng - nhảy",
       "example": "",
@@ -6764,7 +6764,7 @@
     {
       "id_word": 381,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "活",
       "mean": "hoạt - cơ động,nhanh nhẹn,linh hoạt",
       "example": "",
@@ -6781,7 +6781,7 @@
     {
       "id_word": 382,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "末",
       "mean": "mạt - kết thúc,cuối",
       "example": "",
@@ -6798,7 +6798,7 @@
     {
       "id_word": 383,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "宅",
       "mean": "trạch - nhà",
       "example": "",
@@ -6815,7 +6815,7 @@
     {
       "id_word": 384,
       "id_subject": 24,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "祭",
       "mean": "tế - lễ hội",
       "example": "",
@@ -6832,7 +6832,7 @@
     {
       "id_word": 385,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "平",
       "mean": "bình - bằng phẳng",
       "example": "",
@@ -6849,7 +6849,7 @@
     {
       "id_word": 386,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "和",
       "mean": "hòa - hòa bình, Nhật Bản",
       "example": "",
@@ -6866,7 +6866,7 @@
     {
       "id_word": 387,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "戦",
       "mean": "chiến - chiến tranh",
       "example": "",
@@ -6883,7 +6883,7 @@
     {
       "id_word": 388,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "争",
       "mean": "tranh - chống lại,xung đột",
       "example": "",
@@ -6900,7 +6900,7 @@
     {
       "id_word": 389,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "政",
       "mean": "chính - chính phủ",
       "example": "",
@@ -6917,7 +6917,7 @@
     {
       "id_word": 390,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "治",
       "mean": "trị - quản lý,cai trị",
       "example": "",
@@ -6934,7 +6934,7 @@
     {
       "id_word": 391,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "経",
       "mean": "kinh - đi qua",
       "example": "",
@@ -6951,7 +6951,7 @@
     {
       "id_word": 392,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "済",
       "mean": "tế - hoàn thành",
       "example": "",
@@ -6968,7 +6968,7 @@
     {
       "id_word": 393,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "法",
       "mean": "pháp - luật",
       "example": "",
@@ -6985,7 +6985,7 @@
     {
       "id_word": 394,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "律",
       "mean": "luật - quy định",
       "example": "",
@@ -7002,7 +7002,7 @@
     {
       "id_word": 395,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "際",
       "mean": "tế - dịp,đợt",
       "example": "",
@@ -7019,7 +7019,7 @@
     {
       "id_word": 396,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "関",
       "mean": "quan - quan hệ",
       "example": "",
@@ -7036,7 +7036,7 @@
     {
       "id_word": 397,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "係",
       "mean": "hệ - kết nối",
       "example": "",
@@ -7053,7 +7053,7 @@
     {
       "id_word": 398,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "義",
       "mean": "nghĩa - ngay thẳng, chính đáng",
       "example": "",
@@ -7070,7 +7070,7 @@
     {
       "id_word": 399,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "議",
       "mean": "nghị - thảo luận",
       "example": "",
@@ -7087,7 +7087,7 @@
     {
       "id_word": 400,
       "id_subject": 25,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "党",
       "mean": "đảng - đảng chính trị",
       "example": "",
@@ -7104,7 +7104,7 @@
     {
       "id_word": 401,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "遊",
       "mean": "du - chơi",
       "example": "",
@@ -7121,7 +7121,7 @@
     {
       "id_word": 402,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "泳",
       "mean": "vịnh - bơi",
       "example": "",
@@ -7138,7 +7138,7 @@
     {
       "id_word": 403,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "疲",
       "mean": "bì - kiệt sức",
       "example": "",
@@ -7155,7 +7155,7 @@
     {
       "id_word": 404,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "暖",
       "mean": "noãn - ấm",
       "example": "",
@@ -7172,7 +7172,7 @@
     {
       "id_word": 405,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "涼",
       "mean": "lương - mát mẻ",
       "example": "",
@@ -7189,7 +7189,7 @@
     {
       "id_word": 406,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "静",
       "mean": "tĩnh - yên lặng",
       "example": "",
@@ -7206,7 +7206,7 @@
     {
       "id_word": 407,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "公",
       "mean": "công - cộng đồng",
       "example": "",
@@ -7223,7 +7223,7 @@
     {
       "id_word": 408,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "園",
       "mean": "viên - công viên",
       "example": "",
@@ -7240,7 +7240,7 @@
     {
       "id_word": 409,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "込",
       "mean": "vào - đông đúc",
       "example": "",
@@ -7257,7 +7257,7 @@
     {
       "id_word": 410,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "連",
       "mean": "liên - liên kết",
       "example": "",
@@ -7274,7 +7274,7 @@
     {
       "id_word": 411,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "窓",
       "mean": "song - cửa sổ",
       "example": "",
@@ -7291,7 +7291,7 @@
     {
       "id_word": 412,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "側",
       "mean": "trắc - bên cạnh",
       "example": "",
@@ -7308,7 +7308,7 @@
     {
       "id_word": 413,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "葉",
       "mean": "diệp - lá",
       "example": "",
@@ -7325,7 +7325,7 @@
     {
       "id_word": 414,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "景",
       "mean": "cảnh - khoảng nhìn",
       "example": "",
@@ -7342,7 +7342,7 @@
     {
       "id_word": 415,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "記",
       "mean": "kí - viết ra",
       "example": "",
@@ -7359,7 +7359,7 @@
     {
       "id_word": 416,
       "id_subject": 26,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "形",
       "mean": "hình - định hình",
       "example": "",
@@ -7376,7 +7376,7 @@
     {
       "id_word": 417,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "吉",
       "mean": "cát - chúc may mắn",
       "example": "",
@@ -7393,7 +7393,7 @@
     {
       "id_word": 418,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "結",
       "mean": "kết - gắn,nối",
       "example": "",
@@ -7410,7 +7410,7 @@
     {
       "id_word": 419,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "婚",
       "mean": "hôn - kết hôn",
       "example": "",
@@ -7427,7 +7427,7 @@
     {
       "id_word": 420,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "共",
       "mean": "cộng - đồng nhất,kết hợp",
       "example": "",
@@ -7444,7 +7444,7 @@
     {
       "id_word": 421,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "供",
       "mean": "cung - cung cấp",
       "example": "",
@@ -7461,7 +7461,7 @@
     {
       "id_word": 422,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "両",
       "mean": "lưỡng - cả",
       "example": "",
@@ -7478,7 +7478,7 @@
     {
       "id_word": 423,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "若",
       "mean": "nhược - trẻ,non",
       "example": "",
@@ -7495,7 +7495,7 @@
     {
       "id_word": 424,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "老",
       "mean": "lão - già",
       "example": "",
@@ -7512,7 +7512,7 @@
     {
       "id_word": 425,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "息",
       "mean": "tức - thở",
       "example": "",
@@ -7529,7 +7529,7 @@
     {
       "id_word": 426,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "娘",
       "mean": "nương - con gái",
       "example": "",
@@ -7546,7 +7546,7 @@
     {
       "id_word": 427,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "奥",
       "mean": "áo - phía sau",
       "example": "",
@@ -7563,7 +7563,7 @@
     {
       "id_word": 428,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "将",
       "mean": "tướng - người chỉ huy",
       "example": "",
@@ -7580,7 +7580,7 @@
     {
       "id_word": 429,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "祖",
       "mean": "tổ - tổ tiên",
       "example": "",
@@ -7597,7 +7597,7 @@
     {
       "id_word": 430,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "育",
       "mean": "dục - lớn lên,nảy mầm",
       "example": "",
@@ -7614,7 +7614,7 @@
     {
       "id_word": 431,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "性",
       "mean": "tính - giới tính,tình dục",
       "example": "",
@@ -7631,7 +7631,7 @@
     {
       "id_word": 432,
       "id_subject": 27,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "招",
       "mean": "chiêu - mời",
       "example": "",
@@ -7648,7 +7648,7 @@
     {
       "id_word": 433,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "取",
       "mean": "thủ - bắt,cầm",
       "example": "",
@@ -7665,7 +7665,7 @@
     {
       "id_word": 434,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "最",
       "mean": "tối - hết sức, vô cùng",
       "example": "",
@@ -7682,7 +7682,7 @@
     {
       "id_word": 435,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "初",
       "mean": "sơ - đầu tiên",
       "example": "",
@@ -7699,7 +7699,7 @@
     {
       "id_word": 436,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "番",
       "mean": "phiên - đợt,lượt",
       "example": "",
@@ -7716,7 +7716,7 @@
     {
       "id_word": 437,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "歳",
       "mean": "tuế - tuổi",
       "example": "",
@@ -7733,7 +7733,7 @@
     {
       "id_word": 438,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "枚",
       "mean": "mai - tờ,mảnh",
       "example": "",
@@ -7750,7 +7750,7 @@
     {
       "id_word": 439,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "冊",
       "mean": "sách - đếm sách vở",
       "example": "",
@@ -7767,7 +7767,7 @@
     {
       "id_word": 440,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "億",
       "mean": "ức - trăm triệu",
       "example": "",
@@ -7784,7 +7784,7 @@
     {
       "id_word": 441,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "点",
       "mean": "điểm - hạt,chấm",
       "example": "",
@@ -7801,7 +7801,7 @@
     {
       "id_word": 442,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "階",
       "mean": "giai - tầng",
       "example": "",
@@ -7818,7 +7818,7 @@
     {
       "id_word": 443,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "段",
       "mean": "đoạn - cầu thang,bậc thang",
       "example": "",
@@ -7835,7 +7835,7 @@
     {
       "id_word": 444,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "号",
       "mean": "hiệu - số",
       "example": "",
@@ -7852,7 +7852,7 @@
     {
       "id_word": 445,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "倍",
       "mean": "bội - hai lần",
       "example": "",
@@ -7869,7 +7869,7 @@
     {
       "id_word": 446,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "次",
       "mean": "thứ - tiếp,kế tiếp",
       "example": "",
@@ -7886,7 +7886,7 @@
     {
       "id_word": 447,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "々",
       "mean": " - sự lặp lại",
       "example": "",
@@ -7903,7 +7903,7 @@
     {
       "id_word": 448,
       "id_subject": 28,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "他",
       "mean": "tha - khác",
       "example": "",
@@ -7920,7 +7920,7 @@
     {
       "id_word": 449,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "勝",
       "mean": "thắng - chiến thắng",
       "example": "",
@@ -7937,7 +7937,7 @@
     {
       "id_word": 450,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "負",
       "mean": "phụ - thất bại,thua",
       "example": "",
@@ -7954,7 +7954,7 @@
     {
       "id_word": 451,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "賛",
       "mean": "tán - đánh giá",
       "example": "",
@@ -7971,7 +7971,7 @@
     {
       "id_word": 452,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "成",
       "mean": "thành - thực hiện",
       "example": "",
@@ -7988,7 +7988,7 @@
     {
       "id_word": 453,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "絶",
       "mean": "tuyệt - gián đoạn,ngưng trệ",
       "example": "",
@@ -8005,7 +8005,7 @@
     {
       "id_word": 454,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "対",
       "mean": "đối - phản đối,chống lại",
       "example": "",
@@ -8022,7 +8022,7 @@
     {
       "id_word": 455,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "続",
       "mean": "tục - tiếp tục",
       "example": "",
@@ -8039,7 +8039,7 @@
     {
       "id_word": 456,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "辞",
       "mean": "từ - từ",
       "example": "",
@@ -8056,7 +8056,7 @@
     {
       "id_word": 457,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "投",
       "mean": "đầu - ném,quăng",
       "example": "",
@@ -8073,7 +8073,7 @@
     {
       "id_word": 458,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "選",
       "mean": "tuyển - chọn lựa",
       "example": "",
@@ -8090,7 +8090,7 @@
     {
       "id_word": 459,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "約",
       "mean": "ước - xấp xỉ",
       "example": "",
@@ -8107,7 +8107,7 @@
     {
       "id_word": 460,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "束",
       "mean": "thúc - bó,gói",
       "example": "",
@@ -8124,7 +8124,7 @@
     {
       "id_word": 461,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "守",
       "mean": "thủ - bảo vệ",
       "example": "",
@@ -8141,7 +8141,7 @@
     {
       "id_word": 462,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "過",
       "mean": "qua, quá - vượt qua",
       "example": "",
@@ -8158,7 +8158,7 @@
     {
       "id_word": 463,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "夢",
       "mean": "mộng - giấc mơ,ước mơ",
       "example": "",
@@ -8175,7 +8175,7 @@
     {
       "id_word": 464,
       "id_subject": 29,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "的",
       "mean": "đích - đích,mục đích",
       "example": "",
@@ -8192,7 +8192,7 @@
     {
       "id_word": 465,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "飛",
       "mean": "phi - bay",
       "example": "",
@@ -8209,7 +8209,7 @@
     {
       "id_word": 466,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "機",
       "mean": "cơ - máy móc",
       "example": "",
@@ -8226,7 +8226,7 @@
     {
       "id_word": 467,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "失",
       "mean": "thất - mất",
       "example": "",
@@ -8243,7 +8243,7 @@
     {
       "id_word": 468,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "鉄",
       "mean": "thiết - sắt,thép",
       "example": "",
@@ -8260,7 +8260,7 @@
     {
       "id_word": 469,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "速",
       "mean": "tốc - nhanh,sớm",
       "example": "",
@@ -8277,7 +8277,7 @@
     {
       "id_word": 470,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "遅",
       "mean": "trì - muộn",
       "example": "",
@@ -8294,7 +8294,7 @@
     {
       "id_word": 471,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "駐",
       "mean": "trú - ở,sống",
       "example": "",
@@ -8311,7 +8311,7 @@
     {
       "id_word": 472,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "泊",
       "mean": "bạc - sống",
       "example": "",
@@ -8328,7 +8328,7 @@
     {
       "id_word": 473,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "船",
       "mean": "thuyền - tàu,thuyền",
       "example": "",
@@ -8345,7 +8345,7 @@
     {
       "id_word": 474,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "座",
       "mean": "tọa - ngồi",
       "example": "",
@@ -8362,7 +8362,7 @@
     {
       "id_word": 475,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "席",
       "mean": "tịch - ghế,chỗ ngồi",
       "example": "",
@@ -8379,7 +8379,7 @@
     {
       "id_word": 476,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "島",
       "mean": "đảo - đảo",
       "example": "",
@@ -8396,7 +8396,7 @@
     {
       "id_word": 477,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "陸",
       "mean": "lục - vùng đất",
       "example": "",
@@ -8413,7 +8413,7 @@
     {
       "id_word": 478,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "港",
       "mean": "cảng - cổng,bến tàu",
       "example": "",
@@ -8430,7 +8430,7 @@
     {
       "id_word": 479,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "橋",
       "mean": "kiều - cầu",
       "example": "",
@@ -8447,7 +8447,7 @@
     {
       "id_word": 480,
       "id_subject": 30,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "交",
       "mean": "giao - vượt qua",
       "example": "",
@@ -8464,7 +8464,7 @@
     {
       "id_word": 481,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "申",
       "mean": "thân - nói",
       "example": "",
@@ -8481,7 +8481,7 @@
     {
       "id_word": 482,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "神",
       "mean": "thần - chúa,đấng tối cao",
       "example": "",
@@ -8498,7 +8498,7 @@
     {
       "id_word": 483,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "様",
       "mean": "dạng - tình hình",
       "example": "",
@@ -8515,7 +8515,7 @@
     {
       "id_word": 484,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "信",
       "mean": "tín - tin tưởng",
       "example": "",
@@ -8532,7 +8532,7 @@
     {
       "id_word": 485,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "調",
       "mean": "điều, điệu - điều tra",
       "example": "",
@@ -8549,7 +8549,7 @@
     {
       "id_word": 486,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "査",
       "mean": "tra - kiểm tra",
       "example": "",
@@ -8566,7 +8566,7 @@
     {
       "id_word": 487,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "相",
       "mean": "tương, tướng - đối mặt",
       "example": "",
@@ -8583,7 +8583,7 @@
     {
       "id_word": 488,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "談",
       "mean": "đàm - nói chuyện",
       "example": "",
@@ -8600,7 +8600,7 @@
     {
       "id_word": 489,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "案",
       "mean": "án - kế hoạch",
       "example": "",
@@ -8617,7 +8617,7 @@
     {
       "id_word": 490,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "内",
       "mean": "nội - ở trong",
       "example": "",
@@ -8634,7 +8634,7 @@
     {
       "id_word": 491,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "君",
       "mean": "quân - tướng,vua,chúa tể",
       "example": "",
@@ -8651,7 +8651,7 @@
     {
       "id_word": 492,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "達",
       "mean": "đạt - đến,tới,đi đến",
       "example": "",
@@ -8668,7 +8668,7 @@
     {
       "id_word": 493,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "星",
       "mean": "tinh - ngôi sao",
       "example": "",
@@ -8685,7 +8685,7 @@
     {
       "id_word": 494,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "雪",
       "mean": "tuyết - tuyết",
       "example": "",
@@ -8702,7 +8702,7 @@
     {
       "id_word": 495,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "降",
       "mean": "giáng, hàng - xuống",
       "example": "",
@@ -8719,7 +8719,7 @@
     {
       "id_word": 496,
       "id_subject": 31,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "直",
       "mean": "trực - chỉnh sửa,trực tiếp",
       "example": "",
@@ -8736,7 +8736,7 @@
     {
       "id_word": 497,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "危",
       "mean": "nguy - nguy hiểm",
       "example": "",
@@ -8753,7 +8753,7 @@
     {
       "id_word": 498,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "険",
       "mean": "hiểm - bước,giai đoạn,dốc",
       "example": "",
@@ -8770,7 +8770,7 @@
     {
       "id_word": 499,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "拾",
       "mean": "thập - tìm lại",
       "example": "",
@@ -8787,7 +8787,7 @@
     {
       "id_word": 500,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "捨",
       "mean": "xả - ném đi,bỏ",
       "example": "",
@@ -8804,7 +8804,7 @@
     {
       "id_word": 501,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "戻",
       "mean": "lệ - trở lại",
       "example": "",
@@ -8821,7 +8821,7 @@
     {
       "id_word": 502,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "吸",
       "mean": "hấp - hít vào",
       "example": "",
@@ -8838,7 +8838,7 @@
     {
       "id_word": 503,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "放",
       "mean": "phóng - phóng thích,miễn trừ",
       "example": "",
@@ -8855,7 +8855,7 @@
     {
       "id_word": 504,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "変",
       "mean": "biến - thay đổi,kì quái",
       "example": "",
@@ -8872,7 +8872,7 @@
     {
       "id_word": 505,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "歯",
       "mean": "xỉ - răng",
       "example": "",
@@ -8889,7 +8889,7 @@
     {
       "id_word": 506,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "髪",
       "mean": "phát - tóc",
       "example": "",
@@ -8906,7 +8906,7 @@
     {
       "id_word": 507,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "絵",
       "mean": "hội - tranh",
       "example": "",
@@ -8923,7 +8923,7 @@
     {
       "id_word": 508,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "横",
       "mean": "hoành - bên cạnh",
       "example": "",
@@ -8940,7 +8940,7 @@
     {
       "id_word": 509,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "当",
       "mean": "đương, đáng - đâm,đập",
       "example": "",
@@ -8957,7 +8957,7 @@
     {
       "id_word": 510,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "伝",
       "mean": "truyền, truyện - truyền tải",
       "example": "",
@@ -8974,7 +8974,7 @@
     {
       "id_word": 511,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "細",
       "mean": "tế - mỏng",
       "example": "",
@@ -8991,7 +8991,7 @@
     {
       "id_word": 512,
       "id_subject": 32,
-      "id_course": 104000006,
+      "id_course": 1,
       "word": "無",
       "mean": "vô - không",
       "example": "",
