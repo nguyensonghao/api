@@ -204,8 +204,16 @@ Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 
 Route::get('test', function () {
-	echo '<pre>';
-	$subject = new Subject();
-	print_r($subject->getLastIdSubject(101000010));
-	echo '</pre>';
+	try {
+		$opts = array('http' =>
+		  array(
+		    'timeout' => 60
+		  )
+		);
+		                        
+		$context  = stream_context_create($opts);
+		$img = file_get_contents('http://img.supfree.net/shufa/z/2106.gif', false, $context);
+	} catch (Exception $e) {
+		Log::info($e);
+	}	
 });

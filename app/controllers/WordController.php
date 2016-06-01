@@ -360,7 +360,7 @@ class WordController extends BaseController {
 			Course::where('id', $course->id)->update(array('subject' => $subject, 'word' => $word));
 		}
 		try {			
-			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word', 'status', 'srclang', 'deslang')->get());
+			$strListCourse = json_encode(Course::select('id', 'name', 'desc', 'subject', 'word', 'status', 'srclang', 'deslang')->where('status', 1)->get());
 			$fileNameCourse = public_path() . '/AllData/courses.json';			
 			$fileCourse = fopen($fileNameCourse, "w");
 			if (fwrite($fileCourse, $strListCourse)) {

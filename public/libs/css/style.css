@@ -17,6 +17,10 @@
 	font-size: 14px !important;
 }
 
+.list-image .panel-body .btn {
+	font-size: 12px !important;
+}
+
 #modal-show-image .loadding {
 	display: none;
 }
