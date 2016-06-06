@@ -589,6 +589,8 @@ class WordController extends BaseController {
 
 					$this->changeStatusImport($idCourse, $dataCourse['name'], 0);
 					
+					// Export data json 
+					$this->exportData($idCourse);
 					return Redirect::back()->with('notify', 'Thêm dữ liệu thành công');					
 				} else {
 					return Redirect::back()->with('error', 'Có lỗi trong quá trình thêm course');
@@ -668,6 +670,41 @@ class WordController extends BaseController {
 		}
 
 		return '';
+	}
+
+	public function exportData ($id_course) {
+		$listSubject = Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')		
+		->where('id_course', $id_course)->get();		
+		$size = count($listSubject);
+		for ($i = 0; $i < $size; $i++) {
+			$subject = $listSubject[$i];
+			$count = Word::where('id_subject', $subject->id)->count();
+			Subject::where('id', $subject->id)->update(array('total' => $count));
+		}
+		try {
+			$course_name = $this->convertNameCourse($id_course);			
+			$strListSubject = json_encode(Subject::select('id', 'name', 'id_course', 'mean', 'total', 'num_word', 'time_date')->where('id_course', $id_course)->get());
+			$strListWord = json_encode(Word::select('id_word', 'id_subject', 'id_course', 'word', 'mean', 'example', 'example_mean', 'num_ef', 'time_date', 'next_time', 'num_n', 'num_i', 'max_q', 'phonetic', 'des')->where('id_course', $id_course)->get());			
+			$filePathSubject = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/';
+			$filePathWord = public_path() . '/AllData/' . $course_name . '/' . $id_course . '/json/';
+			$this->createFolder($filePathSubject);
+			$this->createFolder($filePathWord);
+			$fileNameSubject = $filePathSubject . 'subject.json';
+			$fileNameWord = $filePathWord . 'words.json';
+			$fileSubject = fopen($fileNameSubject, "w");
+			$fileWord = fopen($fileNameWord, "w");
+			if (fwrite($fileSubject, $strListSubject) && fwrite($fileWord, $strListWord)) {
+				fclose($fileSubject);
+				fclose($fileWord);
+				return true;
+			} else {				
+				fclose($fileSubject);
+				fclose($fileWord);
+				return false;
+			}			
+		} catch (Exception $e) {			
+			return false;
+		}	
 	}
 }
 
