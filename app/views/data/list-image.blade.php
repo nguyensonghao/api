@@ -86,14 +86,28 @@
 					<div class="loadding">
 						Đang tải ....
 					</div>
-					<a class="btn btn-link" role="button" data-toggle="collapse" href="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch">
-					  Tìm ảnh mới
-					</a>
+					<div class="btn-group">
+						<a class="btn btn-danger btn-search-more" role="button" data-toggle="collapse" href="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch">
+						  Tìm ảnh mới
+						</a>
+						<button type="button" class="btn btn-success btn-upload-more" role="button" data-toggle="collapse" href="#collapseUpload" aria-expanded="false" aria-controls="collapseUpload">Upload ảnh</button>			
+					</div>
+
 					<div class="collapse" id="collapseSearch" style="margin-top: 10px">
 						<input type="text" placeholder="Nhập từ khóa tìm kiếm thay thế" class="enter-input-search form-control">
 						<hr>
 						<button type="button" class="btn btn-primary" onclick="searchImage()">Tìm  kiếm</button>
 					</div>
+
+					<div class="collapse" id="collapseUpload" style="margin-top: 10px">
+						<form name="upload-image" class="upload-image" method="post" enctype="multipart/form-data">
+							<input type="file" accept="image/*" name="file" required>
+							<hr>
+							<input type="hidden" name="id" class="id-word">
+							<button type="submit" class="btn btn-primary">Upload</button>
+						</form>
+					</div>
+
 					<div class="result">
 
 					</div>
@@ -331,6 +345,39 @@
 					alert('Có lỗi hệ thống xảy ra');
 				}
 			})
+		})
+
+		$(".upload-image").on('submit',(function(e) {
+			$('.cover').css('display', 'block');
+			$('#modal-show-image .loadding').css('display', 'block');
+			e.preventDefault();
+			$('.upload-image .id-word').val(idWord);
+			$.ajax({
+				url: '<?php echo Asset("upload-anh") ?>',
+				type: "POST",
+				data: new FormData(this),
+				contentType: false,
+				cache: false,
+				processData: false,
+				success: function(data) {		
+					$('.cover').css('display', 'none');			
+					if (data.status == 0) {
+						location.reload();
+					} else {
+						alert('Có lỗi trong quá trình xử lý');
+						$('#modal-show-image .loadding').css('display', 'none');
+						$('#modal-show-image').modal('hide');						
+					}
+				}
+			});
+		}));
+
+		$('.btn-search-more').click(function () {
+			$('#collapseUpload').collapse("hide")
+		})
+
+		$('.btn-upload-more').click(function () {
+			$('#collapseSearch').collapse("hide")
 		})
 	</script>
 

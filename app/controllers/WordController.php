@@ -198,6 +198,7 @@ class WordController extends BaseController {
 			$filePath = public_path() . '/thumbnail';
 			if ($this->download_and_crop_image($filePath, $fileName, $url, 254, 334)) {
 				if ($this->resize_image($filePath, $toPath, $fileName, 254, 334)) {
+					unlink(public_path() . '/thumbnail/' . $fileName);
 					return Response::json(array('status' => 200));
 				} else {
 					return Response::json(array('status' => 304));
@@ -667,6 +668,21 @@ class WordController extends BaseController {
 		}
 	}
 
+	protected function crop_image ($filePath) {
+		$ini_filename = $filePath;
+		$im = imagecreatefromjpeg($ini_filename );
+
+		$ini_x_size = getimagesize($ini_filename )[0];
+		$ini_y_size = getimagesize($ini_filename )[1];
+		
+		$crop_measure = min($ini_x_size, $ini_y_size);
+
+		$to_crop_array = array('x' =>0 , 'y' => 0, 'width' => $crop_measure, 'height'=> $crop_measure);
+		$thumb_im = imagecrop($im, $to_crop_array);
+
+		imagejpeg($thumb_im, $filePath, 100);
+	}
+
 	public static function actionActiveMenu ($type) {
 		if (Request::segment(1) == $type) {
 			return 'active';
@@ -713,6 +729,45 @@ class WordController extends BaseController {
 		} catch (Exception $e) {			
 			return false;
 		}	
+	}
+
+	public function actionUploadImage () {
+		try {
+			if(isset($_FILES["file"]["type"])) {
+				$id = $_POST['id'];				
+				if ($_FILES["file"]["size"] < 100000) {
+					if ($_FILES["file"]["error"] > 0) {
+						return Response::json(array('status' => -1));
+					} else {						
+						$word = DB::table('words')->where('id', $id)->first();
+						$fileName = $word->id_word . '.jpg';
+						$courseId = $word->id_course;
+						$courseName = $this->convertNameCourse($courseId);		
+						$toPath = public_path() . '/AllData/' . $courseName . '/' . $courseId . '/images/words/';
+						$sourcePath = $_FILES['file']['tmp_name'];
+						$targetPath = public_path() . '/thumbnail/upload/' . $fileName;
+						if (move_uploaded_file($sourcePath, $targetPath)) {
+							if ($this->download_and_crop_image(public_path() . '/thumbnail/upload/', $fileName, $targetPath, 254, 334)) {
+								if ($this->resize_image(public_path() . '/thumbnail/upload/', $toPath, $fileName, 254, 334)) {
+									unlink(public_path() . '/thumbnail/upload/' . $fileName);
+									return Response::json(array('status' => 0));
+								} else {
+									return Response::json(array('status' => -1));
+								}
+							} else {
+								return Response::json(array('status' => -1));
+							}
+						} else {
+							return Response::json(array('status' => -1));
+						}
+					}
+				}
+			} else {
+				return Response::json(array('status' => -2));
+			}	
+		} catch (Exception $e) {
+			return Response::json(array('status' => -3, 'error' => $e->getMessage()));
+		}		
 	}
 }
 

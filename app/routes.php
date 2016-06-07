@@ -202,18 +202,4 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
-
-Route::get('test', function () {
-	try {
-		$opts = array('http' =>
-		  array(
-		    'timeout' => 60
-		  )
-		);
-		                        
-		$context  = stream_context_create($opts);
-		$img = file_get_contents('http://img.supfree.net/shufa/z/2106.gif', false, $context);
-	} catch (Exception $e) {
-		Log::info($e);
-	}	
-});
+Route::post('upload-anh', 'WordController@actionUploadImage');
