@@ -203,7 +203,3 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
-
-Route::get('demo', function () {
-	print_r(Cache::get('new-report'));
-});
