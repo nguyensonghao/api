@@ -98,7 +98,7 @@ Mazii";
             $message->to($data['email'], $data['email'])->subject('Khóa tài khoản')
             ->setBody($data['content']);
         });
-    }
+    }    
 }
 
 ?>
