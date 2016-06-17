@@ -203,22 +203,3 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
-
-Route::get('demo', function () {
-	print_r(Cache::get('new-report'));
-});
-
-//Route::get('demo', function () {
-//	$email = new EmailController();
-//	$email->sendMailActive('123456', 'nguyensonghao974@gmail.com');
-//$contentEmail = "Test send mail";
-//        $data = array (
-//            'email'   => 'nguyensonghao974@gmail.com',
-//            'content' => $contentEmail,
-//        );
-//
-//        return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
-//            $message->to($data['email'], $data['email'])->subject('Khóa tài khoản')
-//            ->setBody($data['content']);
-//        });
-//});

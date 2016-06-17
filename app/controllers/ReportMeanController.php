@@ -103,7 +103,25 @@ class ReportMeanController extends BaseController {
 	    $request  = json_decode($postdata);
 	    @$skip    = $request->skip;
 	    @$take    = $request->take;
-		return Response::json($this->reportMean->getNew($skip, $take));
+	    $listReport = Cache::get('new-report');
+	    $result = [];
+
+	    // Check cache empty
+	    if (is_null($listReport)) {
+	    	Cache::put('new-report', function () {
+	    		$this->reportMean->getNewCache();
+	    	}, 5);
+	    	return Response::json($this->reportMean->getNew($skip, $take));
+	    } else {
+	    	if ($skip + $take >= 100)
+	    		return Response::json($this->reportMean->getNew($skip, $take));
+
+	    	$count = $listReport['count'];
+	    	for ($i = $skip; $i < $skip + $take; $i++)
+	    		array_push($result, $listReport['result'][$i]);
+
+	    	return array('status' => 200, 'result' => $result, 'count' => $count);
+	    }
 	}
 
 }
