@@ -64,6 +64,12 @@ Route::get('api/active/{key}', 'AcountController@actionActiveUser');
 
 Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
 
+// Crontab
+
+Route::controller('cron', 'CrontabController');
+
+Route::get('crontab-queue-email', 'CrontabController@artisanQueue');
+
 // ReportMean
 
 Route::controller('report', 'ReportMeanController');
@@ -204,7 +210,6 @@ Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
 
-Route::get('crontab-queue-email', function () {
-$shell_command = "php artisan queue:listen > /dev/null &";
-	shell_exec($shell_command);
+Route::get('demo', function () {
+	print_r(Cache::get('new-report'));
 });
