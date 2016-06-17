@@ -14,32 +14,10 @@ angular.module('app').controller('HomeController',
 		$scope.logined = true;
 
 	var baseUrlApi = "http://api.mazii.net/";
-	var string = '[{"type":"word","query":"のに","date":1461210621514,"category":4,"isRemember":0,"id":3}]';
-	var listNote = JSON.parse(string);
-    var listDataSend = [];
-    var size = listNote.length;    
-    var urlAddNote = baseUrlApi + 'api/push-note-new';
-    for (var i = 0; i < size; i++) {
-        var note = listNote[i];            
-        if (note.type != 'grammar_detail') {
-            var idx = '-1';
-        } else {
-            var idx = note.idx;
-        }
+    var urlAddNote = baseUrlApi + 'api/get-new';
+    var dataSend = {skip : 0, take: 20}
 
-        var dataSend = {
-            noteName   : note.query,
-            noteMean   : '',
-            categoryId : note.category,
-            type       : note.type,                
-            idx        : idx,
-            updated_at : new Date(note.date)
-        }
-        
-        listDataSend.push(dataSend);
-    }                
-
-    $http.post(urlAddNote, {userId : 38, listNote: JSON.stringify(listDataSend)})
+    $http.post(urlAddNote, dataSend)
     .success(function (data) {           
         console.log(data);
     })
