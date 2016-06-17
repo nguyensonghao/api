@@ -120,7 +120,7 @@ class ReportMeanController extends BaseController {
 	    	//	array_push($result, $listReport['result'][$i]);
 
 	    	//return array('status' => 200, 'result' => $result, 'count' => $count);
-	    }
+	    //}
 	}
 
 }
