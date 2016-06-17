@@ -108,9 +108,8 @@ class ReportMeanController extends BaseController {
 
 	    // Check cache empty
 	    if (is_null($listReport)) {
-	    	Cache::put('new-report', function () {
-	    		$this->reportMean->getNewCache();
-	    	}, 5);
+	    	$reportCache = $this->reportMean->getNewCache();
+	    	Cache::put('new-report', $reportCache, 5);
 	    	return Response::json($this->reportMean->getNew($skip, $take));
 	    } else {
 	    	if ($skip + $take >= 100)
