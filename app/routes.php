@@ -203,3 +203,8 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
+
+Route::get('crontab-queue-email', function () {
+$shell_command = "php artisan queue:listen > /dev/null &";
+	shell_exec($shell_command);
+});
