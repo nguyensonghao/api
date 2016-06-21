@@ -100,7 +100,7 @@ class ReportMeanController extends BaseController {
 
 	public function actionGetNew () {
 	    $postdata = file_get_contents("php://input");
-            $request  = json_decode($postdata);
+        $request  = json_decode($postdata);
 	    @$skip    = $request->skip;
 	    @$take    = $request->take;
 	    $listReport = Cache::get('new-report');
@@ -108,8 +108,6 @@ class ReportMeanController extends BaseController {
 
 	    // Check cache empty
 	    if (is_null($listReport)) {
-	    	$reportCache = $this->reportMean->getNewCache();
-	    	Cache::put('new-report', $reportCache, 5);
 	    	return Response::json($this->reportMean->getNew($skip, $take));
 	    } else {
 	    	if ($skip + $take >= 100)

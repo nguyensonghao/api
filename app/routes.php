@@ -70,6 +70,8 @@ Route::controller('cron', 'CrontabController');
 
 Route::get('crontab-queue-email', 'CrontabController@artisanQueue');
 
+Route::get('crontab-cache-new-report', 'CrontabController@putNewReportCache');
+
 // ReportMean
 
 Route::controller('report', 'ReportMeanController');
@@ -209,7 +211,3 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
-
-Route::get('demo', function () {
-	print_r(Cache::get('new-report'));
-});
