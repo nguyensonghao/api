@@ -117,7 +117,7 @@ class ReportMeanController extends BaseController {
 	    	for ($i = $skip; $i < $skip + $take; $i++)
 	    		array_push($result, $listReport['result'][$i]);
 
-	    	return array('status' => 200, 'result' => $result, 'count' => $count);
+	    	return array('status' => 200, 'result' => $result, 'count' => $count, 'type' => 'cache');
 	    }
 	}
 
