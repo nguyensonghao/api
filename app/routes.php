@@ -211,3 +211,10 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
+
+Route::get('demo', function () {
+	date_default_timezone_set("UTC");
+	$date = new DateTime();
+	$timeServer = $date->getTimestamp();
+	echo $timeServer;
+});
