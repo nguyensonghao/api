@@ -243,6 +243,7 @@ class WordController extends BaseController {
 			$to_crop_array = array('x' =>0 , 'y' => 0, 'width' => $crop_width, 'height'=> $crop_height);
 			$thumb_im = imagecrop($im, $to_crop_array);
 			imagejpeg($thumb_im, $file_path . '/' . $file_name);
+			imagedestroy($im);
 			return true;
 		} catch (Exception $e) {
 			Log::info($e);
