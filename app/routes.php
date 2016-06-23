@@ -68,9 +68,9 @@ Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
 
 Route::controller('cron', 'CrontabController');
 
-Route::get('crontab-queue-email', 'CrontabController@artisanQueue');
-
 Route::get('crontab-cache-new-report', 'CrontabController@putNewReportCache');
+
+Route::get('crontab-email', 'CrontabController@crontabEmail');
 
 // ReportMean
 
@@ -211,10 +211,3 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
-
-Route::get('demo', function () {
-	date_default_timezone_set("UTC");
-	$date = new DateTime();
-	$timeServer = $date->getTimestamp();
-	echo $timeServer;
-});

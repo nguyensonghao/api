@@ -18,7 +18,7 @@ http://api.mazii.net/api/active/" . $keyActive;
             'content' => $contentEmail
         );
 
-        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+        return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
             $message->to($data['email'], $data['email'])->subject('Kích hoạt tài khoản')
             ->setBody($data['content']);
         });
@@ -56,7 +56,7 @@ Mazii";
             'content' => $contentEmail,
         );
 
-        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+        return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
             $message->to($data['email'], $data['email'])->subject('Cấp lại mật khẩu')
             ->setBody($data['content']);
         });
@@ -74,7 +74,7 @@ Mazii";
             'content' => $contentEmail,
         );
 
-        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+        return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
             $message->to($data['email'], $data['email'])->subject('Cấp lại mật khẩu thành công')
             ->setBody($data['content']);
         });
@@ -94,7 +94,7 @@ Mazii";
             'content' => $contentEmail,
         );
 
-        return Mail::queue([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
+        return Mail::send([], array('firstname'=> 'Từ điển Mazii'), function($message) use ($data) {
             $message->to($data['email'], $data['email'])->subject('Khóa tài khoản')
             ->setBody($data['content']);
         });

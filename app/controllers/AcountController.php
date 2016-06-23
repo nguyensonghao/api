@@ -78,12 +78,7 @@ class AcountController extends BaseController {
 	    		'username' => $username
 	    	);
 
-	    	$result = $this->user->registerUser($user, $keyActive);
-
-		    if ($result['status'] != 304 && $result['status'] != 302)
-		    	$this->email->sendMailActive($keyActive, $email);
-
-		    return $result;	
+	    	return $this->user->registerUser($user, $keyActive);
 	    } else {
 	    	return Response::json(array('status' => 400));
 	    }
@@ -110,7 +105,6 @@ class AcountController extends BaseController {
 				echo 'Tài khoản đã được kích hoạt hoặc tài khoản không tồn tại';
 			} else {
 				$this->user->activeUser($result->email);
-				$this->email->sendMailActiveSuccess($result->email);
 				$url = 'http://mazii.net';
 				return Redirect::to($url);
 			}
