@@ -213,8 +213,5 @@ Route::post('them-dulieu-json', 'WordController@actionImportData');
 Route::post('upload-anh', 'WordController@actionUploadImage');
 
 Route::get('demo', function () {
-	date_default_timezone_set("UTC");
-	$date = new DateTime();
-	$timeServer = $date->getTimestamp();
-	echo $timeServer;
+	DB::table('users')->update(array('is_sendmail' => 1));
 });
