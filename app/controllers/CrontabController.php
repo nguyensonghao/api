@@ -17,9 +17,9 @@ class CrontabController extends BaseController {
 	public function sendEmailActive () {
 		$mail = new EmailController();
 		$listUserActive = DB::table('users')
-		->get('active_user.key', 'active_user.email', 'active_user.id')
+		->select('active_user.key', 'active_user.email', 'active_user.id')
 		->where('users.is_sendmail', 0)
-		->join('active_user', 'active_user.id', '=', 'users.userId')
+		->join('active_user', 'active_user.email', '=', 'users.email')
 		->skip(0)->take(5)->get();
 		$size = count($listUserActive);
 		for ($i = 0; $i < $size; $i++) {
@@ -31,7 +31,7 @@ class CrontabController extends BaseController {
 		    	DB::table('users')->where('userId', $listUserActive[$i]->id)->update(array('is_sendmail' => -1));
 		    }
 		}
-	}
+	}	
 
 	public function sendEmailAcitveSuccess () {
 		$mail = new EmailController();
