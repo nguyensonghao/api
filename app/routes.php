@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('demo', function () {
-	$mail = new EmailController();
-/*	if ($mail->sendMailActive('1', 'nguyensonghao974@gmail.com')) {
-		echo 'Send email success';
-	}*/
-	echo $mail->sendMailActive('1', 'nguyensonghao974@gmail.com');
-});
-
 Route::get('/', function()
 {
 	echo 'This is admin Mazii';
@@ -76,14 +68,9 @@ Route::get('api/reset/{key}', 'AcountController@actionResetPasswordSysterm');
 
 Route::controller('cron', 'CrontabController');
 
+Route::get('crontab-queue-email', 'CrontabController@artisanQueue');
+
 Route::get('crontab-cache-new-report', 'CrontabController@putNewReportCache');
-
-Route::get('crontab-email', 'CrontabController@crontabEmail');
-
-Route::get('demo', function () {
-	$mail = new EmailController();
-	$mail->sendMailActive('123456', 'nguyensonghao974@gmail.com');
-});
 
 // ReportMean
 
@@ -224,3 +211,7 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
+
+Route::get('demo', function () {
+	DB::table('users')->update(array('is_sendmail' => 1));
+});

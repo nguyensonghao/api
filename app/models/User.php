@@ -63,7 +63,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$userNew->tokenId  = $this->encodePassword($tokenId);
 		$userNew->active   = 0;
 		$userNew->status   = 0;
-		$userNew->is_sendmail = 0;
 
 		// check email exits
 		$userExits = User::where('email', $user['email'])->first();
@@ -74,7 +73,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				$activeUser->email  = $user['email'];
 				$activeUser->key    = $keyActive;
 				$activeUser->status = 0;
-				$activeUser->is_active = 0;
 				$activeUser->save();
 
 				$user = User::where('email', $user['email'])
