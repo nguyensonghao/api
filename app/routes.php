@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('demo', function () {
+	$mail = new EmailController();
+/*	if ($mail->sendMailActive('1', 'nguyensonghao974@gmail.com')) {
+		echo 'Send email success';
+	}*/
+	echo $mail->sendMailActive('1', 'nguyensonghao974@gmail.com');
+});
+
 Route::get('/', function()
 {
 	echo 'This is admin Mazii';
