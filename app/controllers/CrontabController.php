@@ -26,9 +26,9 @@ class CrontabController extends BaseController {
 		    $key = $listUserActive[$i]->key;
 		    $email = $listUserActive[$i]->email;
 		    if ($mail->sendMailActive($key, $email)) {		    	
-		    	DB::table('users')->where('userId', $listUserActive[$i]->id)->update(array('is_sendmail' => 1));
+		    	DB::table('users')->where('email', $listUserActive[$i]->email)->update(array('is_sendmail' => 1));
 		    } else {
-		    	DB::table('users')->where('userId', $listUserActive[$i]->id)->update(array('is_sendmail' => -1));
+		    	DB::table('users')->where('email', $listUserActive[$i]->email)->update(array('is_sendmail' => -1));
 		    }
 		}
 	}	

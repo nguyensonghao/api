@@ -72,6 +72,11 @@ Route::get('crontab-cache-new-report', 'CrontabController@putNewReportCache');
 
 Route::get('crontab-email', 'CrontabController@crontabEmail');
 
+Route::get('demo', function () {
+	$mail = new EmailController();
+	$mail->sendMailActive('123456', 'nguyensonghao974@gmail.com');
+});
+
 // ReportMean
 
 Route::controller('report', 'ReportMeanController');
