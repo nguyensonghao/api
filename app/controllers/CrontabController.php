@@ -18,7 +18,7 @@ class CrontabController extends BaseController {
 		$mail = new EmailController();
 		$listUserActive = DB::table('users')
 		->get('active_user.key', 'active_user.email', 'active_user.id')
-		->where('is_sendmail', 0)
+		->where('users.is_sendmail', 0)
 		->join('active_user', 'active_user.id', '=', 'users.userId')
 		->skip(0)->take(5)->get();
 		$size = count($listUserActive);
