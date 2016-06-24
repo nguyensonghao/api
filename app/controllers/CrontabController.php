@@ -9,7 +9,7 @@ class CrontabController extends BaseController {
 	}
 
 	public function artisanQueue () {
-		$shell_command = "php artisan queue:listen > /dev/null &";
+		$shell_command = "php artisan queue:listen";
 		shell_exec($shell_command);
 	}
 
