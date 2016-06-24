@@ -16,6 +16,10 @@ class Course extends Eloquent {
 	 */
 	protected $table = 'courses';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function getList ($id_course) {
 		$id_course = ((int)($id_course / 1000000)) * 1000000;
 		return Course::where('id', '>', $id_course)->where('id', '<', $id_course + 100)->get();

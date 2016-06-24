@@ -4,10 +4,10 @@ class FlashController extends BaseController {
 	public $validate;
 	public $flashcard;
 
-	public function __construct () {
-		// header('Access-Control-Allow-Origin: *');
+	public function __construct () {		
 		$this->validate = new ValidateController();
 		$this->flashcard = new FlashCard();
+		DB::connection()->disableQueryLog();
 	}
 
 	public function getFlashCard () {

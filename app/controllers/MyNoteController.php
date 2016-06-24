@@ -10,6 +10,7 @@ class MyNoteController extends BaseController {
 		$this->validate = new ValidateController();
 		$this->category = new Category();
 		$this->note = new Note();
+		DB::connection()->disableQueryLog();
 	}
 
 	public function getMyNote () {

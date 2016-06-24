@@ -10,6 +10,7 @@ class ReportMeanController extends BaseController {
 		$this->reportMean = new ReportMean();
 		$this->validate   = new ValidateController();
 		$this->rateReport = new RateReport();
+		DB::connection()->disableQueryLog();
 	}
 
 	public function actionAddReportMean () {
@@ -120,7 +121,6 @@ class ReportMeanController extends BaseController {
 	    	return array('status' => 200, 'result' => $result, 'count' => $count, 'type' => 'cache');
 	    }
 	}
-
 }
 
 ?>

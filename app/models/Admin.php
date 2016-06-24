@@ -16,7 +16,11 @@ class Admin extends Eloquent {
 	 */
 	protected $table = 'admin';
 
-	public function login ($username, $password) {		
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
+	public function login ($username, $password) {
 		return Admin::where('username', $username)->where('password', md5($password))
 		->first();
 	}

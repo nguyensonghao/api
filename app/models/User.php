@@ -16,6 +16,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *

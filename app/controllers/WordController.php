@@ -17,6 +17,7 @@ class WordController extends BaseController {
 		$this->admin = new Admin();
 		$this->wordClone = new WordClone();
 		$this->subjectClone = new SubjectClone();
+		DB::connection()->disableQueryLog();
 	}
 
 	public function showHome () {

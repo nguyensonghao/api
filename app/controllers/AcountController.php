@@ -20,7 +20,7 @@ class AcountController extends BaseController {
 		$this->validate   = new ValidateController();
 		$this->resetPassword  = new ResetPassword();
 		$this->decodePassword = new DecodePasswordController();
-
+		DB::connection()->disableQueryLog();		
 	}
 
 	public function actionLogin () {

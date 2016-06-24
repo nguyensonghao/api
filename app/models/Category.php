@@ -16,6 +16,10 @@ class Category extends Eloquent {
 	 */
 	protected $table = 'category';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function addCategory ($userId, $categoryName, $date) {
 		if (!$this->checkExitsUser($userId))
 			return array('status' => 304);

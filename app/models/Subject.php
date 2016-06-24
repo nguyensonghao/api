@@ -16,6 +16,10 @@ class Subject extends Eloquent {
 	 */
 	protected $table = 'subjects';	
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function getList ($id_course) {
 		$id = (string)$id_course;
 		$id = substr($id, -1);

@@ -16,6 +16,10 @@ class FlashCard extends Eloquent {
 	 */
 	protected $table = 'flashcard';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function getFlashCard ($userId, $type) {
 		$listFlash = FlashCard::where('userId', $userId)->where('type', $type)
 		->get();

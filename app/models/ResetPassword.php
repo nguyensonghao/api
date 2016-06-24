@@ -16,6 +16,10 @@ class ResetPassword extends Eloquent {
 	 */
 	protected $table = 'key_reset';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function createKeyReset ($email, $keyReset) {
 		$result = ResetPassword::where('email', $email)->where('status', 0)->count();
 		if ($result > 0) {

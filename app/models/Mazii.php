@@ -11,6 +11,10 @@ class Mazii extends Eloquent {
 
 	protected $table = 'mazii';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function checkUserTrial ($userId) {
 		if ($this->checkExitsUser($userId))
 			return array('status' => 304);

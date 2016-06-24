@@ -16,6 +16,10 @@ class ReportMean extends Eloquent {
 	 */
 	protected $table = 'report_mean';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function addReportMean ($userId, $mean, $wordId, $wordName) {
 		$user = User::where('userId', $userId)->where('active', 1)->where('status', 1)->first();
 		if (is_null($user)) {
@@ -192,8 +196,8 @@ class ReportMean extends Eloquent {
 
 	public function getNewCache () {
 		$query = DB::table('report_mean')
-		->select('word', 'mean', 'username', 'report_mean.created_at')
-		->where('report_mean.type', 0)
+		->select('mean', 'username', 'report_mean.created_at')
+		// ->where('report_mean.type', 0)
 		->where('report_mean.dislike', '<', 10)
 		->where('report_mean.status', '<>', -1)		
 		->orderBy('report_mean.created_at', 'desc')

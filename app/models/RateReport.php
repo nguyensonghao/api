@@ -16,6 +16,10 @@ class RateReport extends Eloquent {
 	 */
 	protected $table = 'rate_report';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function rateMean ($reportId, $userId, $type) {
 		if ($type == 'like')
 			$rateType = 1;

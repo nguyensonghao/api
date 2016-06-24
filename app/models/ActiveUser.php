@@ -16,6 +16,10 @@ class ActiveUser extends Eloquent {
 	 */
 	protected $table = 'active_user';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function active ($keyActive) {
 		$result = ActiveUser::where('key', $keyActive)->where('status', 0)->first();
 		if (is_null($result)) {

@@ -16,6 +16,10 @@ class WordClone extends Eloquent {
 	 */
 	protected $table = 'words_clone';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	// status = 0 if word insert success
 	// status = 1 if get url download image success
 	// status = 2 if download image success

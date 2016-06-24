@@ -10,6 +10,7 @@ class ReportMeanMobileController extends BaseController {
 		$this->reportMean = new ReportMean();
 		$this->validate   = new ValidateController();
 		$this->rateReport = new RateReport();
+		DB::connection()->disableQueryLog();
 	}
 
 	public function actionAddReportMean () {

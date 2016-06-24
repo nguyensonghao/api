@@ -16,6 +16,10 @@ class Note extends Eloquent {
 	 */
 	protected $table = 'note';
 
+	public function __construct () {
+		DB::connection()->disableQueryLog();
+	}
+
 	public function addNote ($noteName, $noteMean, $categoryId, $date, $type, $idx) {
 		$note = new Note();
 		if (!$this->checkExistCategory($categoryId))
