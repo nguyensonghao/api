@@ -130,9 +130,9 @@ Route::post('api/delete-note', 'MyNoteController@deleteNote');
 
 // Mazii
 
-Route::controller('mazii', 'MaziiController');
+//Route::controller('mazii', 'MaziiController');
 
-Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
+//Route::post('api/check-trial', 'MaziiController@actionCheckTrialUser');
 
 // Flashcard
 
