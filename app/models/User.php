@@ -141,7 +141,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public static function updateLastest ($userId) {
 		$date = date('Y-m-d H:i:s');
-		User::where('userId', $userId)->update('lastest_update', $date);
+		User::where('userId', $userId)->update(array('lastest_update' => $date));
 	}
 
 	protected function generateRandomString($length) {
