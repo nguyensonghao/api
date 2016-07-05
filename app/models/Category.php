@@ -37,16 +37,19 @@ class Category extends Eloquent {
 		    // Update time server
 		    $this->updateTimeServer($updated_at, $userId, 'cate');
 		    $cateId = $cate->categoryId;
+		    User::updateLastest($userId);
 			return array('status' => 200, 'cateId' => $cateId);
 		} else return array('status' => 304);			
 	}
 
 	public function updateCategory ($categoryId, $category, $userId) {
 		if (Category::where('categoryId', $categoryId)->where('userId', $userId)
-			->update($category))
+			->update($category)) {
+			User::updateLastest($userId);
 			return array('status' => 200);
-		else
+		} else {
 			return array('status' => 304);
+		}
 	}
 
 	public function deleteCategory ($userId, $categoryId) {
@@ -59,6 +62,7 @@ class Category extends Eloquent {
 
 		    // Delete all note in cate
 			Note::where('cateId', $categoryId)->update(array('status' => -1));
+			User::updateLastest($userId);
 			return array('status' => 200);
 		} else {
 			return array('status' => 304);

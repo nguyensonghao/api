@@ -36,6 +36,7 @@ class Note extends Eloquent {
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
 			->where('date', $date)->first()->noteId;
+			User::updateLastest($userId);
 			return array('status' => 200, 'noteId' => $id);
 		} else {
 			return array('status' => 304);
@@ -43,10 +44,12 @@ class Note extends Eloquent {
 	}	
 
 	public function deleteNote ($noteId) {
-		if (Note::where('noteId', $noteId)->update(array('status' => -1)))
+		if (Note::where('noteId', $noteId)->update(array('status' => -1))) {
+			User::updateLastest($userId);
 			return array('status' => 200);
-		else
+		} else {
 			return array('status' => 304);
+		}
 	}
 
 	protected function checkExistCategory ($categoryId) {

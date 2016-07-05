@@ -75,7 +75,9 @@ class ReportMean extends Eloquent {
 	}
 
 	public function getMean ($wordId) {
-		$listReport = DB::table('report_mean')->where('wordId', $wordId)
+		$listReport = DB::table('report_mean')
+		->select('active', 'created_at', 'dislike', 'id', 'like', 'mean', 'reportId', 'status', 'type', 'updated_at', 'userId', 'userName', 'word', 'wordId')
+		->where('wordId', $wordId)
 		->where('report_mean.type', 0)
 		->where('report_mean.dislike', '<', 10)
 		->where('report_mean.status', '<>', -1)
@@ -196,7 +198,7 @@ class ReportMean extends Eloquent {
 
 	public function getNewCache () {
 		$query = DB::table('report_mean')
-		->select('mean', 'username', 'report_mean.created_at')
+		->select('word', 'mean', 'username', 'report_mean.created_at')
 		// ->where('report_mean.type', 0)
 		->where('report_mean.dislike', '<', 10)
 		->where('report_mean.status', '<>', -1)		
