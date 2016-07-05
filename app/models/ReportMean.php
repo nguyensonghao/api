@@ -76,7 +76,7 @@ class ReportMean extends Eloquent {
 
 	public function getMean ($wordId) {
 		$listReport = DB::table('report_mean')
-		->select('active', 'created_at', 'dislike', 'id', 'like', 'mean', 'reportId', 'status', 'type', 'updated_at', 'userId', 'userName', 'word', 'wordId')
+		->select('report_mean.dislike', 'report_mean.like', 'report_mean.mean', 'report_mean.reportId', 'report_mean.status', 'report_mean.type', 'users.userId', 'users.userName', 'report_mean.word', 'report_mean.wordId')
 		->where('wordId', $wordId)
 		->where('report_mean.type', 0)
 		->where('report_mean.dislike', '<', 10)
