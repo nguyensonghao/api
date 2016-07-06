@@ -35,8 +35,8 @@ class Note extends Eloquent {
 		$note->status   = 0;		
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
-			->where('date', $date)->first()->noteId;
-			User::updateLastest($userId);
+			->where('date', $date)->first()->noteId;			
+			User::updateLastest(Category::where('categoryId', $categoryId)->first()->userId);
 			return array('status' => 200, 'noteId' => $id);
 		} else {
 			return array('status' => 304);
