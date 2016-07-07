@@ -23,6 +23,9 @@ class Category extends Eloquent {
 	public function addCategory ($userId, $categoryName, $date) {
 		if (!$this->checkExitsUser($userId))
 			return array('status' => 304);
+
+		if (!$this->checkExitsCate($userId, $categoryName))
+			return array('status' => 306);
 			
 		$category = new Category();
 		$category->userId = $userId;
@@ -133,6 +136,14 @@ class Category extends Eloquent {
 		}
 
 		return array('status' => 200);
+	}
+
+	protected function checkExitsCate ($userId, $categoryName) {
+		$cate = Category::where('userId', $userId)->where('categoryName', $categoryName)->first();
+		if (is_null ($cate)) 
+			return true;
+
+		return false;
 	}
 
 }

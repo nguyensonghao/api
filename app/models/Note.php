@@ -25,6 +25,9 @@ class Note extends Eloquent {
 		if (!$this->checkExistCategory($categoryId))
 			return array('status' => 304);
 
+		if (!$this->checkExistNote($noteName, $categoryId))
+			return array('status' => 306);
+
 		$note->noteName = $noteName;
 		$note->noteMean = $noteMean;
 		$note->date     = $date;
@@ -117,6 +120,14 @@ class Note extends Eloquent {
 		}
 
 		return array('status' => 200);
+	}
+
+	protected function checkExistNote ($noteName, $cateId) {
+		$note = Note::where('noteName', $noteName)->where('cateId', $cateId)->first();
+		if (is_null ($note))
+			return true;
+
+		return false;
 	}
 
 }
