@@ -13,10 +13,14 @@ angular.module('app').controller('HomeController',
 	else 
 		$scope.logined = true;
 
-	var baseUrlApi = "http://api.mazii.net/api/kanji/にほん/10";
+	var urlInfo = 'http://api.mazii.net/api/check-premium';
+    var dataSend = {
+        userId : 33,
+        deviceId : '1234'
+    }
 
-    $http.get(baseUrlApi)
-    .success(function (data) {           
+    $http.post(urlInfo, dataSend)
+    .success(function (data) {
         console.log(data);
     })
 }]);
