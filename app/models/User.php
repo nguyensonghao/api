@@ -40,7 +40,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		} else {
 			$result->password = null;
 			$this->loginUser($user['email']);
-			return array('status' => 200, 'result' => $result);
+
+			// check premium user
+			$premium = new Premium();
+			if ($premium->checkPremiumUser($result->userId)) {
+				return array('status' => 200, 'result' => $result, 'premium' => true);
+			} else {
+				return array('status' => 200, 'result' => $result, 'premium' => false);
+			}			
 		}
 	}
 

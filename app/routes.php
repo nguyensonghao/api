@@ -205,3 +205,11 @@ Route::post('them-admin', 'WordController@actionAddAdmin');
 Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
+
+// PremiumController
+
+Route::controller('premium', 'PremiumController');
+
+Route::post('add-premium', 'PremiumController@addPremiumUser');
+
+Route::post('check-premium', 'PremiumController@checkPremiumUser');
