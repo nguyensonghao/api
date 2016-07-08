@@ -13,11 +13,9 @@ angular.module('app').controller('HomeController',
 	else 
 		$scope.logined = true;
 
-	var baseUrlApi = "http://api.mazii.net/";
-    var urlAddNote = baseUrlApi + 'api/get-new';
-    var dataSend = {skip : 0, take: 20}
+	var baseUrlApi = "http://api.mazii.net/api/kanji/にほん/10";
 
-    $http.post(urlAddNote, dataSend)
+    $http.get(baseUrlApi)
     .success(function (data) {           
         console.log(data);
     })
