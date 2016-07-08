@@ -31,6 +31,12 @@ class Premium extends Eloquent {
 			return array('status' => 304);	
 		}
 
+		// check exits userId
+		$user = User::where('userId', $userId)->first();
+		if (is_null($user)) {
+			return array('status' => 308);
+		}
+
 		if (Premium::insert(array('userId' => $userId, 'deviceId' => $deviceId, 'transaction' => $transaction, 'provider' => $provider))) {
 			return array('status' => 200);
 		} else {
