@@ -37,7 +37,13 @@ class Premium extends Eloquent {
 			return array('status' => 308);
 		}
 
-		if (Premium::insert(array('userId' => $userId, 'deviceId' => $deviceId, 'transaction' => $transaction, 'provider' => $provider))) {
+		$premium = new Premium();
+		$premium->userId = $userId;
+		$premium->deviceId = $deviceId;
+		$premium->transaction = $transaction;
+		$premium->provider = $provider;
+
+		if ($premium->save()) {
 			return array('status' => 200);
 		} else {
 			return array('status' => 306);
