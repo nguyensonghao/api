@@ -210,6 +210,6 @@ Route::post('upload-anh', 'WordController@actionUploadImage');
 
 Route::controller('premium', 'PremiumController');
 
-Route::post('add-premium', 'PremiumController@addPremiumUser');
+Route::post('api/add-premium', 'PremiumController@addPremiumUser');
 
-Route::post('check-premium', 'PremiumController@checkPremiumUser');
+Route::post('api/check-premium', 'PremiumController@checkPremiumUser');
