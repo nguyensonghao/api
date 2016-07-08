@@ -212,4 +212,4 @@ Route::controller('premium', 'PremiumController');
 
 Route::post('api/add-premium', 'PremiumController@addPremiumUser');
 
-Route::post('api/check-premium', 'PremiumController@checkPremiumUser');
+Route::post('api/check-premium', 'PremiumController@checkPremiumDevice');
