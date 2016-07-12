@@ -18,8 +18,8 @@ class PremiumController extends BaseController {
 	    @$transaction    = $request->transaction;
 	    @$provider = $request->provider;
 
-	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($deviceId)
-	    	&& $this->validate->validateSpecialChar($transaction) && $this->validate->validateSpecialChar($provider)) {
+	    if ($this->validate->validateNullValue($userId) && $this->validate->validateNullValue($deviceId)
+	    	&& $this->validate->validateNullValue($transaction) && $this->validate->validateNullValue($provider)) {
 	    	return Response::json($this->premium->insertPremium($userId, $deviceId, $transaction, $provider));
 	    } else {
 	    	return Response::json(array ('status' => 400));
@@ -32,7 +32,7 @@ class PremiumController extends BaseController {
 	    @$userId    = $request->userId;
 	    @$deviceId = $request->deviceId;
 
-	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($deviceId)) {
+	    if ($this->validate->validateNullValue($userId) && $this->validate->validateNullValue($deviceId)) {
 	    	return Response::json($this->premium->checkPremiumDevice($userId, $deviceId));
 	    } else {
 	    	return Response::json(array ('status' => 400));	

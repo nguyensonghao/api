@@ -32,6 +32,13 @@ class ValidateController {
 		return true;
 	}
 
+	public function validateNullValue ($value) {
+		if ($value == null || $value == '')
+			return false;
+
+		return true;		
+	}
+
 }
 
 ?>
