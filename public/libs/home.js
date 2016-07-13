@@ -13,7 +13,7 @@ angular.module('app').controller('HomeController',
 	else 
 		$scope.logined = true;
 
-	var urlInfo = 'http://api.mazii.net/api/pull-date';
+	var urlInfo = 'http://api.mazii.net/api/pull-data';
     var dataSend = {
         userId : 33,
         skip : 1

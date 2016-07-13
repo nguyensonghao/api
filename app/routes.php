@@ -156,7 +156,7 @@ Route::post('api/push-cate-new', 'SyncController@actionPushCateNewServer');
 
 Route::post('api/update-cate-server', 'SyncController@actionUpdateCate');
 
-Route::post('api/pull-date', 'SyncController@pullDataServer');
+Route::post('api/pull-data', 'SyncController@pullDataServer');
 
 // Word
 
