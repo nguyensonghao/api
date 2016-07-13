@@ -144,8 +144,7 @@ class SyncController extends BaseController {
 	    if (!isset($lastedUpdate))
 	    	$lastedUpdate = null;
 
-	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($lastedUpdate)
-	    	&& $this->validate->validateSpecialChar($skip)) {
+	    if ($this->validate->validateSpecialChar($userId)) {
 	    	return Response::json(array(
 	    		'status' => 200,
 	    		'listNote' => $this->getListNote($userId, $skip, $lastedUpdate),
