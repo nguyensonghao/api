@@ -146,4 +146,13 @@ class Category extends Eloquent {
 		return false;
 	}
 
+	public function getListCateServer ($userId, $skip, $lastedUpdate) {
+		if (is_null($lastedUpdate)) {
+			return Category::where('userId', $userId)->skip($skip)->take(100)->get();
+		} else {
+			return Category::where('userId', $userId)->where('updated_at', '>', $lastedUpdate)
+			->skip($skip)->take(100)->get();
+		}
+	}
+
 }

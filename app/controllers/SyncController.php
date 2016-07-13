@@ -130,6 +130,39 @@ class SyncController extends BaseController {
 	    	return Response::json(array('status' => 400));
 	    }
 	}
+
+	public function pullDataServer () {
+		$postdata = file_get_contents("php://input");
+	    $request  = json_decode($postdata);	
+	    @$userId  = $request->userId;
+	    @$lastedUpdate = $request->lastedUpdate;
+	    @$skip = $request->skip;
+
+	    if (!isset($skip) || is_null($skip))
+	    	$skip = 0;
+
+	    if (!isset($lastedUpdate))
+	    	$lastedUpdate = null;
+
+	    if ($this->validate->validateSpecialChar($userId) && $this->validate->validateSpecialChar($lastedUpdate)
+	    	&& $this->validate->validateSpecialChar($skip)) {
+	    	return Response::json(array(
+	    		'status' => 200,
+	    		'listNote' => $this->getListNote($userId, $skip, $lastedUpdate),
+	    		'listCate' => $this->getListCate($userId, $skip, $lastedUpdate)
+	    	));
+	    } else {
+	    	return Response::json(array('status' => 400));
+	    }
+	}
+
+	protected function getListNote ($userId, $skip, $lastedUpdate = null) {
+		return $this->note->getListNoteServer($userId, $skip, $lastedUpdate);
+	}
+
+	protected function getListCate ($userId, $skip, $lastedUpdate = null) {
+		return $this->cate->getListCateServer($userId, $skip, $lastedUpdate);
+	}
 }
 
 ?>

@@ -130,4 +130,17 @@ class Note extends Eloquent {
 		return false;
 	}
 
+	public function getListNoteServer ($userId, $skip, $lastedUpdate) {
+		if (is_null($lastedUpdate)) {
+			return Category::select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
+			->where('userId', $userId)->join('note', 'note.cateId', '=', 'category.categoryId')
+			->skip($skip)->take(100)->get();
+		} else {
+			return Category::select('note.noteId', 'note.noteMean', 'note.noteName', 'note.cateId', 'note.type', 'note.updated_at', 'note.idx')
+			->where('userId', $userId)->join('note', 'note.cateId', '=', 'category.categoryId')
+			->where('note.updated_at', '>', $lastedUpdate)
+			->skip($skip)->take(100)->get();
+		}
+	}
+
 }
