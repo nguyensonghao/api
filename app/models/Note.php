@@ -28,6 +28,7 @@ class Note extends Eloquent {
 		if (!$this->checkExistNote($noteName, $categoryId))
 			return array('status' => 306);
 
+		$date = date('Y-m-d H:i:s');
 		$note->noteName = $noteName;
 		$note->noteMean = $noteMean;
 		$note->date     = $date;
@@ -35,21 +36,30 @@ class Note extends Eloquent {
 		$note->noteMean = $noteMean;
 		$note->cateId   = $categoryId;
 		$note->idx      = $idx;
-		$note->status   = 0;		
+		$note->status   = 0;
+		$note->created_at = $date;
 		if ($note->save()) {
 			$id = Note::where('cateId', $categoryId)->where('noteName', $noteName)
-			->where('date', $date)->first()->noteId;			
-			User::updateLastest(Category::where('categoryId', $categoryId)->first()->userId);
-			return array('status' => 200, 'noteId' => $id);
+			->where('date', $date)->first()->noteId;
+			// Update lasted_update of user table
+			User::updateLastest(Category::where('categoryId', $categoryId)->first()->userId, $date);
+			return array('status' => 200, 'noteId' => $id, 'lastedUpdate' => $date);
 		} else {
 			return array('status' => 304);
 		}
 	}	
 
 	public function deleteNote ($noteId) {
-		if (Note::where('noteId', $noteId)->update(array('status' => -1))) {
-			User::updateLastest($userId);
-			return array('status' => 200);
+		$date = date('Y-m-d H:i:s');
+		$noteName = Note::where('noteId', $noteId)->first()->noteName . (string)$date;
+		if (Note::where('noteId', $noteId)->update(array(
+				'noteName' => $noteName, 
+				'status' => -1, 
+				'updated_at' => $date))) {
+
+			// Update lasted_update of user table
+			User::updateLastest($userId, $date);
+			return array('status' => 200, 'lastedUpdate' => $date);
 		} else {
 			return array('status' => 304);
 		}

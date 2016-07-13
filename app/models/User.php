@@ -15,11 +15,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
-
-
-	public function __construct () {
-		DB::connection()->disableQueryLog();
-	}
+	
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -146,8 +142,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 	}
 
-	public static function updateLastest ($userId) {
-		$date = date('Y-m-d H:i:s');
+	public static function updateLastest ($userId, $date) {
 		User::where('userId', $userId)->update(array('lastest_update' => $date));
 	}
 

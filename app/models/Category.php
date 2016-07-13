@@ -16,57 +16,60 @@ class Category extends Eloquent {
 	 */
 	protected $table = 'category';
 
-	public function __construct () {
-		DB::connection()->disableQueryLog();
-	}
-
 	public function addCategory ($userId, $categoryName, $date) {
 		if (!$this->checkExitsUser($userId))
 			return array('status' => 304);
 
 		if (!$this->checkExitsCate($userId, $categoryName))
 			return array('status' => 306);
-			
+		
+		$date = date('Y-m-d H:i:s');
 		$category = new Category();
 		$category->userId = $userId;
 		$category->date   = $date;
 		$category->categoryName = $categoryName;
 		$category->status = 0;
+		$category->created_at = $date;
 		if ($category->save()) {
 			$cate = Category::where('userId', $userId)->where('date', $date)
-		    ->where('categoryName', $categoryName)->first();
-		    $updated_at = $cate->updated_at;
-
-		    // Update time server
-		    $this->updateTimeServer($updated_at, $userId, 'cate');
-		    $cateId = $cate->categoryId;
-		    User::updateLastest($userId);
-			return array('status' => 200, 'cateId' => $cateId);
+		    ->where('categoryName', $categoryName)->first();		    
+		  	
+		  	// Update lasted_update of user table
+		    User::updateLastest($userId, $date);
+			return array('status' => 200, 'cateId' => $cate->cateId, 'lastedUpdate' => $date);
 		} else return array('status' => 304);			
 	}
 
 	public function updateCategory ($categoryId, $category, $userId) {
+		$date = date('Y-m-d H:i:s');
+		$category['updated_at'] = $date;
 		if (Category::where('categoryId', $categoryId)->where('userId', $userId)
 			->update($category)) {
-			User::updateLastest($userId);
-			return array('status' => 200);
+
+			// Update lasted_update of user table
+			User::updateLastest($userId, $date);
+			return array('status' => 200, 'lastedUpdate' => $date);
 		} else {
 			return array('status' => 304);
 		}
 	}
 
 	public function deleteCategory ($userId, $categoryId) {
+		$date = date('Y-m-d H:i:s');
+		$cate = Category::where('categoryId', $categoryId)->where('userId', $userId)->first();
+		$categoryName = $cate->categoryName . (string)$date;
 		if (Category::where('categoryId', $categoryId)->where('userId', $userId)
-			->update(array('status' => -1))) {
-
-			$updated_at = Category::where('categoryId', $categoryId)->where('userId', $userId)->first()->updated_at;
-			// Update time server
-		    $this->updateTimeServer($updated_at, $userId, 'cate');
+			->update(array(
+				'categoryName' => $categoryName,
+				'status' => -1,
+				'updated_at' => $date))) {
 
 		    // Delete all note in cate
-			Note::where('cateId', $categoryId)->update(array('status' => -1));
-			User::updateLastest($userId);
-			return array('status' => 200);
+			Note::where('cateId', $categoryId)->update(array('status' => -1, 'updated_at' => $date));
+
+			// Update lasted_update of user table
+			User::updateLastest($userId, $date);
+			return array('status' => 200, 'lastedUpdate' => $date);
 		} else {
 			return array('status' => 304);
 		}
