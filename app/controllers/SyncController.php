@@ -136,10 +136,14 @@ class SyncController extends BaseController {
 	    $request  = json_decode($postdata);	
 	    @$userId  = $request->userId;
 	    @$lastedUpdate = $request->lastedUpdate;
-	    @$skip = $request->skip;
+	    @$skipNote = $request->skipNote;
+	    @$skipCate = $request->skipCate;
 
-	    if (!isset($skip) || is_null($skip))
-	    	$skip = 0;
+	    if (!isset($skipNote) || is_null($skipNote))
+	    	$skipNote = 0;
+
+	    if (!isset($skipCate) || is_null($skipCate))
+	    	$skipCate = 0;
 
 	    if (!isset($lastedUpdate))
 	    	$lastedUpdate = null;
@@ -147,8 +151,8 @@ class SyncController extends BaseController {
 	    if ($this->validate->validateSpecialChar($userId)) {
 	    	return Response::json(array(
 	    		'status' => 200,
-	    		'listNote' => $this->getListNote($userId, $skip, $lastedUpdate),
-	    		'listCate' => $this->getListCate($userId, $skip, $lastedUpdate)
+	    		'listNote' => $this->getListNote($userId, $skipNote, $lastedUpdate),
+	    		'listCate' => $this->getListCate($userId, $skipCate, $lastedUpdate)
 	    	));
 	    } else {
 	    	return Response::json(array('status' => 400));
