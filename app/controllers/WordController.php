@@ -40,7 +40,7 @@ class WordController extends BaseController {
 		Session::set('select_course', $id_course);
 		for ($i = 0; $i < count($list['listWord']); $i++) {			
 			$list['listWord'][$i]->course_name = $this->convertNameCourse($list['listWord'][$i]->id_course);
-		}		
+		}
 		return View::make('data.list-image-excuted', $list);
 	}
 
@@ -779,6 +779,9 @@ class WordController extends BaseController {
 		if ($this->validate->validateSpecialChar($keySearch)) {
 			$list['keySearch'] = $keySearch;
 			$list['result'] = Word::where('word', 'like', '%' . $keySearch . '%')->skip(0)->take(30)->get();
+			for ($i = 0; $i < count($list['listWord']); $i++) {			
+				$list['result'][$i]->course_name = $this->convertNameCourse($list['result'][$i]->id_course);
+			}
 		} else {
 			$list['error'] = 'Từ khóa tìm kiếm chứa ký tự đặc biệt hoặc trống';			
 		}

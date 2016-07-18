@@ -16,10 +16,6 @@ class Word extends Eloquent {
 	 */
 	protected $table = 'words';	
 
-	public function __construct () {
-		DB::connection()->disableQueryLog();
-	}
-
 	public function getListExcute ($id_course, $id_subject) {
 		$id = (string)$id_course;
 		$id = substr($id, -1);
