@@ -779,7 +779,7 @@ class WordController extends BaseController {
 		if ($this->validate->validateSpecialChar($keySearch)) {
 			$list['keySearch'] = $keySearch;
 			$list['result'] = Word::where('word', 'like', '%' . $keySearch . '%')->skip(0)->take(30)->get();
-			for ($i = 0; $i < count($list['listWord']); $i++) {			
+			for ($i = 0; $i < count($list['result']); $i++) {			
 				$list['result'][$i]->course_name = $this->convertNameCourse($list['result'][$i]->id_course);
 			}
 		} else {
