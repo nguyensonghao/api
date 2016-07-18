@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ Asset('public/libs/css/style.css') }}">
 	<script src="{{ Asset('public/libs/bootstrap/js/jquery-2.1.3.min.js') }}"></script>
 	<script src="{{ Asset('public/libs/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ Asset('public/libs/js/app.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse" role="navigation">
@@ -116,8 +117,17 @@
 						<ul class="dropdown-menu">
 							<li><a href="{{ Asset('dang-xuat') }}">Đăng xuất</a></li>
 						</ul>
-					</li>
+					</li>					
 				</ul>
+				
+				<form method="post" action="{{ Asset('tim-kiem') }}" name="form-search" class="form-search">
+					<div class="input-group search">					
+							<input type="text" class="form-control search-enter" placeholder="Nhập từ khóa tìm kiếm" name="search-enter">
+							<span class="input-group-addon enter-submit">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>					
+					</div>
+				</form>
 			</div>
 		</div>
 	</nav>

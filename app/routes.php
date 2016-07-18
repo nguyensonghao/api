@@ -208,6 +208,8 @@ Route::post('them-dulieu-json', 'WordController@actionImportData');
 
 Route::post('upload-anh', 'WordController@actionUploadImage');
 
+Route::post('tim-kiem', 'WordController@actionSearch');
+
 // PremiumController
 
 Route::controller('premium', 'PremiumController');

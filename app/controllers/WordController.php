@@ -8,6 +8,7 @@ class WordController extends BaseController {
 	public $course;
 	public $wordClone;
 	public $subjectClone;
+	public $validate;
 
 	public function __construct () {
 		$this->beforeFilter('login-systerm');
@@ -17,6 +18,7 @@ class WordController extends BaseController {
 		$this->admin = new Admin();
 		$this->wordClone = new WordClone();
 		$this->subjectClone = new SubjectClone();
+		$this->validate = new ValidateController();
 		DB::connection()->disableQueryLog();
 	}
 
@@ -770,6 +772,17 @@ class WordController extends BaseController {
 		} catch (Exception $e) {
 			return Response::json(array('status' => -3, 'error' => $e->getMessage()));
 		}		
+	}
+
+	public function actionSearch () {
+		$keySearch = $_POST['search-enter'];
+		if ($this->validate->validateSpecialChar($keySearch)) {
+			$list['keySearch'] = $keySearch;
+			$list['result'] = Word::where('word', 'like', '%' . $keySearch . '%')->skip(0)->take(30)->get();
+		} else {
+			$list['error'] = 'Từ khóa tìm kiếm chứa ký tự đặc biệt hoặc trống';			
+		}
+		return View::make('data.search', $list);
 	}
 }
 
