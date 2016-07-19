@@ -776,9 +776,15 @@ class WordController extends BaseController {
 
 	public function actionSearch () {
 		$keySearch = $_POST['search-enter'];
+		$url = 'tim-kiem/' . $keySearch;
+		return Redirect::to($url);
+		
+	}
+
+	public function actionQuerySearch ($keySearch) {
 		if ($this->validate->validateSpecialChar($keySearch)) {
 			$list['keySearch'] = $keySearch;
-			$list['result'] = Word::where('word', 'like', '%' . $keySearch . '%')->skip(0)->take(30)->get();
+			$list['result'] = Word::where('word', 'like', '%' . $keySearch . '%')->paginate(20);
 			for ($i = 0; $i < count($list['result']); $i++) {			
 				$list['result'][$i]->course_name = $this->convertNameCourse($list['result'][$i]->id_course);
 			}

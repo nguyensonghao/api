@@ -30,24 +30,28 @@
 									<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
 								</a>
 								<div class="btn-group">				
-									<button class="btn btn-primary btn-{{$value->id}}" onclick="excutedImage({{$value->id}})">
+									<button class="btn btn-primary btn-sm btn-{{$value->id}}" onclick="excutedImage({{$value->id}})">
 										<span class="glyphicon glyphicon-ok"></span> 
 										Xong
 									</button>		
-									<button type="button" class="btn btn-default btn-show-image-{{ $value->id }}" onclick='showImage({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}">
+									<button type="button" class="btn btn-sm btn-default btn-show-image-{{ $value->id }}" onclick='showImage({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}">
 										<span class="glyphicon glyphicon-eye-open"></span> 
 										Xem
 									</button>
-									<button type="button" class="btn btn-danger btn-fix-word-{{ $value->id }}" onclick='fixMean({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}" phonetic="{{ $value->phonetic }}" des="{{ $value->des }}">
+									<button type="button" class="btn btn-sm btn-danger btn-fix-word-{{ $value->id }}" onclick='fixMean({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}" phonetic="{{ $value->phonetic }}" des="{{ $value->des }}">
 										<span class="glyphicon glyphicon glyphicon-pencil"></span> 
 										Sửa
+									</button>
+									<button type="button" class="btn btn-sm btn-default btn-sound btn-sound-{{ $value->id }}" urlSound="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/audios/' . $value->id_word . '.mp3'}}" onclick="soundAudio({{ $value->id }})">
+										<span class="glyphicon glyphicon-volume-up"></span>
 									</button>
 								</div>
 							</div>				
 						</div>
 					</div>
 				@endforeach		
-			</div>	
+			</div>
+			{{ $result->links() }}	
 		@endif
 	@endif	
 
@@ -121,6 +125,12 @@
 		var listImage = [];
 		var indexPage = 0;
 		var idWord;
+
+		var soundAudio = function (id) {
+			var urlSound = $('.btn-sound-' + id).attr('urlSound');
+			var audio = new Audio(urlSound);			
+			audio.play();
+		}
 
 		var showImage = function (id, word, mean) {
 			var word = $('.btn-show-image-' + id).attr('word');

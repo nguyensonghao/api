@@ -190,6 +190,8 @@ Route::get('quan-ly-khoa-hoc', 'WordController@showManagerCourse');
 
 Route::get('phat-hanh-khoa-hoc/{id}/{status}', 'WordController@actionPublicCoures');
 
+Route::get('tim-kiem/{query}', 'WordController@actionQuerySearch');
+
 Route::post('hoan-thanh-duyet-anh', 'WordController@actionCompleteImage');
 
 Route::post('lay-danh-sach-anh', 'WordController@actionGetImageUrl');
