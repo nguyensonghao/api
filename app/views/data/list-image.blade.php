@@ -53,6 +53,7 @@
 					<a class="thumbnail">
 						<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
 					</a>
+					<p>ID: {{ $value->id_word }}</p>
 					<div class="btn-group">
 						<button class="btn btn-sm btn-primary btn-{{$value->id}}" onclick="excutedImage({{$value->id}})">
 							<span class="glyphicon glyphicon-ok"></span> 
