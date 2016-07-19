@@ -60,7 +60,8 @@
 						<a class="thumbnail">
 							<img src="{{ Asset('public/AllData') .'/'. $value->course_name. '/' . $value->id_course . '/images/words/' . $value->id_word . '.jpg'}}">
 						</a>
-						<p>ID: {{ $value->id_word }}</p>
+						<p>ID_WORD: {{ $value->id_word }}</p>
+						<p>ID_COURSE: {{ $value->id_course }}</p>
 						<div class="btn-group">						
 							<button type="button" class="btn btn-default btn-sm btn-show-image-{{ $value->id }}" onclick='showImage({{$value->id}})' word="{{ $value->word }}" mean="{{ $value->mean }}">
 								<span class="glyphicon glyphicon-eye-open"></span> 
